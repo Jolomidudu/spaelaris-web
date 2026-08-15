@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+:root {
+  --spaelaris-olive-deep: #3f4a2c;
+  --spaelaris-olive: #66703f;
+  --spaelaris-olive-soft: #8a9360;
+  --spaelaris-gold: #d8c487;
+  --spaelaris-cream: #f7f6ef;
+  --spaelaris-dark: #252820;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--spaelaris-cream);
+  color: var(--spaelaris-dark);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: var(--spaelaris-olive);
+  color: white;
+}
