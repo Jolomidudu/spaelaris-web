@@ -47,7 +47,7 @@ export default async function ServiceCategoryPage({ params }: Props) {
            {/* BACK BUTTON */}
   <Link
     href="/services"
-    className="absolute left-6 top-8 inline-flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-white/80 transition hover:text-white md:left-10 md:top-10 lg:left-16"
+    className="absolute left-6 top-28 inline-flex items-center gap-3 text-xs uppercase tracking-[0.18em] text-white/80 transition hover:text-white md:left-10 md:top-32 lg:left-16"
   >
     <span className="text-lg">←</span>
     <span>Back to treatments</span>

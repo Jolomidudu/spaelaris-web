@@ -822,59 +822,256 @@ export const serviceCategories: ServiceCategory[] = [
       "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1400&q=85",
     services: [
       {
-        name: "Cold Plungings",
-        price: 40000,
-        description:
-          "A short cold-water immersion experience designed around circulation, alertness and recovery.",
-      },
+  name: "Cold Plungings",
+  price: 40000,
+
+  description:
+    "A short cold-water immersion experience designed around circulation, alertness and recovery.",
+
+  duration: "10 minutes",
+
+  benefits: [
+    "Encourages a refreshed and energized feeling",
+    "Supports post-activity recovery",
+    "Provides a stimulating wellness experience",
+    "Helps promote a sense of alertness",
+    "Creates a revitalizing contrast to heat-based treatments",
+  ],
+
+  includes: [
+    "Pre-treatment guidance",
+    "Cold-water immersion experience",
+    "Calm spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Cold Plungings is a refreshing wellness experience centered around brief cold-water immersion. Designed for guests seeking an invigorating treatment, it offers a stimulating contrast to traditional warm and heat-based spa experiences.",
+},
       {
-        name: "Jacuzzi Soak",
-        price: 55000,
-        description:
-          "A therapeutic hydrotherapy experience in warm jacuzzi water infused with bath salts and essential oils.",
-      },
+  name: "Jacuzzi Soak",
+  price: 55000,
+
+  description:
+    "A therapeutic hydrotherapy experience in warm jacuzzi water infused with bath salts and essential oils.",
+
+  duration: "45 minutes",
+
+  benefits: [
+    "Promotes deep relaxation",
+    "Helps ease everyday muscle tension",
+    "Provides a soothing hydrotherapy experience",
+    "Encourages relaxation and stress relief",
+    "Leaves the body feeling refreshed and restored",
+  ],
+
+  includes: [
+    "Pre-treatment guidance",
+    "Warm jacuzzi soak",
+    "Bath salts and essential oils",
+    "Calm spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Jacuzzi Soak is a relaxing hydrotherapy experience designed to help guests unwind in warm, soothing water. The treatment combines the comfort of a jacuzzi with bath salts and essential oils to create a restorative spa experience.",
+},
       {
-        name: "Japanese Head Spa",
-        price: 45000,
-        description:
-          "A luxurious scalp and hair wellness ritual combining massage, hair care, facial massage and soothing steam.",
-      },
+  name: "Japanese Head Spa",
+  price: 45000,
+
+  description:
+    "A luxurious scalp and hair wellness ritual combining massage, hair care, facial massage and soothing steam.",
+
+  duration: "60 minutes",
+
+  benefits: [
+    "Relieves scalp and head tension",
+    "Promotes deep relaxation",
+    "Helps refresh the scalp and hair",
+    "Encourages a calming wellness experience",
+    "Leaves you feeling refreshed and restored",
+  ],
+
+  includes: [
+    "Scalp cleansing and care",
+    "Japanese-inspired head massage",
+    "Facial massage",
+    "Soothing steam experience",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Japanese Head Spa is a luxurious scalp and hair wellness ritual designed to create a deeply relaxing experience. The treatment combines attentive scalp care, massage, facial techniques and soothing steam in a calm spa environment.",
+},
       {
-        name: "Mud Bath Therapy",
-        price: 65000,
-        description:
-          "A restorative body treatment using warm mineral-rich mud.",
-      },
+  name: "Mud Bath Therapy",
+  price: 65000,
+
+  description:
+    "A restorative body treatment using warm mineral-rich mud.",
+
+  duration: "60 minutes",
+
+  benefits: [
+    "Promotes deep relaxation",
+    "Helps soothe tired muscles",
+    "Gently exfoliates and refreshes the skin",
+    "Provides a calming body-care experience",
+    "Leaves the skin feeling refreshed and renewed",
+  ],
+
+  includes: [
+    "Pre-treatment guidance",
+    "Warm mineral-rich mud application",
+    "Relaxation period",
+    "Body cleansing",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Mud Bath Therapy is a restorative body treatment that combines warm mineral-rich mud with a relaxing spa experience. The treatment is designed to refresh the skin, soothe the body and provide a calming sense of renewal.",
+},
       {
-        name: "Cupping Therapy",
-        price: 48000,
-        description:
-          "A traditional wellness treatment using specialized cups to create gentle suction.",
-      },
+  name: "Cupping Therapy",
+  price: 48000,
+
+  description:
+    "A traditional wellness treatment using specialized cups to create gentle suction.",
+
+  duration: "45 minutes",
+
+  benefits: [
+    "Promotes relaxation",
+    "Helps ease areas of muscle tension",
+    "Supports a soothing body-care experience",
+    "Encourages a feeling of physical relaxation",
+    "Provides a traditional therapeutic wellness experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Cupping therapy session",
+    "Specialized therapeutic cups",
+    "Calm spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Cupping Therapy is a traditional wellness experience using specialized cups to create gentle suction on selected areas of the body. The treatment is designed to provide a relaxing and restorative experience within the calm environment of Spa Elaris.",
+},
       {
-        name: "Dry Brushing Therapy",
-        price: 40000,
-        description:
-          "Natural-bristle brushing designed to gently exfoliate dry skin.",
-      },
+  name: "Dry Brushing Therapy",
+  price: 40000,
+
+  description:
+    "Natural-bristle brushing designed to gently exfoliate dry skin.",
+
+  duration: "30 minutes",
+
+  benefits: [
+    "Gently exfoliates the skin",
+    "Helps remove surface dead skin cells",
+    "Leaves the skin feeling smoother and refreshed",
+    "Provides a stimulating body-care experience",
+    "Prepares the skin for nourishing body treatments",
+  ],
+
+  includes: [
+    "Pre-treatment guidance",
+    "Full-body dry brushing",
+    "Gentle exfoliation",
+    "Calm spa environment",
+    "Post-treatment skincare",
+  ],
+
+  details:
+    "Elaris Dry Brushing Therapy is a gentle body-care treatment using natural-bristle brushing techniques to exfoliate the skin and create a refreshed, smooth feeling. It can also be incorporated into a broader body-care or wellness experience.",
+},
       {
-        name: "Shirodhara",
-        price: 70000,
-        description:
-          "An Ayurvedic wellness ritual involving a continuous stream of warm herbal oil across the forehead.",
-      },
+  name: "Shirodhara",
+  price: 70000,
+
+  description:
+    "An Ayurvedic wellness ritual involving a continuous stream of warm herbal oil across the forehead.",
+
+  duration: "60 minutes",
+
+  benefits: [
+    "Promotes deep relaxation",
+    "Encourages a calm and peaceful state",
+    "Helps ease everyday mental tension",
+    "Provides a soothing sensory experience",
+    "Supports an overall sense of wellness and relaxation",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Warm herbal oil preparation",
+    "Shirodhara treatment",
+    "Calm and restorative spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Shirodhara is an Ayurvedic-inspired wellness ritual featuring a continuous flow of warm herbal oil across the forehead. The treatment is designed as a deeply calming experience, allowing guests to slow down, relax and enjoy a peaceful moment of restoration.",
+},
+     {
+  name: "Meditation Sessions",
+  price: 80000,
+
+  description:
+    "One-on-one meditation sessions with professional instructors.",
+
+  duration: "60 minutes",
+
+  benefits: [
+    "Promotes relaxation and mental calm",
+    "Provides a quiet space for reflection",
+    "Helps reduce everyday mental tension",
+    "Encourages mindful breathing and presence",
+    "Supports an overall sense of wellbeing",
+  ],
+
+  includes: [
+    "One-on-one session",
+    "Guidance from a professional instructor",
+    "Personalized meditation techniques",
+    "Calm and private environment",
+    "Post-session relaxation",
+  ],
+
+  details:
+    "Elaris Meditation Sessions provide a private and calming environment where guests can slow down, reconnect with themselves and explore guided meditation techniques. Each session is conducted one-on-one and can be adapted to the guest's wellness needs and level of experience.",
+},
       {
-        name: "Meditation Sessions",
-        price: 80000,
-        description:
-          "One-on-one meditation sessions with professional instructors.",
-      },
-      {
-        name: "Insomnia ASMR",
-        price: 50000,
-        description:
-          "A gentle relaxation session using soothing sounds, gentle touch and soft whispers.",
-      },
+  name: "Insomnia ASMR",
+  price: 50000,
+
+  description:
+    "A gentle relaxation session using soothing sounds, gentle touch and soft whispers.",
+
+  duration: "45 minutes",
+
+  benefits: [
+    "Promotes deep relaxation",
+    "Creates a calming sensory experience",
+    "Helps ease everyday stress and tension",
+    "Encourages a peaceful state of mind",
+    "Provides a quiet environment for relaxation",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Personalized ASMR relaxation session",
+    "Soothing sounds and gentle touch",
+    "Calm and private environment",
+    "Post-session relaxation",
+  ],
+
+  details:
+    "Elaris Insomnia ASMR is a calming sensory relaxation experience designed around soothing sounds, gentle touch and soft whispers. The session takes place in a peaceful environment and is intended to help guests slow down, disconnect from everyday distractions and enjoy a deeply relaxing experience.",
+},
     ],
   },
 
