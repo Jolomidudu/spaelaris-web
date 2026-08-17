@@ -1086,87 +1086,419 @@ export const serviceCategories: ServiceCategory[] = [
       "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1400&q=85",
     services: [
       {
-        name: "Moroccan Hammam",
-        price: 60000,
-        description:
-          "Traditional cleansing ritual using steam, exfoliation and nourishing treatments.",
-      },
+  name: "Moroccan Hammam",
+  price: 60000,
+
+  description:
+    "A traditional Moroccan-inspired cleansing ritual combining steam, exfoliation and nourishing body treatments to deeply purify, soften and refresh the skin.",
+
+  duration: "75 minutes",
+
+  benefits: [
+    "Deeply cleanses and exfoliates the skin",
+    "Helps remove dead skin cells and impurities",
+    "Leaves the skin feeling softer and smoother",
+    "Supports a refreshed and revitalized appearance",
+    "Promotes deep relaxation",
+    "Creates a luxurious full-body wellness experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Steam preparation",
+    "Full-body exfoliation",
+    "Traditional Moroccan-inspired cleansing ritual",
+    "Nourishing body treatment",
+    "Calm and private spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Moroccan Hammam is a luxurious body ritual inspired by traditional Moroccan bathing practices. The experience combines warmth, steam, exfoliation and nourishing body care to cleanse and refresh the skin while creating a deeply relaxing wellness experience. Guests leave feeling renewed, smooth and refreshed.",
+},
       {
-        name: "Elaris Cleopatra",
-        price: 75000,
-        description:
-          "A luxurious milk and botanical body ritual inspired by ancient beauty traditions.",
-      },
+  name: "Elaris Cleopatra",
+  price: 75000,
+
+  description:
+    "A luxurious milk and botanical body ritual inspired by ancient beauty traditions to nourish, soften and illuminate the skin.",
+
+  duration: "75 minutes",
+
+  benefits: [
+    "Deeply nourishes and hydrates the skin",
+    "Helps leave the skin feeling soft and smooth",
+    "Enhances the skin's natural radiance",
+    "Creates a luxurious and relaxing body experience",
+    "Helps promote a sense of calm and wellbeing",
+    "Leaves the body feeling refreshed and renewed",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Milk-based body treatment",
+    "Botanical body care",
+    "Relaxing spa environment",
+    "Nourishing finishing treatment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Cleopatra is an indulgent body ritual inspired by ancient beauty traditions. The experience combines luxurious milk-based care with botanical treatments to nourish and soften the skin while creating a deeply relaxing and restorative spa experience.",
+},
       {
-        name: "Mud Detox Therapy",
-        price: 55000,
-        description:
-          "Mineral-rich mud treatment designed to draw out impurities and refresh the body.",
-      },
+  name: "Mud Detox Therapy",
+  price: 55000,
+
+  description:
+    "A mineral-rich mud treatment designed to deeply cleanse, refresh and rejuvenate the body while leaving the skin feeling renewed.",
+
+  duration: "60 minutes",
+
+  benefits: [
+    "Helps cleanse and refresh the skin",
+    "Helps remove surface impurities",
+    "Leaves the skin feeling smoother and revitalized",
+    "Provides a deeply relaxing body experience",
+    "Helps promote a refreshed feeling throughout the body",
+    "Supports a renewed and nourished skin appearance",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Mineral-rich mud application",
+    "Full-body mud treatment",
+    "Relaxation period",
+    "Nourishing finishing care",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Mud Detox Therapy is a restorative body ritual using mineral-rich mud as the centre of the experience. The treatment is designed to cleanse and refresh the skin while providing a peaceful and indulgent spa experience that leaves the body feeling renewed.",
+},
       {
-        name: "Velvet Skin Experience",
-        price: 100000,
-        description:
-          "An indulgent full-body ritual combining exfoliation and hydration.",
-      },
+  name: "Velvet Skin Experience",
+  price: 100000,
+
+  description:
+    "An indulgent full-body ritual combining exfoliation and hydration for exceptionally soft, smooth and radiant-looking skin.",
+
+  duration: "90 minutes",
+
+  benefits: [
+    "Deeply exfoliates the skin",
+    "Helps improve the feel and texture of the skin",
+    "Provides intensive hydration",
+    "Leaves the skin feeling exceptionally soft and smooth",
+    "Enhances the appearance of natural radiance",
+    "Creates a deeply relaxing full-body experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Full-body exfoliation",
+    "Hydrating body treatment",
+    "Nourishing finishing care",
+    "Relaxing spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "The Elaris Velvet Skin Experience is an indulgent full-body ritual created for guests seeking exceptionally soft, smooth and hydrated skin. The treatment combines thorough exfoliation with nourishing hydration to create a luxurious experience that leaves the body feeling refreshed, silky and renewed.",
+},
+     {
+  name: "The Goddess Ritual",
+  price: 100000,
+
+  description:
+    "A signature head-to-toe wellness experience designed to restore balance, encourage deep relaxation and leave you feeling completely renewed.",
+
+  duration: "90 minutes",
+
+  benefits: [
+    "Provides a complete head-to-toe wellness experience",
+    "Promotes deep relaxation",
+    "Helps release everyday body tension",
+    "Leaves the body feeling refreshed and renewed",
+    "Encourages a sense of balance and wellbeing",
+    "Creates a luxurious and restorative spa experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Head-to-toe body treatment",
+    "Relaxation-focused wellness techniques",
+    "Nourishing body care",
+    "Calm and private spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "The Elaris Goddess Ritual is a signature head-to-toe experience created to provide complete relaxation and restoration. The treatment brings together thoughtful wellness techniques and nourishing body care in a luxurious ritual designed to leave you feeling balanced, refreshed and renewed.",
+},
       {
-        name: "The Goddess Ritual",
-        price: 100000,
-        description:
-          "A signature head-to-toe wellness experience designed to restore balance and relaxation.",
-      },
+  name: "Golden Glow Ritual",
+  price: 85000,
+
+  description:
+    "A brightening body ritual that exfoliates, nourishes and enhances the skin's natural radiance.",
+
+  duration: "75 minutes",
+
+  benefits: [
+    "Gently exfoliates the skin",
+    "Helps improve the appearance of dull-looking skin",
+    "Nourishes and softens the skin",
+    "Enhances the appearance of natural radiance",
+    "Leaves the body feeling refreshed and renewed",
+    "Provides a relaxing full-body wellness experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Full-body exfoliation",
+    "Nourishing body treatment",
+    "Brightening care",
+    "Relaxing spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "The Elaris Golden Glow Ritual is a luxurious brightening body experience designed to refresh and nourish the skin. The ritual combines exfoliation and nourishing care to help reveal a smoother, softer and more radiant-looking complexion while providing a peaceful and restorative spa experience.",
+},
       {
-        name: "Golden Glow Ritual",
-        price: 85000,
-        description:
-          "A brightening body ritual that exfoliates, nourishes and enhances natural radiance.",
-      },
+  name: "Exfoliation Therapy",
+  price: 50000,
+
+  description:
+    "A full-body exfoliation treatment designed to smooth the skin's texture and prepare the body for deep hydration.",
+
+  duration: "60 minutes",
+
+  benefits: [
+    "Removes dead surface skin cells",
+    "Helps smooth the feel of the skin",
+    "Improves the appearance of uneven skin texture",
+    "Prepares the skin for better hydration",
+    "Leaves the skin feeling refreshed and renewed",
+    "Provides a relaxing full-body experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Full-body exfoliation",
+    "Skin-smoothing treatment",
+    "Hydrating finishing care",
+    "Relaxing spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Exfoliation Therapy is a focused full-body treatment designed to refresh and smooth the skin. Through thorough exfoliation and nourishing finishing care, the treatment helps prepare the skin for hydration while creating a relaxing and restorative spa experience.",
+},
+     {
+  name: "Zen Body Ritual",
+  price: 75000,
+
+  description:
+    "A calming body treatment combining relaxation techniques designed to ease tension and restore a sense of balance.",
+
+  duration: "75 minutes",
+
+  benefits: [
+    "Promotes deep relaxation",
+    "Helps ease everyday body tension",
+    "Encourages a sense of calm and wellbeing",
+    "Leaves the body feeling refreshed and restored",
+    "Creates a peaceful full-body wellness experience",
+    "Helps reduce feelings of physical and mental fatigue",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Relaxation-focused body treatment",
+    "Calming body care",
+    "Peaceful spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "The Elaris Zen Body Ritual is a calming wellness experience created for guests seeking relaxation and restoration. The treatment combines soothing body techniques in a peaceful environment to help ease tension and leave the body and mind feeling refreshed.",
+},
       {
-        name: "Exfoliation Therapy",
-        price: 50000,
-        description:
-          "Full-body exfoliation designed to smooth texture and prepare the skin for hydration.",
-      },
+  name: "Arabic Scrub",
+  price: 45000,
+
+  description:
+    "A traditional exfoliating body treatment designed to deeply cleanse, smooth and refresh the skin.",
+
+  duration: "60 minutes",
+
+  benefits: [
+    "Helps remove dead skin cells",
+    "Deeply cleanses the skin",
+    "Helps smooth the feel of the skin",
+    "Refreshes and revitalizes the body",
+    "Leaves the skin feeling softer and smoother",
+    "Provides a relaxing body-care experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Full-body Arabic-inspired scrub",
+    "Exfoliation treatment",
+    "Nourishing finishing care",
+    "Relaxing spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Arabic Scrub is a traditional-inspired exfoliating treatment designed to cleanse and smooth the body. The ritual focuses on thorough exfoliation and refreshing body care, leaving the skin feeling soft, renewed and revitalized.",
+},
       {
-        name: "Zen Body Ritual",
-        price: 75000,
-        description:
-          "A calming body treatment combining relaxation techniques to ease tension.",
-      },
+  name: "Milk Soak",
+  price: 155000,
+
+  description:
+    "A luxurious milk bath designed to deeply hydrate, soften and nourish the skin while creating a deeply relaxing body experience.",
+
+  duration: "60 minutes",
+
+  benefits: [
+    "Deeply hydrates the skin",
+    "Helps soften and smooth the skin",
+    "Provides nourishing body care",
+    "Leaves the skin feeling refreshed and renewed",
+    "Promotes deep relaxation",
+    "Creates a luxurious and indulgent spa experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Luxury milk soak",
+    "Relaxation period",
+    "Nourishing body care",
+    "Calm and private spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Milk Soak is a luxurious bathing experience designed to deeply nourish and hydrate the skin. The treatment combines a soothing milk bath with relaxing body care to create an indulgent ritual that leaves the skin feeling soft, smooth and refreshed.",
+},
       {
-        name: "Arabic Scrub",
-        price: 45000,
-        description:
-          "Traditional exfoliating scrub designed to deeply cleanse and smooth the skin.",
-      },
+  name: "Elaris Herbal Soak",
+  price: 70000,
+
+  description:
+    "A soothing botanical soak designed to relax the body, refresh the senses and create a deeply calming wellness experience.",
+
+  duration: "60 minutes",
+
+  benefits: [
+    "Promotes deep relaxation",
+    "Helps ease everyday body tension",
+    "Refreshes the senses",
+    "Provides soothing botanical body care",
+    "Leaves the body feeling refreshed and renewed",
+    "Creates a peaceful and calming spa experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Botanical herbal soak",
+    "Relaxation period",
+    "Soothing body care",
+    "Calm and private spa environment",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Herbal Soak is a soothing botanical wellness ritual designed to help the body relax while refreshing the senses. The experience combines a calming herbal soak with a peaceful spa environment to create a restorative treatment that leaves you feeling refreshed and renewed.",
+},
       {
-        name: "Milk Soak",
-        price: 155000,
-        description:
-          "A luxurious milk bath designed to deeply hydrate, soften and nourish the skin.",
-      },
+  name: "Elaris Renewal Ritual",
+  price: 150000,
+
+  description:
+    "A complete signature ritual combining multiple therapies for a deeply restorative and luxurious spa experience.",
+
+  duration: "120 minutes",
+
+  benefits: [
+    "Provides a complete restorative wellness experience",
+    "Promotes deep relaxation",
+    "Helps ease everyday body tension",
+    "Combines multiple body-care therapies",
+    "Leaves the body feeling refreshed and renewed",
+    "Creates a luxurious signature Elaris experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Combination of selected body therapies",
+    "Full-body restorative treatment",
+    "Nourishing body care",
+    "Relaxation period",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Renewal Ritual is a signature full-body wellness experience combining multiple therapies into one luxurious treatment. Designed for guests seeking complete relaxation and restoration, the ritual creates a peaceful journey from preparation through treatment and post-treatment relaxation.",
+},
       {
-        name: "Elaris Herbal Soak",
-        price: 70000,
-        description:
-          "A soothing botanical soak designed to relax the body and refresh the senses.",
-      },
-      {
-        name: "Elaris Renewal Ritual",
-        price: 150000,
-        description:
-          "A complete signature ritual combining multiple therapies for a restorative spa experience.",
-      },
-      {
-        name: "Sauna",
-        price: 25000,
-        description: "20-minute dry heat therapy.",
-      },
-      {
-        name: "Steam",
-        price: 20000,
-        description: "18-minute moist heat therapy.",
-      },
+  name: "Sauna",
+  price: 25000,
+
+  description:
+    "A 20-minute dry heat therapy experience designed to promote relaxation and leave the body feeling refreshed.",
+
+  duration: "20 minutes",
+
+  benefits: [
+    "Promotes relaxation",
+    "Provides a soothing dry heat experience",
+    "Helps the body unwind",
+    "Leaves you feeling refreshed",
+    "Creates a calming wellness experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "20-minute sauna session",
+    "Private sauna experience",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Sauna is a focused 20-minute dry heat therapy experience designed for guests seeking relaxation and a calming wellness session. The warm environment provides a peaceful opportunity to unwind before continuing with the rest of your day.",
+},
+     {
+  name: "Steam",
+  price: 20000,
+
+  description:
+    "An 18-minute moist heat therapy experience designed to promote relaxation and create a soothing wellness experience.",
+
+  duration: "18 minutes",
+
+  benefits: [
+    "Promotes relaxation",
+    "Provides a soothing moist heat experience",
+    "Helps the body unwind",
+    "Leaves you feeling refreshed",
+    "Creates a calming spa experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "18-minute steam session",
+    "Private steam experience",
+    "Post-treatment relaxation",
+  ],
+
+  details:
+    "Elaris Steam is a focused 18-minute moist heat therapy experience designed to help guests relax and unwind. The warm, humid environment creates a soothing wellness experience and provides a peaceful addition to your Elaris body-care journey.",
+},
     ],
   },
 
@@ -1180,18 +1512,333 @@ export const serviceCategories: ServiceCategory[] = [
     image:
       "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1400&q=85",
     services: [
-      { name: "Under Arm Wax", price: 15000, description: "Underarm waxing treatment." },
-      { name: "Half Arm Wax", price: 18000, description: "Half-arm waxing treatment." },
-      { name: "Full Arm Wax", price: 28000, description: "Full-arm waxing treatment." },
-      { name: "Half Leg Wax", price: 20000, description: "Half-leg waxing treatment." },
-      { name: "Full Leg Wax", price: 38000, description: "Full-leg waxing treatment." },
-      { name: "Under Chin Wax", price: 10000, description: "Under-chin waxing treatment." },
-      { name: "Full Face Wax", price: 15000, description: "Full-face waxing treatment." },
-      { name: "Brazilian Wax", price: 45000, description: "Brazilian waxing treatment." },
-      { name: "Manxillian Wax", price: 58000, description: "Manxillian waxing treatment." },
-      { name: "Stomach Wax", price: 30000, description: "Stomach waxing treatment." },
-      { name: "Chest Wax", price: 35000, description: "Chest waxing treatment." },
-      { name: "Full Body Wax", price: 70000, description: "Full-body waxing treatment." },
+      {
+  name: "Underarm Wax",
+  price: 25000,
+
+  description:
+    "A professional underarm waxing treatment designed to remove unwanted hair and leave the skin feeling smooth and clean.",
+
+  duration: "30 minutes",
+
+  benefits: [
+    "Removes unwanted underarm hair",
+    "Leaves the skin feeling smooth",
+    "Provides longer-lasting results than shaving",
+    "Creates a clean and well-groomed appearance",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional underarm waxing",
+    "Post-wax soothing care",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Underarm Wax is a professional hair-removal treatment performed with care in a comfortable and hygienic environment. The treatment removes unwanted hair while providing soothing post-wax care for a smooth, clean finish.",
+},
+      {
+  name: "Half Arms Wax",
+  price: 25000,
+
+  description:
+    "A professional half-arm waxing treatment designed to remove unwanted hair and leave the skin feeling smooth, clean and refreshed.",
+
+  duration: "25 minutes",
+
+  benefits: [
+    "Removes unwanted hair from the selected half of the arms",
+    "Leaves the skin feeling smooth and soft",
+    "Provides longer-lasting results than shaving",
+    "Creates a clean and well-groomed appearance",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional half-arm waxing",
+    "Post-wax soothing care",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Half Arms Wax is a professional hair-removal treatment focused on either the upper or lower arms. The treatment is performed in a comfortable and hygienic environment, followed by soothing post-wax care for a smooth finish.",
+}, 
+     {
+  name: "Full Arms Wax",
+  price: 30000,
+
+  description:
+    "A professional full-arm waxing treatment designed to remove unwanted hair and leave the arms feeling smooth, clean and refreshed.",
+
+  duration: "30 minutes",
+
+  benefits: [
+    "Removes unwanted hair from the full arms",
+    "Leaves the skin feeling smooth and soft",
+    "Provides longer-lasting results than shaving",
+    "Creates a clean and well-groomed appearance",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional full-arm waxing",
+    "Post-wax soothing care",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Full Arms Wax is a professional hair-removal treatment covering the entire arms. The treatment is performed in a comfortable and hygienic environment, followed by soothing post-wax care for a smooth and refreshed finish.",
+},
+      {
+  name: "Half Legs Wax",
+  price: 25000,
+
+  description:
+    "A professional half-leg waxing treatment designed to remove unwanted hair and leave the skin feeling smooth, clean and refreshed.",
+
+  duration: "30 minutes",
+
+  benefits: [
+    "Removes unwanted hair from the lower or upper legs",
+    "Leaves the skin feeling smooth and soft",
+    "Provides longer-lasting results than shaving",
+    "Creates a clean and well-groomed appearance",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional half-leg waxing",
+    "Post-wax soothing care",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Half Legs Wax is a professional hair-removal treatment focused on either the upper or lower legs. The treatment is performed in a comfortable and hygienic environment, followed by soothing post-wax care for a smooth finish.",
+},
+      {
+  name: "Full Legs Wax",
+  price: 35000,
+
+  description:
+    "A professional full-leg waxing treatment designed to remove unwanted hair and leave the legs feeling smooth, clean and refreshed.",
+
+  duration: "45 minutes",
+
+  benefits: [
+    "Removes unwanted hair from the full legs",
+    "Leaves the skin feeling smooth and soft",
+    "Provides longer-lasting results than shaving",
+    "Creates a clean and well-groomed appearance",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional full-leg waxing",
+    "Post-wax soothing care",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Full Legs Wax is a professional full-leg hair-removal treatment performed in a comfortable and hygienic environment. The treatment focuses on effective hair removal while providing soothing post-wax care for a smooth and refreshed finish.",
+},
+      {
+  name: "Under Chin Wax",
+  price: 10000,
+
+  description:
+    "A professional under-chin waxing treatment designed to remove unwanted hair and leave the skin feeling smooth, clean and refreshed.",
+
+  duration: "15 minutes",
+
+  benefits: [
+    "Removes unwanted hair beneath the chin",
+    "Leaves the skin feeling smooth and soft",
+    "Creates a clean and well-groomed appearance",
+    "Provides longer-lasting results than shaving",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional under-chin waxing",
+    "Post-wax soothing care",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Under Chin Wax is a focused facial waxing treatment designed to remove unwanted hair beneath the chin. The treatment is performed with care in a comfortable and hygienic environment, followed by soothing post-wax care for a smooth finish.",
+},
+      {
+  name: "Full Face Wax",
+  price: 30000,
+
+  description:
+    "A professional full-face waxing treatment designed to remove unwanted facial hair and leave the skin feeling smooth, clean and refreshed.",
+
+  duration: "30 minutes",
+
+  benefits: [
+    "Removes unwanted facial hair",
+    "Leaves the skin feeling smooth and soft",
+    "Creates a clean and well-groomed appearance",
+    "Provides longer-lasting results than shaving",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional full-face waxing",
+    "Post-wax soothing care",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Full Face Wax is a professional facial hair-removal treatment performed with care in a comfortable and hygienic environment. The treatment focuses on effective hair removal while providing soothing post-wax care for a smooth and refreshed finish.",
+},
+      {
+  name: "Brazilian Wax",
+  price: 45000,
+
+  description:
+    "A professional waxing treatment designed to provide smooth, clean and well-groomed skin in the intimate area.",
+
+  duration: "45 minutes",
+
+  benefits: [
+    "Provides smooth-looking skin",
+    "Removes unwanted hair from the intimate area",
+    "Creates a clean and well-groomed appearance",
+    "Provides longer-lasting results than shaving",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional Brazilian waxing",
+    "Post-wax soothing care",
+    "Private treatment environment",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Brazilian Wax is a professional intimate waxing experience performed in a private and comfortable environment. The treatment focuses on effective hair removal while maintaining a careful and professional approach throughout the experience.",
+},
+      {
+  name: "Manxillian Wax",
+  price: 58000,
+
+  description:
+    "A professional intimate waxing treatment designed for effective hair removal with a smooth, clean and well-groomed finish.",
+
+  duration: "45 minutes",
+
+  benefits: [
+    "Removes unwanted hair from the intimate area",
+    "Leaves the skin feeling smooth and clean",
+    "Creates a well-groomed appearance",
+    "Provides longer-lasting results than shaving",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional Manxillian waxing",
+    "Post-wax soothing care",
+    "Private treatment environment",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Manxillian Wax is a professional intimate waxing experience performed in a private and comfortable environment. The treatment focuses on effective hair removal while maintaining a careful and professional approach throughout the experience.",
+},
+      {
+  name: "Stomach Wax",
+  price: 30000,
+
+  description:
+    "A professional stomach waxing treatment designed to remove unwanted hair and leave the skin feeling smooth, clean and refreshed.",
+
+  duration: "30 minutes",
+
+  benefits: [
+    "Removes unwanted hair from the stomach area",
+    "Leaves the skin feeling smooth and soft",
+    "Creates a clean and well-groomed appearance",
+    "Provides longer-lasting results than shaving",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional stomach waxing",
+    "Post-wax soothing care",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Stomach Wax is a professional body waxing treatment focused on effective hair removal from the stomach area. The treatment is performed in a comfortable and hygienic environment, followed by soothing post-wax care for a smooth finish.",
+},
+      {
+  name: "Chest Wax",
+  price: 35000,
+
+  description:
+    "A professional chest waxing treatment designed to remove unwanted hair and leave the skin feeling smooth, clean and refreshed.",
+
+  duration: "30 minutes",
+
+  benefits: [
+    "Removes unwanted chest hair",
+    "Leaves the skin feeling smooth and soft",
+    "Creates a clean and well-groomed appearance",
+    "Provides longer-lasting results than shaving",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional chest waxing",
+    "Post-wax soothing care",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Chest Wax is a professional body waxing treatment designed to effectively remove unwanted hair from the chest area. The treatment is performed in a comfortable and hygienic environment, followed by soothing post-wax care for a smooth and refreshed finish.",
+},
+      {
+  name: "Full Body Wax",
+  price: 70000,
+
+  description:
+    "A comprehensive professional waxing treatment designed to remove unwanted hair across the body while leaving the skin feeling smooth, clean and refreshed.",
+
+  duration: "120 minutes",
+
+  benefits: [
+    "Provides comprehensive full-body hair removal",
+    "Leaves the skin feeling smooth and soft",
+    "Creates a clean and well-groomed appearance",
+    "Provides longer-lasting results than shaving",
+    "Professional and hygienic treatment experience",
+  ],
+
+  includes: [
+    "Pre-treatment consultation",
+    "Professional full-body waxing",
+    "Post-wax soothing care",
+    "Private treatment environment",
+    "Aftercare guidance",
+  ],
+
+  details:
+    "Elaris Full Body Wax is a comprehensive hair-removal experience covering the body areas included in the treatment. The service is performed professionally in a comfortable and hygienic environment, followed by soothing post-wax care to leave the skin feeling smooth and refreshed.",
+}, 
     ],
   },
 
