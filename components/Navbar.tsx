@@ -65,7 +65,7 @@ export default function Navbar() {
               className="relative z-50 flex shrink-0 items-center"
             >
               <Image
-                src="/logo.jpeg"
+                src="/se-logo.png"
                 alt="Spa Elaris"
                 width={180}
                 height={120}
