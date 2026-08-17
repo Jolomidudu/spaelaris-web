@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Search, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { ArrowUp, Search, X } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -16,6 +16,26 @@ const navItems = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+   const handleScroll = () => {
+  const currentScroll = window.scrollY;
+
+  setScrolled(currentScroll > 40);
+  setShowBackToTop(currentScroll > 500);
+};
+
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -23,9 +43,19 @@ export default function Navbar() {
 
   return (
     <>
-      {/* DESKTOP / MAIN NAVBAR */}
-      <header className="absolute left-0 right-0 top-0 z-50">
-        <div className="mx-auto max-w-7xl px-5 py-5 sm:px-8 lg:px-10">
+      {/* MAIN NAVBAR */}
+      <header
+        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "border-b border-white/10 bg-[#26301c]/90 shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur-xl"
+            : "bg-transparent"
+        }`}
+      >
+        <div
+          className={`mx-auto max-w-7xl px-5 transition-all duration-500 sm:px-8 lg:px-10 ${
+            scrolled ? "py-3" : "py-5"
+          }`}
+        >
           <nav className="flex items-center justify-between">
 
             {/* LOGO */}
@@ -39,7 +69,11 @@ export default function Navbar() {
                 alt="Spa Elaris"
                 width={180}
                 height={120}
-                className="h-[58px] w-auto object-contain sm:h-[64px]"
+                className={`w-auto object-contain transition-all duration-500 ${
+  scrolled
+    ? "h-[44px]"
+    : "h-[50px] sm:h-[58px] lg:h-[64px]"
+                }`}
                 priority
               />
             </Link>
@@ -79,7 +113,6 @@ export default function Navbar() {
             {/* MOBILE CONTROLS */}
             <div className="flex items-center gap-2 lg:hidden">
 
-              {/* MOBILE SEARCH */}
               <button
                 type="button"
                 aria-label="Search"
@@ -89,7 +122,6 @@ export default function Navbar() {
                 <Search size={18} strokeWidth={1.6} />
               </button>
 
-              {/* MOBILE MENU */}
               <button
                 type="button"
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -108,6 +140,7 @@ export default function Navbar() {
                 )}
               </button>
             </div>
+
           </nav>
         </div>
       </header>
@@ -122,9 +155,7 @@ export default function Navbar() {
       >
         <div className="flex h-full flex-col px-6 pb-10 pt-28 sm:px-10">
 
-          {/* MOBILE NAV LINKS */}
           <nav className="flex flex-col">
-
             {navItems.map((item) => (
               <Link
                 key={item.label}
@@ -135,10 +166,8 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
-
           </nav>
 
-          {/* MOBILE CTA */}
           <div className="mt-auto">
 
             <p className="mb-4 text-[10px] uppercase tracking-[0.3em] text-[#d8c487]">
@@ -167,7 +196,6 @@ export default function Navbar() {
       >
         <div className="mx-auto flex min-h-full max-w-4xl flex-col px-6 py-8 sm:px-10">
 
-          {/* SEARCH HEADER */}
           <div className="flex items-center justify-between">
 
             <p className="text-xs uppercase tracking-[0.25em] text-[#d8c487]">
@@ -185,7 +213,6 @@ export default function Navbar() {
 
           </div>
 
-          {/* SEARCH FIELD */}
           <div className="mt-24">
 
             <p className="text-sm uppercase tracking-[0.2em] text-white/50">
@@ -211,7 +238,6 @@ export default function Navbar() {
 
           </div>
 
-          {/* POPULAR SEARCHES */}
           <div className="mt-12">
 
             <p className="text-[10px] uppercase tracking-[0.25em] text-white/40">
@@ -242,6 +268,25 @@ export default function Navbar() {
 
         </div>
       </div>
+
+      {/* BACK TO TOP */}
+<button
+  type="button"
+  aria-label="Back to top"
+  onClick={() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }}
+  className={`fixed bottom-6 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-[#d8c487]/40 bg-[#344329]/90 text-[#d8c487] shadow-lg backdrop-blur-md transition-all duration-300 lg:hidden ${
+    showBackToTop
+      ? "translate-y-0 opacity-100"
+      : "pointer-events-none translate-y-4 opacity-0"
+  }`}
+>
+  <ArrowUp size={17} strokeWidth={1.5} />
+</button>
     </>
   );
 }
