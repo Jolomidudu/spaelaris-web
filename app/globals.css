@@ -28,3 +28,19 @@ body {
   background: var(--spaelaris-olive);
   color: white;
 }
+@keyframes loading {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.3;
+  }
+
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleX(0);
+    opacity: 0.3;
+  }
+}
