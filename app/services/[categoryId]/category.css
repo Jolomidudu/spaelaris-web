@@ -1,0 +1,420 @@
+.category-page {
+  min-height: 100vh;
+  background: #f7f7f5;
+  color: #111;
+  padding-bottom: 110px;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.category-hero {
+  position: relative;
+  min-height: 440px;
+  overflow: hidden;
+  background: #111;
+}
+
+.category-hero-image {
+  position: absolute;
+  inset: 0;
+}
+
+.category-hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-hero-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.8)
+    );
+}
+
+.category-hero-content {
+  position: relative;
+  z-index: 2;
+
+  min-height: 440px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  padding: 40px;
+  color: white;
+}
+
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: white;
+  color: #111;
+
+  font-size: 28px;
+  text-decoration: none;
+}
+
+.category-number {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+
+  opacity: 0.75;
+}
+
+.category-hero h1 {
+  margin: 0;
+
+  font-size: clamp(38px, 6vw, 70px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -2px;
+}
+
+.category-hero p {
+  max-width: 650px;
+
+  margin: 20px 0 0;
+
+  font-size: 17px;
+  line-height: 1.6;
+
+  color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================
+   SERVICES
+========================= */
+
+.services-section {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  padding: 70px 30px;
+}
+
+.services-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.service-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  background: #111;
+  color: white;
+
+  font-size: 12px;
+  letter-spacing: 0;
+}
+
+
+/* =========================
+   SERVICE CARDS
+========================= */
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.service-row-card {
+  min-height: 145px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  padding: 30px 32px;
+
+  background: white;
+
+  border: 1px solid #e4e4e4;
+  border-radius: 20px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.service-row-card:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+.service-row-info {
+  min-width: 0;
+}
+
+.service-row-info h2 {
+  margin: 0;
+
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.service-duration {
+  margin: 8px 0 0;
+
+  color: #777;
+
+  font-size: 14px;
+}
+
+.service-price {
+  margin: 15px 0 0;
+
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+/* =========================
+   VIEW BUTTON
+========================= */
+
+.view-service-button {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 120px;
+  height: 48px;
+
+  padding: 0 22px;
+
+  border: 1px solid #d8d8d8;
+  border-radius: 30px;
+
+  background: white;
+
+  color: #111;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.view-service-button:hover {
+  background: #111;
+  color: white;
+  border-color: #111;
+}
+
+
+/* =========================
+   BOTTOM BAR
+========================= */
+
+.category-bottom-bar {
+  position: fixed;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 50;
+
+  min-height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 14px 30px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-top: 1px solid #e5e5e5;
+
+  backdrop-filter: blur(15px);
+}
+
+.bottom-service-count {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+
+  color: #777;
+
+  font-size: 17px;
+}
+
+.bottom-service-count strong {
+  color: #111;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.book-now-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 170px;
+  height: 54px;
+
+  padding: 0 30px;
+
+  border-radius: 30px;
+
+  background: #111;
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.book-now-button:hover {
+  background: #222;
+  transform: translateY(-1px);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .category-hero {
+    min-height: 390px;
+  }
+
+  .category-hero-content {
+    min-height: 390px;
+
+    padding: 25px 20px 30px;
+  }
+
+  .back-button {
+    top: 20px;
+    left: 20px;
+
+    width: 46px;
+    height: 46px;
+
+    font-size: 24px;
+  }
+
+  .category-hero h1 {
+    font-size: 42px;
+    letter-spacing: -1.5px;
+  }
+
+  .category-hero p {
+    font-size: 15px;
+  }
+
+  .services-section {
+    padding: 45px 16px;
+  }
+
+  .service-row-card {
+    min-height: 130px;
+
+    padding: 22px 18px;
+
+    border-radius: 17px;
+
+    gap: 15px;
+  }
+
+  .service-row-info h2 {
+    font-size: 17px;
+  }
+
+  .service-price {
+    font-size: 16px;
+  }
+
+  .view-service-button {
+    min-width: 90px;
+    height: 42px;
+
+    padding: 0 15px;
+
+    font-size: 13px;
+  }
+
+  .category-bottom-bar {
+    min-height: 72px;
+
+    padding: 10px 15px;
+  }
+
+  .bottom-service-count {
+    font-size: 13px;
+  }
+
+  .bottom-service-count strong {
+    font-size: 16px;
+  }
+
+  .book-now-button {
+    min-width: 125px;
+    height: 48px;
+
+    padding: 0 18px;
+
+    font-size: 14px;
+  }
+}

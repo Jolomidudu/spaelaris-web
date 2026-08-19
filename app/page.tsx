@@ -1,43 +1,52 @@
+
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BottomNav from "@/components/BottomNav";
 
-const locations = ["Lagos", "Abuja"];
+
 
 const categories = [
   {
-    name: "All",
-    icon: "grid",
+    name: "Med Facials",
+    slug: "med-facials",
+    icon: "face",
   },
   {
-    name: "Massage",
-    icon: "massage",
+    name: "Foot & Hand Care",
+    slug: "foot-hand-care",
+    icon: "hand",
   },
   {
-    name: "Facials",
-    icon: "facial",
+    name: "Elaris Massage",
+    slug: "service-menu",
+    icon: "bed",
   },
-  {
-    name: "Body Rituals",
-    icon: "body",
-  },
-  {
-    name: "Waxing",
-    icon: "wax",
-  },
-  {
-    name: "Steam",
-    icon: "steam",
-  },
-  {
-    name: "Beauty",
+   {
+    name: "Special Treatment",
+    slug: "special-treatment",
     icon: "beauty",
   },
   {
-    name: "Wellness",
+    name: "Body Rituals",
+    slug: "body-ritual",
+    icon: "body",
+  },
+  {
+    name: "Elaris Wax",
+    slug: "wax",
+    icon: "wax",
+  },
+  {
+    name: "Elaris Lazer",
+    slug: "lazer",
+    icon: "steam",
+  },
+  {
+    name: "Couple Packages",
+    slug: "couple-packages",
     icon: "wellness",
   },
 ];
@@ -80,6 +89,7 @@ function SearchIcon() {
       <circle cx="11" cy="11" r="7" />
       <path d="m20 20-4-4" />
     </svg>
+
   );
 }
 
@@ -208,55 +218,43 @@ function CategoryIcon({ type }: { type: string }) {
 }
 
 export default function Home() {
-  const [location, setLocation] = useState("Lagos");
-  const [locationOpen, setLocationOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [search, setSearch] = useState("");
+ 
+  const [location, setLocation] = useState("Pick A Location");
+const [activeCategory, setActiveCategory] = useState("All");
+const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    const savedLocation = localStorage.getItem("spa-elaris-location");
+
+    if (savedLocation) {
+      setLocation(savedLocation);
+    }
+  }, []);
 
   return (
     <main className="min-h-screen bg-white pb-24 text-[#111111]">
       {/* TOP AREA */}
       <section className="px-5 pb-8 pt-8 sm:px-8 lg:mx-auto lg:max-w-7xl">
         {/* LOCATION */}
-        <div className="relative mb-7">
-          <button
-            type="button"
-            onClick={() => setLocationOpen(!locationOpen)}
-            className="flex items-center gap-2 text-[16px] font-medium"
-          >
-            <span className="text-[#7356E8]">
-              <LocationIcon />
-            </span>
 
-            <span>Current location</span>
+       <div className="mb-7">
+  <Link
+    href="/location"
+    className="inline-flex items-center gap-2 transition-opacity hover:opacity-70"
+  >
+    <span className="text-[#7356E8]">
+      <LocationIcon />
+    </span>
 
-            <span className="ml-1">
-              <ChevronDown />
-            </span>
-          </button>
+    <span className="text-[16px] font-medium">
+      {location}
+    </span>
 
-          {locationOpen && (
-            <div className="absolute left-0 top-9 z-40 w-48 overflow-hidden rounded-2xl border border-black/10 bg-white p-2 shadow-xl">
-              {locations.map((item) => (
-                <button
-                  key={item}
-                  type="button"
-                  onClick={() => {
-                    setLocation(item);
-                    setLocationOpen(false);
-                  }}
-                  className={`flex w-full rounded-xl px-4 py-3 text-left text-sm transition hover:bg-black/[0.04] ${
-                    location === item
-                      ? "font-semibold text-[#7356E8]"
-                      : ""
-                  }`}
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
+    <span className="ml-1">
+      <ChevronDown />
+    </span>
+  </Link>
+</div>
 
         {/* SEARCH */}
         <div className="flex h-[68px] items-center rounded-full border border-black/[0.12] bg-white p-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.07)]">
@@ -282,40 +280,44 @@ export default function Home() {
       </section>
 
       {/* CATEGORIES */}
-      <section className="px-5 sm:px-8 lg:mx-auto lg:max-w-7xl">
-        <div className="grid grid-cols-4 gap-x-4 gap-y-7">
-          {categories.map((category) => {
-            const active = activeCategory === category.name;
+    {/* CATEGORIES */}
+<section className="px-5 sm:px-8 lg:mx-auto lg:max-w-7xl">
+  <div className="grid grid-cols-4 gap-x-4 gap-y-7">
+    {categories.map((category) => {
+      const active = activeCategory === category.name;
 
-            return (
-              <button
-                key={category.name}
-                type="button"
-                onClick={() => setActiveCategory(category.name)}
-                className="flex flex-col items-center text-center"
-              >
-                <div
-                  className={`flex h-[92px] w-full max-w-[124px] items-center justify-center rounded-[28px] border transition ${
-                    active
-                      ? "border-[#7356E8] bg-[#7356E8]/[0.06]"
-                      : "border-black/[0.08] bg-[#f7f7f7]"
-                  }`}
-                >
-                  <CategoryIcon type={category.icon} />
-                </div>
+      return (
+        <Link
+  key={category.slug}
+  href={
+    category.slug === "all"
+      ? "/services"
+      : `/services/${category.slug}`
+  }
+  onClick={() => setActiveCategory(category.name)}
+>
+          <div
+            className={`flex h-[92px] w-full max-w-[124px] items-center justify-center rounded-[28px] border transition ${
+              active
+                ? "border-[#7356E8] bg-[#7356E8]/[0.06]"
+                : "border-black/[0.08] bg-[#f7f7f7]"
+            }`}
+          >
+            <CategoryIcon type={category.icon} />
+          </div>
 
-                <span
-                  className={`mt-3 max-w-[120px] text-[14px] leading-5 ${
-                    active ? "font-semibold" : "font-medium"
-                  }`}
-                >
-                  {category.name}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </section>
+          <span
+            className={`mt-3 max-w-[120px] text-[14px] leading-5 ${
+              active ? "font-semibold" : "font-medium"
+            }`}
+          >
+            {category.name}
+          </span>
+        </Link>
+      );
+    })}
+  </div>
+</section>
 
       {/* RECOMMENDED */}
       <section className="mt-12">
