@@ -2,10 +2,12 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Onboarding from "@/components/Onboarding";
 
 export default function SplashScreen() {
   const [visible, setVisible] = useState(true);
   const [mounted, setMounted] = useState(true);
+  const [showOnboarding, setShowOnboarding] = useState(false);
 
   useEffect(() => {
     // Prevent scrolling while splash screen is visible
@@ -17,7 +19,18 @@ export default function SplashScreen() {
     }, 1800);
 
     const removeTimer = setTimeout(() => {
-      setMounted(false);
+      // After splash animates out, show onboarding if not seen
+      let onboarded = false;
+      try {
+        onboarded = Boolean(localStorage.getItem("spa-elaris-onboarded"));
+      } catch (e) {}
+
+      if (onboarded) {
+        setMounted(false);
+        document.body.style.overflow = "";
+      } else {
+        setShowOnboarding(true);
+      }
     }, 2300);
 
     return () => {
@@ -46,7 +59,7 @@ export default function SplashScreen() {
       >
         {/* LOGO */}
         <Image
-          src="/se-logo.png"
+          src="/se-logo1.png"
           alt="Spa Elaris"
           width={220}
           height={150}
@@ -64,6 +77,16 @@ export default function SplashScreen() {
           <div className="h-full w-full origin-left animate-[loading_1.4s_ease-in-out_infinite] bg-[#d8c487]" />
         </div>
       </div>
+
+      {showOnboarding && (
+        <Onboarding
+          onFinish={() => {
+            setShowOnboarding(false);
+            setTimeout(() => setMounted(false), 220);
+            document.body.style.overflow = "";
+          }}
+        />
+      )}
     </div>
   );
 }

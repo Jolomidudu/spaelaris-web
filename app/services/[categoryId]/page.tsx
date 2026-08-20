@@ -45,7 +45,7 @@ export default async function CategoryPage({
         <div className="category-hero-content">
 
           <Link href="/" className="back-button">
-            ←
+            
           </Link>
 
           <div className="category-number">

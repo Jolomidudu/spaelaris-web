@@ -82,12 +82,12 @@ export default function LocationPage() {
             <BackIcon />
           </button>
 
-          <h1 className="text-[32px] font-semibold tracking-[-0.03em]">
-            Location
-          </h1>
+          <h3 className="text-[20px] font-semibold tracking-[-0.03em]">
+           Select Your Location
+          </h3>
         </div>
 
-        {/* SEARCH */}
+        {/* SEARCH
         <div className="mt-8 flex h-[92px] items-center rounded-[22px] border-2 border-[#7356E8] px-6">
           <SearchIcon />
 
@@ -98,10 +98,10 @@ export default function LocationPage() {
             placeholder="Search location"
             className="ml-5 min-w-0 flex-1 bg-transparent text-[20px] outline-none placeholder:text-black/25"
           />
-        </div>
+        </div> */}
 
         {/* CURRENT LOCATION */}
-        <button
+        {/* <button
           type="button"
           className="mt-8 flex w-full items-center gap-5 rounded-2xl py-2 text-left"
         >
@@ -110,9 +110,9 @@ export default function LocationPage() {
           </div>
 
           <span className="text-[20px] font-medium">
-            Current location
+            Select A Location
           </span>
-        </button>
+        </button> */}
 
         {/* CITY OPTIONS */}
         <div className="mt-8">
