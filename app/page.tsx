@@ -3,10 +3,11 @@
 
 import { useEffect, useState } from "react";
 import {
-  ScanFace,
+ Webhook,
   Hand,
   HandHeart,
   Sparkles,
+  Star,
   PersonStanding,
   Droplets,
   ScanLine,
@@ -22,42 +23,42 @@ const categories = [
   {
     name: "Med Facials",
     slug: "med-facials",
-    icon: "facial",
+    icon: Webhook,
   },
   {
     name: "Foot & Hand Care",
     slug: "foot-hand-care",
-    icon: "hand",
+    icon: Hand,
   },
   {
-   name: "Elaris Massage",
+    name: "Elaris Massage",
     slug: "service-menu",
-    icon: "massage",
+    icon: HandHeart,
   },
-   {
+  {
     name: "Special Treatment",
     slug: "special-treatment",
-    icon: "beauty",
+    icon: Sparkles,
   },
   {
     name: "Body Rituals",
     slug: "body-ritual",
-    icon: "body",
+    icon: PersonStanding,
   },
   {
     name: "Elaris Wax",
     slug: "wax",
-    icon: "wax",
+    icon: Droplets,
   },
   {
     name: "Elaris Lazer",
     slug: "lazer",
-    icon: "steam",
+    icon: ScanLine,
   },
   {
     name: "Couple Packages",
     slug: "couple-packages",
-    icon: "couple",
+    icon: Heart,
   },
 ];
 
@@ -133,99 +134,7 @@ function ChevronDown() {
   );
 }
 
-function CategoryIcon({ type }: { type: string }) {
-  const common = {
-    width: 40,
-    height: 40,
-    viewBox: "0 0 48 48",
-    fill: "none",
-    stroke: "currentColor",
-    strokeWidth: 2,
-    strokeLinecap: "round" as const,
-    strokeLinejoin: "round" as const,
-  };
 
-  if (type === "grid") {
-    return (
-      <svg {...common}>
-        <rect x="8" y="8" width="12" height="12" rx="1" />
-        <rect x="28" y="8" width="12" height="12" rx="1" />
-        <rect x="8" y="28" width="12" height="12" rx="1" />
-        <rect x="28" y="28" width="12" height="12" rx="1" />
-      </svg>
-    );
-  }
-
-  if (type === "massage") {
-    return (
-      <svg {...common}>
-        <path d="M10 29c7-7 14-9 27-7" />
-        <path d="M13 34c5-2 10-2 15 0" />
-        <path d="M29 10c-5 0-9 4-9 9v7" />
-        <path d="M29 10h8c2 0 3 2 3 4v5c0 2-2 3-4 3l-7-1" />
-      </svg>
-    );
-  }
-
-  if (type === "facial") {
-    return (
-      <svg {...common}>
-        <path d="M15 38c0-13 4-22 9-22s9 9 9 22" />
-        <path d="M19 18c0-5 2-8 5-8s5 3 5 8" />
-        <path d="M12 39h24" />
-      </svg>
-    );
-  }
-
-  if (type === "body") {
-    return (
-      <svg {...common}>
-        <path d="M11 33c4-6 9-9 15-9s10 3 13 9" />
-        <path d="M16 25c2-6 6-9 10-9s8 3 10 9" />
-        <circle cx="24" cy="13" r="3" />
-      </svg>
-    );
-  }
-
-  if (type === "wax") {
-    return (
-      <svg {...common}>
-        <path d="M14 38c4-10 6-17 10-26" />
-        <path d="M25 12c2 1 5 3 7 6" />
-        <path d="M11 40h18" />
-        <path d="M14 38h13" />
-      </svg>
-    );
-  }
-
-  if (type === "steam") {
-    return (
-      <svg {...common}>
-        <path d="M16 39c-2-4 3-6 1-10-2-4 3-6 1-10" />
-        <path d="M24 39c-2-4 3-6 1-10-2-4 3-6 1-10" />
-        <path d="M32 39c-2-4 3-6 1-10-2-4 3-6 1-10" />
-      </svg>
-    );
-  }
-
-  if (type === "beauty") {
-    return (
-      <svg {...common}>
-        <path d="M19 10h10" />
-        <path d="M20 10v27h8V10" />
-        <path d="M18 37h12" />
-        <path d="M21 6h6" />
-      </svg>
-    );
-  }
-
-  return (
-    <svg {...common}>
-      <circle cx="24" cy="24" r="14" />
-      <path d="M24 10v14l9 6" />
-    </svg>
-  );
-}
 
 export default function Home() {
  
@@ -313,7 +222,11 @@ const [search, setSearch] = useState("");
                 : "border-black/[0.08] bg-[#f7f7f7]"
             }`}
           >
-            <CategoryIcon type={category.icon} />
+            <category.icon
+  size={40}
+  strokeWidth={1.8}
+  className="text-[#111111]"
+/>
           </div>
 
           <span

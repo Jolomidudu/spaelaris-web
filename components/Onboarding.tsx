@@ -110,7 +110,7 @@ export default function Onboarding({ onFinish }: Props) {
           </div>
         </div>
 
-        <footer className="flex items-center justify-between gap-4 p-5">
+        <footer className="mt-auto sticky mx-4 flex items-center justify-between gap-4 p-3 z-50" style={{ bottom: 90 }}>
           <div className="flex items-center gap-2">
             {slides.map((_, i) => (
               <span
