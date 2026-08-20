@@ -77,10 +77,10 @@ export default function Onboarding({ onFinish }: Props) {
   return (
     <div className="fixed inset-0 z-[10000] flex h-screen w-full items-center justify-center bg-white">
       <div className="flex h-full w-full flex-col">
-        <header className="flex items-center justify-between p-4">
+        <header className="flex items-center justify-between p-3">
           <div className="flex items-center gap-3">
             <Image src="/se-logo1.png" alt="Spa Elaris" width={44} height={30} className="object-contain" />
-            <span className="font-medium">Spa Elaris</span>
+            <span className="font-medium">SPA ELARIS</span>
           </div>
 
           <button onClick={skip} className="text-sm text-black/60">
@@ -99,12 +99,12 @@ export default function Onboarding({ onFinish }: Props) {
           >
             {slides.map((s, i) => (
               <div key={s.title} className="flex w-full flex-none flex-col items-center justify-center gap-6 p-6">
-                <div className="relative h-[46vh] w-full max-w-lg overflow-hidden rounded-2xl bg-[#eee]">
-                  <Image src={s.image} alt={s.title} fill sizes="(min-width:640px) 420px, 360px" className="object-cover" />
-                </div>
+                      <div className="relative h-[38vh] w-full max-w-lg overflow-hidden rounded-2xl bg-[#eee]">
+                        <Image src={s.image} alt={s.title} fill sizes="(min-width:640px) 420px, 360px" className="object-cover" />
+                      </div>
 
-                <h3 className="text-center text-2xl font-semibold">{s.title}</h3>
-                <p className="max-w-md text-center text-sm text-black/60">{s.desc}</p>
+                      <h3 className="text-center text-2xl font-semibold">{s.title}</h3>
+                      <p className="max-w-md text-center text-sm text-black/60">{s.desc}</p>
               </div>
             ))}
           </div>
@@ -119,7 +119,6 @@ export default function Onboarding({ onFinish }: Props) {
               />
             ))}
           </div>
-
           <div className="flex items-center gap-3">
             <button onClick={() => setIndex((i) => Math.max(0, i - 1))} className="text-sm text-black/60">
               Prev
@@ -127,7 +126,7 @@ export default function Onboarding({ onFinish }: Props) {
 
             <button
               onClick={next}
-              className="rounded-full bg-[#111111] px-5 py-2 text-sm font-medium text-white"
+              className="rounded-full bg-[#111111] px-4 py-2 text-sm font-medium text-white"
             >
               {index === slides.length - 1 ? "Get Started" : "Next"}
             </button>
