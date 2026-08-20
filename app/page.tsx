@@ -232,7 +232,7 @@ const [search, setSearch] = useState("");
   }, []);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-[#748364] to-[#f5f9f6] pb-24 text-[#111111]">
+    <main className="min-h-screen bg-white pb-24 text-[#111111]">
       {/* TOP AREA */}
       <section className="px-5 pb-8 pt-8 sm:px-8 lg:mx-auto lg:max-w-7xl">
         {/* LOCATION */}

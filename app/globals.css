@@ -44,3 +44,8 @@ body {
     opacity: 0.3;
   }
 }
+
+/* Hide main app content while splash/onboarding are active */
+body.spa-hide-content #app-content {
+  display: none !important;
+}

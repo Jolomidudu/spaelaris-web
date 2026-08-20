@@ -31,7 +31,7 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-white">
         <SplashScreen />
-        {children}
+        <div id="app-content">{children}</div>
       </body>
     </html>
   );

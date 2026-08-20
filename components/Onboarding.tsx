@@ -51,10 +51,6 @@ export default function Onboarding({ onFinish }: Props) {
   }
 
   function finish() {
-    try {
-      localStorage.setItem("spa-elaris-onboarded", "1");
-    } catch (e) {}
-
     if (onFinish) onFinish();
   }
 
@@ -79,7 +75,7 @@ export default function Onboarding({ onFinish }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 z-[9998] flex h-screen w-full items-center justify-center bg-white">
+    <div className="fixed inset-0 z-[10000] flex h-screen w-full items-center justify-center bg-white">
       <div className="flex h-full w-full flex-col">
         <header className="flex items-center justify-between p-4">
           <div className="flex items-center gap-3">
