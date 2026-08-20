@@ -75,7 +75,7 @@ export default function Onboarding({ onFinish }: Props) {
   }
 
   return (
-    <div className="fixed inset-0 z-[10000] flex h-screen w-full items-center justify-center bg-white">
+    <div className="fixed inset-0 z-[10000] flex h-screen w-full items-start bg-white">
       <div className="flex h-full w-full flex-col">
         <header className="flex items-center justify-between p-3">
           <div className="flex items-center gap-3">
@@ -98,8 +98,8 @@ export default function Onboarding({ onFinish }: Props) {
             style={{ transform: `translateX(-${index * 100}%)` }}
           >
             {slides.map((s, i) => (
-              <div key={s.title} className="flex w-full flex-none flex-col items-center justify-center gap-6 p-6">
-                      <div className="relative h-[38vh] w-full max-w-lg overflow-hidden rounded-2xl bg-[#eee]">
+              <div key={s.title} className="flex w-full flex-none flex-col items-center justify-start gap-4 p-4">
+                      <div className="relative h-[30vh] sm:h-[38vh] w-full max-w-lg overflow-hidden rounded-2xl bg-[#eee]">
                         <Image src={s.image} alt={s.title} fill sizes="(min-width:640px) 420px, 360px" className="object-cover" />
                       </div>
 

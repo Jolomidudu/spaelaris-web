@@ -2,6 +2,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import {
+  ScanFace,
+  Hand,
+  HandHeart,
+  Sparkles,
+  PersonStanding,
+  Droplets,
+  ScanLine,
+  Heart,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import BottomNav from "@/components/BottomNav";
@@ -12,7 +22,7 @@ const categories = [
   {
     name: "Med Facials",
     slug: "med-facials",
-    icon: "face",
+    icon: "facial",
   },
   {
     name: "Foot & Hand Care",
@@ -20,9 +30,9 @@ const categories = [
     icon: "hand",
   },
   {
-    name: "Elaris Massage",
+   name: "Elaris Massage",
     slug: "service-menu",
-    icon: "bed",
+    icon: "massage",
   },
    {
     name: "Special Treatment",
@@ -47,7 +57,7 @@ const categories = [
   {
     name: "Couple Packages",
     slug: "couple-packages",
-    icon: "wellness",
+    icon: "couple",
   },
 ];
 
