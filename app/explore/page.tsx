@@ -93,7 +93,7 @@ export default function ExplorePage() {
             width={200}
             height={140}
             priority
-            className="h-14 w-auto object-contain"
+            className="h-[62px] w-auto object-contain"
           />
         </Link>
       </div>
