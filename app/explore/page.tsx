@@ -88,10 +88,10 @@ export default function ExplorePage() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
         <Link href="/" className="inline-flex" aria-label="Spa Elaris home">
           <Image
-            src="/se-logo.png"
+            src="/sew-logo.png"
             alt="Spa Elaris"
-            width={180}
-            height={120}
+            width={200}
+            height={140}
             priority
             className="h-14 w-auto object-contain"
           />
