@@ -122,13 +122,13 @@ export default function ExplorePage() {
               <Link
                 key={id}
                 href={href}
-                className="group relative aspect-square overflow-hidden rounded-2xl border border-[#26301c]/15 bg-black/10 shadow-lg transition duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-3xl"
+                className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-[#26301c]/15 bg-black/10 shadow-lg transition duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-3xl"
               >
                 <Image
                   src={image}
                   alt=""
                   fill
-                    sizes="(min-width: 1024px) 25vw, 50vw"
+                  sizes="(min-width: 1024px) 25vw, 50vw"
                   className="absolute inset-0 h-full w-full object-cover opacity-55 transition duration-700 group-hover:scale-110 group-hover:opacity-75"
                 />
                 <div className={`absolute inset-0 bg-gradient-to-br ${colorThemes[index]}/90 mix-blend-multiply`} />
