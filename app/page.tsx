@@ -106,20 +106,30 @@ export default function Home() {
             </h1>
           </div>
 
-          <div id="services" className="scroll-mt-16 animate-[servicesReveal_900ms_2.8s_ease-out_both]">
-            <div className="max-w-4xl">
-              <p className="mb-4 text-xs font-medium uppercase tracking-[0.35em] text-[#66703f]">
-                Spa Elaris
-              </p>
-              <h1 className="text-4xl font-light leading-[0.98] tracking-[-0.04em] text-[#26301c] sm:text-6xl lg:text-7xl">
-                Services
-              </h1>
-              {/* <p className="mt-5 max-w-md text-base leading-7 text-[#26301c]/65">
-                Begin your wellness experience with Spa Elaris.
-              </p> */}
-            </div>
+          </div>
+      </section>
 
-            <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-5 lg:mt-14 lg:gap-6">
+      <section id="services" className="scroll-mt-16 bg-white animate-[servicesReveal_900ms_2.8s_ease-out_both]">
+        <nav className="sticky top-0 z-30 border-y border-[#26301c]/10 bg-white/95 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
+          <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none]">
+            {sectionLinks.map((section) => (
+              <a
+                key={section.id}
+                href={`#${section.id}`}
+                className={`shrink-0 border-b-2 py-4 text-sm font-medium transition-colors ${
+                  activeSection === section.id
+                    ? "border-[#66703f] text-[#26301c]"
+                    : "border-transparent text-[#26301c]/45 hover:text-[#26301c]"
+                }`}
+              >
+                {section.label}
+              </a>
+            ))}
+          </div>
+        </nav>
+
+        <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 lg:px-12 lg:py-14">
+          <div className="grid grid-cols-3 gap-3 sm:gap-5 lg:gap-6">
               {cards.map(({ id, name, shortName, href, image, Icon }, index) => (
                 <Link
                   key={id}
@@ -147,28 +157,9 @@ export default function Home() {
                   </div>
                 </Link>
               ))}
-            </div>
           </div>
         </div>
       </section>
-
-      <nav className="sticky top-0 z-30 border-y border-[#26301c]/10 bg-white/95 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
-        <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none]">
-          {sectionLinks.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              className={`shrink-0 border-b-2 py-4 text-sm font-medium transition-colors ${
-                activeSection === section.id
-                  ? "border-[#66703f] text-[#26301c]"
-                  : "border-transparent text-[#26301c]/45 hover:text-[#26301c]"
-              }`}
-            >
-              {section.label}
-            </a>
-          ))}
-        </div>
-      </nav>
 
       <section id="about" className="scroll-mt-16 bg-[#f7f6ef] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20">
