@@ -4,7 +4,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import {
-  ArrowUpRight,
   Heart,
   Hand,
   HandHeart,
@@ -74,24 +73,14 @@ export default function ExplorePage() {
     };
   }, []);
 
-  const cards = [
-    {
-      id: "all-treatments",
-      name: "All Treatments",
-      shortName: "Explore everything",
-      href: "/services",
-      image: "/hero-spa.jpg",
-      Icon: ArrowUpRight,
-    },
-    ...serviceCategories.map((category, index) => ({
+  const cards = serviceCategories.map((category, index) => ({
       id: category.id,
       name: category.shortName,
       shortName: category.number,
       href: `/services/${category.id}`,
       image: category.image,
       Icon: categoryIcons[index],
-    })),
-  ];
+    }));
 
   return (
     <main className="min-h-screen overflow-x-clip bg-white pt-6 text-[#26301c] sm:pt-8 lg:pt-10">
@@ -128,7 +117,7 @@ export default function ExplorePage() {
 
       <section id="services" className="scroll-mt-16 bg-white">
         <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 lg:px-12 lg:py-10">
-          <div className="grid grid-cols-3 gap-3 sm:gap-5 lg:gap-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4 lg:gap-6">
             {cards.map(({ id, name, shortName, href, image, Icon }, index) => (
               <Link
                 key={id}
@@ -139,7 +128,7 @@ export default function ExplorePage() {
                   src={image}
                   alt=""
                   fill
-                  sizes="(min-width: 1024px) 33vw, 33vw"
+                    sizes="(min-width: 1024px) 25vw, 50vw"
                   className="absolute inset-0 h-full w-full object-cover opacity-55 transition duration-700 group-hover:scale-110 group-hover:opacity-75"
                 />
                 <div className={`absolute inset-0 bg-gradient-to-br ${colorThemes[index]}/90 mix-blend-multiply`} />
