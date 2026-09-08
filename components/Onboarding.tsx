@@ -30,7 +30,6 @@ export default function Onboarding({ onFinish }: Props) {
   const startX = useRef<number | null>(null);
 
   useEffect(() => {
-    // prevent background scroll while onboarding is visible
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
@@ -51,7 +50,7 @@ export default function Onboarding({ onFinish }: Props) {
   }
 
   function finish() {
-    if (onFinish) onFinish();
+    onFinish?.();
   }
 
   function onTouchStart(e: React.TouchEvent) {
@@ -63,75 +62,119 @@ export default function Onboarding({ onFinish }: Props) {
     const endX = e.changedTouches[0].clientX;
     const diff = endX - startX.current;
     if (Math.abs(diff) > 40) {
-      if (diff < 0) {
-        // swipe left => next
-        next();
-      } else {
-        // swipe right => prev
-        setIndex((i) => Math.max(0, i - 1));
-      }
+      if (diff < 0) next();
+      else setIndex((i) => Math.max(0, i - 1));
     }
     startX.current = null;
   }
 
+  const current = slides[index];
+
   return (
-    <div className="fixed inset-0 z-[10000] flex h-screen w-full items-start bg-white">
-      <div className="flex h-full w-full flex-col">
-        <header className="flex items-center justify-between p-3">
-          <div className="flex items-center gap-3">
-            <Image src="/se-logo1.png" alt="Spa Elaris" width={44} height={30} className="object-contain" />
-            <span className="font-medium">SPA ELARIS</span>
-          </div>
-
-          <button onClick={skip} className="text-sm text-black/60">
-            Skip
-          </button>
-        </header>
-
+    <div className="fixed inset-0 z-[10000] flex h-screen w-full flex-col bg-white lg:flex-row">
+      {/* ===== IMAGE AREA (top) ===== */}
+      <div
+        className="relative flex-[1.15] overflow-hidden lg:flex-1"
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+      >
         <div
-          className="relative flex-1 overflow-hidden"
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
+          className="flex h-full w-full transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${index * 100}%)` }}
         >
-          <div
-            className="flex h-full w-full transition-transform duration-400"
-            style={{ transform: `translateX(-${index * 100}%)` }}
-          >
-            {slides.map((s, i) => (
-              <div key={s.title} className="flex w-full flex-none flex-col items-center justify-start gap-4 p-4">
-                      <div className="relative h-[30vh] sm:h-[38vh] w-full max-w-lg overflow-hidden rounded-2xl bg-[#eee]">
-                        <Image src={s.image} alt={s.title} fill sizes="(min-width:640px) 420px, 360px" className="object-cover" />
-                      </div>
-
-                      <h3 className="text-center text-2xl font-semibold">{s.title}</h3>
-                      <p className="max-w-md text-center text-sm text-black/60">{s.desc}</p>
-              </div>
-            ))}
-          </div>
+          {slides.map((s) => (
+            <div key={s.title} className="relative h-full w-full flex-none">
+              <Image
+                src={s.image}
+                alt={s.title}
+                fill
+                sizes="100vw"
+                className="object-cover"
+                priority={s === slides[0]}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20" />
+            </div>
+          ))}
         </div>
 
-        <footer className="mt-auto sticky mx-4 flex items-center justify-between gap-4 p-3 z-50" style={{ bottom: 90 }}>
-          <div className="flex items-center gap-2">
+        {/* Logo */}
+        <div className="absolute left-4 top-4 z-20 flex items-center gap-2 lg:left-8 lg:top-8">
+          <Image
+            src="/se-logo1.png"
+            alt="Spa Elaris"
+            width={40}
+            height={28}
+            className="object-contain"
+          />
+        </div>
+
+        {/* Large overlapping title */}
+        {/* <div className="pointer-events-none absolute inset-x-0 bottom-16 z-10 px-6 text-center">
+          <h1 className="text-5xl font-bold leading-none tracking-tight sm:text-6xl">
+            <span className="text-white/90">Spa</span>{" "}
+            <span className="text-[#7356E8]">Elaris</span>
+          </h1>
+        </div> */}
+      </div>
+
+      {/* ===== CURVED BOTTOM PANEL ===== */}
+      <div className="relative z-20 -mt-10 flex flex-[0.85] flex-col lg:mt-0 lg:w-[38%] lg:flex-none">
+        {/* Edge-to-edge curve – solid #3C492F */}
+        <svg
+          className="absolute -top-10 left-0 h-12 w-full text-[#3C492F] lg:hidden"
+          viewBox="0 0 1440 48"
+          preserveAspectRatio="none"
+          aria-hidden
+        >
+          <path
+            fill="currentColor"
+            d="M0,48 L0,24 C360,0 1080,0 1440,24 L1440,48 Z"
+          />
+        </svg>
+
+        {/* Solid panel */}
+        <div className="flex flex-1 flex-col bg-[#3C492F] px-6 pb-8 pt-6 text-white lg:justify-center lg:px-12 lg:py-16 xl:px-16">
+          {/* Title + description */}
+          <div className="mt-2 flex-1">
+            <h2 className="text-2xl font-semibold leading-tight sm:text-3xl">
+              {current.title}
+            </h2>
+            <p className="mt-3 max-w-md text-base leading-relaxed text-white/80">
+              {current.desc}
+            </p>
+          </div>
+
+          {/* Dots */}
+          <div className="mb-6 flex justify-center gap-2">
             {slides.map((_, i) => (
-              <span
+              <button
                 key={i}
-                className={`h-2 w-2 rounded-full ${i === index ? "bg-[#7356E8]" : "bg-black/10"}`}
+                onClick={() => setIndex(i)}
+                className={`h-2 rounded-full transition-all ${
+                  i === index ? "w-6 bg-white" : "w-2 bg-white/40"
+                }`}
+                aria-label={`Go to slide ${i + 1}`}
               />
             ))}
           </div>
-          <div className="flex items-center gap-3">
-            <button onClick={() => setIndex((i) => Math.max(0, i - 1))} className="text-sm text-black/60">
-              Prev
+
+          {/* Skip + Next on the same row */}
+          <div className="flex items-center justify-between gap-4">
+            <button
+              onClick={skip}
+              className="text-sm font-medium text-white/80 transition hover:text-white"
+            >
+              Skip
             </button>
 
             <button
               onClick={next}
-              className="rounded-full bg-[#111111] px-4 py-2 text-sm font-medium text-white"
+              className="rounded-2xl bg-[#F5F9F6] px-8 py-3.5 text-base font-semibold text-[#3C492F] shadow-lg transition active:scale-[0.98]"
             >
               {index === slides.length - 1 ? "Get Started" : "Next"}
             </button>
           </div>
-        </footer>
+        </div>
       </div>
     </div>
   );

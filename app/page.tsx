@@ -1,318 +1,120 @@
-
-"use client";
-
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
- Webhook,
+  ArrowUpRight,
+  Heart,
+  Hand,
+  HandHeart,
+  PersonStanding,
+  Sparkles,
+  Droplets,
+  ScanLine,
+  Webhook,
+} from "lucide-react";
+import { serviceCategories } from "@/data/services";
+
+const categoryIcons = [
+  Webhook,
   Hand,
   HandHeart,
   Sparkles,
-  Star,
   PersonStanding,
   Droplets,
   ScanLine,
   Heart,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import BottomNav from "@/components/BottomNav";
-
-
-
-const categories = [
-  {
-    name: "Med Facials",
-    slug: "med-facials",
-    icon: Webhook,
-  },
-  {
-    name: "Foot & Hand Care",
-    slug: "foot-hand-care",
-    icon: Hand,
-  },
-  {
-    name: "Elaris Massage",
-    slug: "service-menu",
-    icon: HandHeart,
-  },
-  {
-    name: "Special Treatment",
-    slug: "special-treatment",
-    icon: Sparkles,
-  },
-  {
-    name: "Body Rituals",
-    slug: "body-ritual",
-    icon: PersonStanding,
-  },
-  {
-    name: "Elaris Wax",
-    slug: "wax",
-    icon: Droplets,
-  },
-  {
-    name: "Elaris Lazer",
-    slug: "lazer",
-    icon: ScanLine,
-  },
-  {
-    name: "Couple Packages",
-    slug: "couple-packages",
-    icon: Heart,
-  },
 ];
 
-const recommendations = [
-  {
-    title: "Signature Massage",
-    location: "Spa Elaris",
-    rating: "4.9",
-    price: "₦50,000",
-    image: "/massage.jpg",
-  },
-  {
-    title: "Elaris Facial Ritual",
-    location: "Spa Elaris",
-    rating: "4.8",
-    price: "₦35,000",
-    image: "/facial.jpg",
-  },
-  {
-    title: "Hot Stone Wellness",
-    location: "Spa Elaris",
-    rating: "4.9",
-    price: "₦60,000",
-    image: "/hot-stone.jpg",
-  },
+const colorThemes = [
+  "from-[#3f4a2c] to-[#7b8a4b]",
+  "from-[#6c493d] to-[#c18c6b]",
+  "from-[#314b50] to-[#6d9b98]",
+  "from-[#705b32] to-[#c5a65d]",
+  "from-[#425d3f] to-[#8ca878]",
+  "from-[#5b3e4f] to-[#b47e9b]",
+  "from-[#34516d] to-[#78a0bc]",
+  "from-[#6d4939] to-[#c49372]",
+  "from-[#26301c] to-[#8c9a68]",
 ];
-
-function SearchIcon() {
-  return (
-    <svg
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-    >
-      <circle cx="11" cy="11" r="7" />
-      <path d="m20 20-4-4" />
-    </svg>
-
-  );
-}
-
-function LocationIcon() {
-  return (
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="currentColor"
-    >
-      <path d="M12 2.5a7 7 0 0 0-7 7c0 5.1 7 12 7 12s7-6.9 7-12a7 7 0 0 0-7-7Zm0 9.7a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4Z" />
-    </svg>
-  );
-}
-
-function ChevronDown() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
-  );
-}
-
-
 
 export default function Home() {
- 
-  const [location, setLocation] = useState("Pick A Location");
-const [activeCategory, setActiveCategory] = useState("All");
-const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    const savedLocation = localStorage.getItem("spa-elaris-location");
-
-    if (savedLocation) {
-      setLocation(savedLocation);
-    }
-  }, []);
+  const cards = [
+    {
+      id: "all-treatments",
+      name: "All Treatments",
+      shortName: "Explore everything",
+      href: "/services",
+      image: "/hero-spa.jpg",
+      Icon: ArrowUpRight,
+    },
+    ...serviceCategories.map((category, index) => ({
+      id: category.id,
+      name: category.shortName,
+      shortName: category.number,
+      href: `/services/${category.id}`,
+      image: category.image,
+      Icon: categoryIcons[index],
+    })),
+  ];
 
   return (
-    <main className="min-h-screen bg-white pb-24 text-[#111111]">
-      {/* TOP AREA */}
-      <section className="px-5 pb-8 pt-8 sm:px-8 lg:mx-auto lg:max-w-7xl">
-        {/* LOCATION */}
+    <main className="min-h-screen overflow-hidden bg-[#f5f4ed] text-[#26301c]">
+      <section className="relative isolate flex min-h-screen flex-col justify-center overflow-hidden bg-[length:200%_200%] bg-gradient-to-br from-white via-[#f3f5e9] to-[#e7d9bf] px-5 py-20 animate-[gradientShift_14s_ease_infinite] sm:px-8 lg:px-12">
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(216,196,135,0.3),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(102,112,63,0.16),transparent_38%)]" />
 
-       <div className="mb-7">
-  <Link
-    href="/location"
-    className="inline-flex items-center gap-2 transition-opacity hover:opacity-70"
-  >
-    <span className="text-[#7356E8]">
-      <LocationIcon />
-    </span>
-
-    <span className="text-[16px] font-medium">
-      {location}
-    </span>
-
-    <span className="ml-1">
-      <ChevronDown />
-    </span>
-  </Link>
-</div>
-
-        {/* SEARCH */}
-        <div className="flex h-[68px] items-center rounded-full border border-black/[0.12] bg-white p-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.07)]">
-          <div className="ml-5 text-black">
-            <SearchIcon />
+        <div className="mx-auto w-full max-w-6xl">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center px-5 text-center animate-[welcomeSequence_2.8s_ease-in-out_both]">
+            <h1 className="text-5xl font-light leading-[0.95] tracking-[-0.04em] text-[#26301c] sm:text-7xl lg:text-8xl">
+              Welcome to
+              <br />
+              <span className="font-semibold italic text-[#66703f]">Spa Elaris</span>
+            </h1>
           </div>
 
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Browse all treatments"
-            className="min-w-0 flex-1 bg-transparent px-4 text-[17px] outline-none placeholder:text-black/40"
-          />
+          <div className="animate-[servicesReveal_900ms_2.8s_ease-out_both]">
+            <div className="max-w-4xl">
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.35em] text-[#66703f]">
+                Spa Elaris
+              </p>
+              <h1 className="text-4xl font-light leading-[0.98] tracking-[-0.04em] text-[#26301c] sm:text-6xl lg:text-7xl">
+                Select a service to start
+              </h1>
+              <p className="mt-5 max-w-md text-base leading-7 text-[#26301c]/65">
+                Begin your wellness experience with Spa Elaris.
+              </p>
+            </div>
 
-          <button
-            type="button"
-            className="h-[56px] rounded-full bg-[#111111] px-7 text-[16px] font-medium text-white transition hover:bg-black/80"
-          >
-            Search
-          </button>
-        </div>
-      </section>
-
-      {/* CATEGORIES */}
-    {/* CATEGORIES */}
-<section className="px-5 sm:px-8 lg:mx-auto lg:max-w-7xl">
-  <div className="grid grid-cols-4 gap-x-4 gap-y-7">
-    {categories.map((category) => {
-      const active = activeCategory === category.name;
-
-      return (
-        <Link
-  key={category.slug}
-  href={
-    category.slug === "all"
-      ? "/services"
-      : `/services/${category.slug}`
-  }
-  onClick={() => setActiveCategory(category.name)}
->
-          <div
-            className={`flex h-[92px] w-full max-w-[124px] items-center justify-center rounded-[28px] border transition ${
-              active
-                ? "border-[#7356E8] bg-[#7356E8]/[0.06]"
-                : "border-black/[0.08] bg-[#f7f7f7]"
-            }`}
-          >
-            <category.icon
-  size={40}
-  strokeWidth={1.8}
-  className="text-[#111111]"
-/>
+            <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-5 lg:mt-14 lg:gap-6">
+              {cards.map(({ id, name, shortName, href, image, Icon }, index) => (
+                <Link
+                  key={id}
+                  href={href}
+                  className="group relative aspect-square overflow-hidden rounded-2xl border border-[#26301c]/15 bg-black/10 shadow-lg transition duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-3xl"
+                >
+                  <Image
+                    src={image}
+                    alt=""
+                    fill
+                    sizes="(min-width: 1024px) 33vw, 33vw"
+                    className="absolute inset-0 h-full w-full object-cover opacity-55 transition duration-700 group-hover:scale-110 group-hover:opacity-75"
+                  />
+                  <div className={`absolute inset-0 bg-gradient-to-br ${colorThemes[index]}/90 mix-blend-multiply`} />
+                  <div className="relative flex h-full flex-col justify-between p-3 text-white sm:p-5">
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/70 sm:text-xs">
+                        {shortName}
+                      </span>
+                      <Icon size={18} strokeWidth={1.6} className="shrink-0 text-[#f4d99a]" />
+                    </div>
+                    <h2 className="max-w-[12rem] text-sm font-medium leading-tight sm:text-lg lg:text-xl">
+                      {name}
+                    </h2>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-
-          <span
-            className={`mt-3 max-w-[120px] text-[14px] leading-5 ${
-              active ? "font-semibold" : "font-medium"
-            }`}
-          >
-            {category.name}
-          </span>
-        </Link>
-      );
-    })}
-  </div>
-</section>
-
-      {/* RECOMMENDED */}
-      <section className="mt-12">
-        <div className="px-5 sm:px-8 lg:mx-auto lg:max-w-7xl">
-          <h2 className="text-[30px] font-semibold tracking-[-0.03em]">
-            Recommended
-          </h2>
-        </div>
-
-        <div className="mt-5 flex gap-5 overflow-x-auto px-5 pb-5 [scrollbar-width:none] sm:px-8 lg:mx-auto lg:max-w-7xl">
-          {recommendations.map((item) => (
-            <Link
-              href="/services"
-              key={item.title}
-              className="group min-w-[320px] max-w-[320px] flex-none sm:min-w-[370px] sm:max-w-[370px]"
-            >
-              <div className="relative h-[350px] overflow-hidden rounded-[24px] bg-[#eeeeee]">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  sizes="(min-width: 640px) 370px, 320px"
-                  className="object-cover transition duration-700 group-hover:scale-105"
-                />
-
-                <span className="absolute left-4 top-4 rounded-full bg-white px-4 py-2 text-[14px] font-medium shadow-sm">
-                  Featured
-                </span>
-              </div>
-
-              <div className="mt-4">
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-[19px] font-semibold leading-6">
-                    {item.title}
-                  </h3>
-
-                  <span className="flex shrink-0 items-center gap-1 text-[16px] font-semibold">
-                    <span className="text-[#F5B900]">★</span>
-                    {item.rating}
-                  </span>
-                </div>
-
-                <p className="mt-1 text-[14px] text-black/50">
-                  {item.location}
-                </p>
-
-                <p className="mt-2 text-[15px] font-medium">
-                  {item.price}
-                </p>
-              </div>
-            </Link>
-          ))}
         </div>
       </section>
-
-      {/* LOCATION INFO */}
-      <section className="mx-5 mt-8 rounded-3xl bg-[#344329] p-6 text-white sm:mx-8 lg:mx-auto lg:max-w-7xl">
-        <p className="text-[10px] uppercase tracking-[0.25em] text-[#d8c487]">
-          Spa Elaris
-        </p>
-
-        <h2 className="mt-3 text-2xl font-medium">
-          Wellness experiences in {location}.
-        </h2>
-
-        <p className="mt-2 max-w-md text-sm leading-6 text-white/60">
-          Discover treatments and rituals designed around how you want
-          to feel.
-        </p>
-      </section>
-
-      <BottomNav />
     </main>
   );
 }

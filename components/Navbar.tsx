@@ -48,7 +48,7 @@ export default function Navbar() {
         className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
           scrolled
             ? "border-b border-white/10 bg-[#26301c]/90 shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur-xl"
-            : "bg-transparent"
+            : "bg-[#344329]"
         }`}
       >
         <div

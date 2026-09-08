@@ -2,12 +2,10 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Onboarding from "@/components/Onboarding";
 
 export default function SplashScreen() {
   const [visible, setVisible] = useState(true);
   const [mounted, setMounted] = useState(true);
-  const [showOnboarding, setShowOnboarding] = useState(false);
 
   useEffect(() => {
     // Prevent scrolling while splash screen is visible
@@ -21,8 +19,8 @@ export default function SplashScreen() {
     }, 1800);
 
     const removeTimer = setTimeout(() => {
-      // After splash animates out, always show onboarding
-      setShowOnboarding(true);
+      document.body.classList.remove("spa-hide-content");
+      setMounted(false);
     }, 2300);
 
     return () => {
@@ -38,12 +36,22 @@ export default function SplashScreen() {
   return (
     <>
       <div
-        className={`fixed inset-0 z-[9999] flex items-center justify-center bg-white transition-all duration-500 ${
+        className={`fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden bg-white transition-all duration-500 ${
           visible ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
+        <Image
+          src="/hero-spa.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-white/60" />
+
         <div
-          className={`flex flex-col items-center transition-all duration-700 ${
+          className={`relative z-10 flex flex-col items-center transition-all duration-700 ${
             visible ? "translate-y-0 scale-100 opacity-100" : "-translate-y-3 scale-95 opacity-0"
           }`}
         >
@@ -58,7 +66,7 @@ export default function SplashScreen() {
           />
 
           {/* BRAND TEXT */}
-          <p className="mt-5 text-[10px] font-medium uppercase tracking-[0.4em] text-[#d8c487]">
+          <p className="mt-5 text-sm font-medium uppercase tracking-[0.3em] text-[#3f4a2c] sm:text-base">
             Wellness & Beauty
           </p>
 
@@ -69,17 +77,6 @@ export default function SplashScreen() {
         </div>
       </div>
 
-      {showOnboarding && (
-        <Onboarding
-          onFinish={() => {
-            // ensure main content is revealed immediately
-            document.body.classList.remove("spa-hide-content");
-            setShowOnboarding(false);
-            setTimeout(() => setMounted(false), 220);
-            document.body.style.overflow = "";
-          }}
-        />
-      )}
     </>
   );
 }
