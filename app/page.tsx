@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import {
   ArrowUpRight,
   Heart,
@@ -37,6 +40,31 @@ const colorThemes = [
 ];
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState("services");
+
+  useEffect(() => {
+    const sections = ["services", "about", "team", "reviews", "others"]
+      .map((id) => document.getElementById(id))
+      .filter((section): section is HTMLElement => section !== null);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleSection) {
+          setActiveSection(visibleSection.target.id);
+        }
+      },
+      { rootMargin: "-18% 0px -55%", threshold: [0.1, 0.35, 0.6] },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   const cards = [
     {
       id: "all-treatments",
@@ -56,9 +84,17 @@ export default function Home() {
     })),
   ];
 
+  const sectionLinks = [
+    { id: "services", label: "Services" },
+    { id: "about", label: "About" },
+    { id: "team", label: "Team" },
+    { id: "reviews", label: "Reviews" },
+    { id: "others", label: "Others" },
+  ];
+
   return (
-    <main className="min-h-screen overflow-hidden bg-[#f5f4ed] text-[#26301c]">
-      <section className="relative isolate flex min-h-screen flex-col justify-center overflow-hidden bg-[length:200%_200%] bg-gradient-to-br from-white via-[#f3f5e9] to-[#e7d9bf] px-5 py-20 animate-[gradientShift_14s_ease_infinite] sm:px-8 lg:px-12">
+    <main className="min-h-screen overflow-hidden bg-white text-[#26301c]">
+      <section className="relative isolate flex min-h-[calc(100vh-3rem)] flex-col justify-center overflow-hidden bg-[length:200%_200%] bg-gradient-to-br from-white via-[#f3f5e9] to-[#e7d9bf] px-5 py-10 animate-[gradientShift_14s_ease_infinite] sm:px-8 lg:min-h-[calc(100vh-5.75rem)] lg:px-12 lg:py-8">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(216,196,135,0.3),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(102,112,63,0.16),transparent_38%)]" />
 
         <div className="mx-auto w-full max-w-6xl">
@@ -70,7 +106,7 @@ export default function Home() {
             </h1>
           </div>
 
-          <div className="animate-[servicesReveal_900ms_2.8s_ease-out_both]">
+          <div id="services" className="scroll-mt-16 animate-[servicesReveal_900ms_2.8s_ease-out_both]">
             <div className="max-w-4xl">
               <p className="mb-4 text-xs font-medium uppercase tracking-[0.35em] text-[#66703f]">
                 Spa Elaris
@@ -113,6 +149,78 @@ export default function Home() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      <nav className="sticky top-0 z-30 border-y border-[#26301c]/10 bg-white/95 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none]">
+          {sectionLinks.map((section) => (
+            <a
+              key={section.id}
+              href={`#${section.id}`}
+              className={`shrink-0 border-b-2 py-4 text-sm font-medium transition-colors ${
+                activeSection === section.id
+                  ? "border-[#66703f] text-[#26301c]"
+                  : "border-transparent text-[#26301c]/45 hover:text-[#26301c]"
+              }`}
+            >
+              {section.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      <section id="about" className="scroll-mt-16 bg-[#f7f6ef] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20">
+          <div className="relative h-[360px] overflow-hidden rounded-3xl sm:h-[480px]">
+            <Image src="/hero-spa.jpg" alt="Spa Elaris treatment room" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">About Spa Elaris</p>
+            <h2 className="mt-4 text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">A calmer way to care for yourself.</h2>
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#606454]">Thoughtfully curated treatments, personal attention and a peaceful space designed around how you want to feel.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" className="scroll-mt-16 bg-white px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Your care team</p>
+          <h2 className="mt-4 max-w-3xl text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">Experienced hands. Considered care.</h2>
+          <div className="mt-12 grid gap-5 sm:grid-cols-3">
+            {["Skin specialists", "Wellness therapists", "Beauty professionals"].map((member, index) => (
+              <div key={member} className="overflow-hidden rounded-3xl bg-[#f4f2e9]">
+                <div className="relative h-64">
+                  <Image src={["/facial.jpg", "/massage.jpg", "/hot-stone.jpg"][index]} alt="" fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
+                </div>
+                <h3 className="p-5 text-xl font-medium">{member}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" className="scroll-mt-16 bg-[#e9e8d9] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Guest reviews</p>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {["A beautiful experience from start to finish.", "The calmest space and the most thoughtful service.", "I left feeling completely renewed."].map((review, index) => (
+              <blockquote key={review} className="rounded-3xl bg-white p-7">
+                <p className="text-xl leading-8 text-[#26301c]">“{review}”</p>
+                <footer className="mt-7 text-xs uppercase tracking-[0.2em] text-[#66703f]">Spa Elaris guest {index + 1}</footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="others" className="scroll-mt-16 bg-[#26301c] px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">More from Spa Elaris</p>
+            <h2 className="mt-4 max-w-2xl text-4xl font-light leading-tight sm:text-6xl">Make space for feeling well.</h2>
+          </div>
+          <Link href="/location" className="inline-flex w-fit rounded-full bg-[#d8c487] px-6 py-3 text-sm font-medium text-[#26301c]">Choose your location</Link>
         </div>
       </section>
     </main>
