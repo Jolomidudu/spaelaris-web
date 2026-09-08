@@ -139,9 +139,9 @@ export default function ExplorePage() {
                       <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#26301c] sm:text-xs">
                       {shortName}
                     </span>
-                    <Icon size={18} strokeWidth={1.6} className="shrink-0 text-[#f4d99a]" />
+                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-[#26301c]" />
                   </div>
-                  <h2 className="max-w-[12rem] text-sm font-bold leading-tight sm:text-lg text-[#26301c] lg:text-xl">
+                  <h2 className="max-w-[10rem] text-sm font-bold leading-tight sm:text-lg text-[#26301c] lg:text-xl">
                     {name}
                   </h2>
                 </div>
