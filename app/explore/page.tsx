@@ -41,9 +41,10 @@ const colorThemes = [
 const sectionLinks = [
   { id: "services", label: "Services" },
   { id: "about", label: "About" },
-  { id: "team", label: "Team" },
+  { id: "specialists", label: "Specialists" },
   { id: "reviews", label: "Reviews" },
-  { id: "others", label: "Others" },
+  { id: "more", label: "More" },
+  { id: "contact", label: "Contact" },
 ];
 
 export default function ExplorePage() {
@@ -162,7 +163,7 @@ export default function ExplorePage() {
         </div>
       </section>
 
-      <section id="team" className="scroll-mt-16 bg-white px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+      <section id="specialists" className="scroll-mt-16 bg-white px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Your care team</p>
           <h2 className="mt-4 max-w-3xl text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">Experienced hands. Considered care.</h2>
@@ -193,13 +194,46 @@ export default function ExplorePage() {
         </div>
       </section>
 
-      <section id="others" className="scroll-mt-16 bg-[#26301c] px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28">
-        <div className="mx-auto flex max-w-6xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">More from Spa Elaris</p>
-            <h2 className="mt-4 max-w-2xl text-4xl font-light leading-tight sm:text-6xl">Make space for feeling well.</h2>
+      <section id="more" className="scroll-mt-16 bg-[#26301c] px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">Opening hours</p>
+          <h2 className="mt-4 max-w-2xl text-4xl font-light leading-tight sm:text-6xl">Find time to feel well.</h2>
+          <div className="mt-10 divide-y divide-white/15 border-y border-white/15">
+            {[
+              ["Monday", "9:00 AM - 7:00 PM"],
+              ["Tuesday", "9:00 AM - 7:00 PM"],
+              ["Wednesday", "9:00 AM - 7:00 PM"],
+              ["Thursday", "9:00 AM - 7:00 PM"],
+              ["Friday", "9:00 AM - 7:00 PM"],
+              ["Saturday", "10:00 AM - 6:00 PM"],
+              ["Sunday", "12:00 PM - 5:00 PM"],
+            ].map(([day, hours]) => (
+              <div key={day} className="flex items-center justify-between gap-6 py-4 text-sm sm:text-base">
+                <span className="text-white/75">{day}</span>
+                <span className="font-medium text-[#d8c487]">{hours}</span>
+              </div>
+            ))}
           </div>
-          <Link href="/location" className="inline-flex w-fit rounded-full bg-[#d8c487] px-6 py-3 text-sm font-medium text-[#26301c]">Choose your location</Link>
+        </div>
+      </section>
+
+      <section id="contact" className="scroll-mt-16 bg-[#f7f6ef] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2 md:items-end">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Get in touch</p>
+            <h2 className="mt-4 text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">We would love to welcome you.</h2>
+          </div>
+          <div className="space-y-5 text-base text-[#606454]">
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-[#66703f]">Locations</p>
+              <p className="mt-2">Lagos and Abuja</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-[#66703f]">Email</p>
+              <a href="mailto:hello@spaelaris.com" className="mt-2 inline-block underline underline-offset-4">hello@spaelaris.com</a>
+            </div>
+            <Link href="/location" className="inline-flex rounded-full bg-[#26301c] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#66703f]">Choose your location</Link>
+          </div>
         </div>
       </section>
     </main>
