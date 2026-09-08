@@ -48,16 +48,18 @@ export default function Home() {
       .filter((section): section is HTMLElement => section !== null);
 
     const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleSection = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      () => {
+        const readingLine = window.innerHeight * 0.24;
+        const currentSection = sections
+          .map((section) => ({ section }))
+          .filter(({ section }) => section.getBoundingClientRect().top <= readingLine)
+          .sort((a, b) => b.section.getBoundingClientRect().top - a.section.getBoundingClientRect().top)[0];
 
-        if (visibleSection) {
-          setActiveSection(visibleSection.target.id);
+        if (currentSection) {
+          setActiveSection(currentSection.section.id);
         }
       },
-      { rootMargin: "-18% 0px -55%", threshold: [0.1, 0.35, 0.6] },
+      { rootMargin: "0px", threshold: [0, 0.1, 0.5] },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -94,7 +96,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen overflow-hidden bg-white text-[#26301c]">
-      <section className="relative isolate flex min-h-[calc(100vh-3rem)] flex-col justify-center overflow-hidden bg-[length:200%_200%] bg-gradient-to-br from-white via-[#f3f5e9] to-[#e7d9bf] px-5 py-10 animate-[gradientShift_14s_ease_infinite] sm:px-8 lg:min-h-[calc(100vh-5.75rem)] lg:px-12 lg:py-8">
+      <section className="relative isolate flex min-h-[calc(100vh-10rem)] flex-col justify-center overflow-hidden bg-[length:200%_200%] bg-gradient-to-br from-white via-[#f3f5e9] to-[#e7d9bf] px-5 py-6 animate-[gradientShift_14s_ease_infinite] sm:px-8 lg:min-h-[calc(100vh-14rem)] lg:px-12 lg:py-6">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,rgba(216,196,135,0.3),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(102,112,63,0.16),transparent_38%)]" />
 
         <div className="mx-auto w-full max-w-6xl">
@@ -110,7 +112,7 @@ export default function Home() {
       </section>
 
       <section id="services" className="scroll-mt-16 bg-white animate-[servicesReveal_900ms_2.8s_ease-out_both]">
-        <nav className="sticky top-0 z-30 border-y border-[#26301c]/10 bg-white/95 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
+        <nav className="sticky top-0 z-30 border-y border-[#26301c]/10 bg-white/95 px-5 backdrop-blur-xl sm:px-8 lg:top-[92px] lg:px-12">
           <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none]">
             {sectionLinks.map((section) => (
               <a
