@@ -76,11 +76,11 @@ export default function Home() {
                 Spa Elaris
               </p>
               <h1 className="text-4xl font-light leading-[0.98] tracking-[-0.04em] text-[#26301c] sm:text-6xl lg:text-7xl">
-                Select a service to start
+                Services
               </h1>
-              <p className="mt-5 max-w-md text-base leading-7 text-[#26301c]/65">
+              {/* <p className="mt-5 max-w-md text-base leading-7 text-[#26301c]/65">
                 Begin your wellness experience with Spa Elaris.
-              </p>
+              </p> */}
             </div>
 
             <div className="mt-10 grid grid-cols-3 gap-3 sm:gap-5 lg:mt-14 lg:gap-6">
