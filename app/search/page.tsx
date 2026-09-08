@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { serviceCategories } from "@/data/services";
-import Image from "next/image";
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");
@@ -26,17 +25,9 @@ export default function SearchPage() {
 
         <div className="mt-6">
           {query === "" ? (
-            <>
-              <h3 className="text-sm text-black/60">Popular categories</h3>
-              <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-                {categories.slice(0, 9).map((c) => (
-                  <div key={c.slug} className="flex items-center gap-3 rounded-lg p-2">
-                    <div className="h-12 w-12 flex-none overflow-hidden rounded-lg bg-[#f3f3f3]" />
-                    <div className="text-sm">{c.name}</div>
-                  </div>
-                ))}
-              </div>
-            </>
+            <p className="text-sm text-black/50">
+              Search for a treatment or service.
+            </p>
           ) : (
             <div>
               {results.length === 0 ? (

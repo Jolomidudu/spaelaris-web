@@ -130,17 +130,18 @@ export default function ExplorePage() {
                   alt=""
                   fill
                   sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="absolute inset-0 h-full w-full object-cover opacity-55 transition duration-700 group-hover:scale-110 group-hover:opacity-75"
+                  className="absolute inset-0 h-full w-full object-cover opacity-45 brightness-110 transition duration-700 group-hover:scale-110 group-hover:opacity-70"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-br ${colorThemes[index]}/90 mix-blend-multiply`} />
+                <div className="absolute inset-0 bg-white/25" />
+                <div className={`absolute inset-0 ${colorThemes[index]}/45 mix-blend-multiply`} />
                 <div className="relative flex h-full flex-col justify-between p-3 text-white sm:p-5">
                   <div className="flex items-start justify-between gap-2">
-                    <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-white/70 sm:text-xs">
+                      <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#26301c] sm:text-xs">
                       {shortName}
                     </span>
                     <Icon size={18} strokeWidth={1.6} className="shrink-0 text-[#f4d99a]" />
                   </div>
-                  <h2 className="max-w-[12rem] text-sm font-medium leading-tight sm:text-lg lg:text-xl">
+                  <h2 className="max-w-[12rem] text-sm font-bold leading-tight sm:text-lg text-[#26301c] lg:text-xl">
                     {name}
                   </h2>
                 </div>
