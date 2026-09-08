@@ -95,7 +95,20 @@ export default function ExplorePage() {
 
   return (
     <main className="min-h-screen overflow-x-clip bg-white pt-6 text-[#26301c] sm:pt-8 lg:pt-10">
-      <nav className="sticky top-0 z-30 border-y border-[#26301c]/10 bg-white/95 px-5 backdrop-blur-xl sm:px-8 lg:top-[92px] lg:px-12">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
+        <Link href="/" className="inline-flex" aria-label="Spa Elaris home">
+          <Image
+            src="/se-logo.png"
+            alt="Spa Elaris"
+            width={180}
+            height={120}
+            priority
+            className="h-14 w-auto object-contain"
+          />
+        </Link>
+      </div>
+
+      <nav className="sticky top-0 z-30 mt-[30px] border-y border-[#26301c]/10 bg-white/95 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
           <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none]">
             {sectionLinks.map((section) => (
               <a

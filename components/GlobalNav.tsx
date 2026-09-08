@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import BottomNav from "./BottomNav";
-import Navbar from "./Navbar";
 
 export default function GlobalNav() {
   const pathname = usePathname();
@@ -10,9 +9,6 @@ export default function GlobalNav() {
 
   return (
     <>
-      <div className="hidden lg:block">
-        <Navbar />
-      </div>
       {!isCategoryPage && (
         <div className="lg:hidden">
           <BottomNav />

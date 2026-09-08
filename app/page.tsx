@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     const transition = window.setTimeout(() => {
       router.replace("/explore");
-    }, 1800);
+    }, 2200);
 
     return () => window.clearTimeout(transition);
   }, [router]);

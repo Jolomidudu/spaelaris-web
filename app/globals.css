@@ -21,12 +21,6 @@ body {
     "Helvetica Neue", Arial;
 }
 
-@media (min-width: 1024px) {
-  #app-content {
-    padding-top: 92px;
-  }
-}
-
 * {
   box-sizing: border-box;
 }
