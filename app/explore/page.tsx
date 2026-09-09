@@ -12,6 +12,8 @@ import {
   Droplets,
   ScanLine,
   Webhook,
+  Star,
+  Clock3,
 } from "lucide-react";
 import { serviceCategories } from "@/data/services";
 
@@ -86,7 +88,11 @@ export default function ExplorePage() {
   return (
     <main className="min-h-screen overflow-x-clip bg-white pt-6 text-[#26301c] sm:pt-8 lg:pt-10">
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
-        <Link href="/" className="inline-flex" aria-label="Spa Elaris home">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-3"
+          aria-label="Spa Elaris home"
+        >
           <Image
             src="/sew-logo.png"
             alt="Spa Elaris"
@@ -95,11 +101,34 @@ export default function ExplorePage() {
             priority
             className="h-[62px] w-auto object-contain"
           />
+          <span className="font-[var(--font-manrope)] text-lg font-semibold tracking-[-0.02em] text-[#66703f] sm:text-xl">
+            SPA ELARIS
+          </span>
         </Link>
+
+        <div className="mt-5 flex items-center justify-between gap-5 border-y border-[#26301c]/10 py-4 sm:mt-6 sm:py-5">
+          <div className="flex items-center gap-2">
+            <Star size={17} fill="currentColor" className="text-[#d8a928]" />
+            <span className="text-sm font-semibold text-[#26301c]">4.9</span>
+            <span className="text-sm text-[#26301c]/50">(128 reviews)</span>
+          </div>
+
+          <div className="flex items-start gap-2 text-right">
+            <Clock3 size={17} className="mt-0.5 text-[#66703f]" />
+            <div>
+              <p className="text-sm font-medium text-[#26301c]">
+                Closed - 8:00 PM
+              </p>
+              <p className="mt-1 text-xs text-[#26301c]/50">
+                Opening in 8 hours
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <nav className="sticky top-0 z-30 mt-[30px] border-y border-[#26301c]/10 bg-white/95 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
-          <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none]">
+          <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none] lg:justify-between lg:gap-0">
             {sectionLinks.map((section) => (
               <a
                 key={section.id}
@@ -118,7 +147,7 @@ export default function ExplorePage() {
 
       <section id="services" className="scroll-mt-16 bg-white">
         <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 lg:px-12 lg:py-10">
-          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4 lg:gap-6">
+          <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4 lg:gap-8">
             {cards.map(({ id, name, shortName, href, image, Icon }, index) => (
               <Link
                 key={id}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DM_Sans, Lora } from "next/font/google";
+import { DM_Sans, Lora, Manrope } from "next/font/google";
 import "./globals.css";
 import SplashScreen from "../components/SplashScreen";
 import GlobalNav from "../components/GlobalNav";
@@ -16,6 +16,12 @@ const lora = Lora({
   weight: ["400", "600", "700"],
 });
 
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "Spa Elaris",
   description:
@@ -30,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${lora.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${lora.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="spa-hide-content min-h-full bg-white">
         <SplashScreen />
