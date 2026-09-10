@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 function HomeIcon({ active }: { active: boolean }) {
   return (
     <svg
-      width="24"
-      height="24"
+      width="19"
+      height="19"
       viewBox="0 0 24 24"
       fill={active ? "currentColor" : "none"}
       stroke="currentColor"
@@ -25,8 +25,8 @@ function HomeIcon({ active }: { active: boolean }) {
 function SearchIcon() {
   return (
     <svg
-      width="24"
-      height="24"
+      width="19"
+      height="19"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -42,8 +42,8 @@ function SearchIcon() {
 function CalendarIcon() {
   return (
     <svg
-      width="24"
-      height="24"
+      width="19"
+      height="19"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -62,8 +62,8 @@ function CalendarIcon() {
 function ProfileIcon() {
   return (
     <svg
-      width="24"
-      height="24"
+      width="19"
+      height="19"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -86,45 +86,45 @@ export default function BottomNav() {
 
   return (
     <nav className="fixed bottom-3 left-3 right-3 z-50 rounded-[2rem] border border-white/20 bg-[#182016]/70 text-white shadow-xl backdrop-blur-xl">
-      <div className="mx-auto flex h-[68px] max-w-xl items-center justify-around px-3">
+      <div className="mx-auto flex h-[41px] max-w-xl items-center justify-around px-2">
         <Link
           href="/"
-          className={`flex min-w-[70px] flex-col items-center justify-center gap-1 transition ${
+          className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${
             isHome ? "text-[#f1e4bd]" : "text-white"
           }`}
         >
           <HomeIcon active={isHome} />
-          <span className="text-[12px] font-medium">Home</span>
+          <span className="text-[10px] font-medium">Home</span>
         </Link>
 
         <Link
           href="/search"
-          className={`flex min-w-[70px] flex-col items-center justify-center gap-1 transition ${
+          className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${
             isSearch ? "text-[#f1e4bd]" : "text-white"
           }`}
         >
           <SearchIcon />
-          <span className="text-[12px] font-medium">Search</span>
+          <span className="text-[10px] font-medium">Search</span>
         </Link>
 
         <Link
           href="/activity"
-          className={`flex min-w-[70px] flex-col items-center justify-center gap-1 transition ${
+          className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${
             isActivity ? "text-[#f1e4bd]" : "text-white"
           }`}
         >
           <CalendarIcon />
-          <span className="text-[12px] font-medium">Activity</span>
+          <span className="text-[10px] font-medium">Activity</span>
         </Link>
 
         <Link
           href="/profile"
-          className={`flex min-w-[70px] flex-col items-center justify-center gap-1 transition ${
+          className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${
             isProfile ? "text-[#f1e4bd]" : "text-white"
           }`}
         >
           <ProfileIcon />
-          <span className="text-[12px] font-medium">Profile</span>
+          <span className="text-[10px] font-medium">Profile</span>
         </Link>
       </div>
     </nav>
