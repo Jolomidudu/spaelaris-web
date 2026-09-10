@@ -132,35 +132,35 @@ export default function ExplorePage() {
               priority
               className="h-[62px] w-auto object-contain"
             />
-            <span className="font-[var(--font-lora)] text-lg font-semibold tracking-[-0.02em] text-[#26301c] sm:text-xl">
+            <span className="font-[var(--font-lora)] text-lg font-semibold tracking-[-0.02em] text-white sm:text-xl">
               SPA ELARIS
             </span>
           </Link>
           <Link
             href="/notifications"
             aria-label="Notifications"
-            className="rounded-full p-2 text-[#26301c] transition hover:bg-[#66703f]/10"
+            className="rounded-full p-2 text-white transition hover:bg-white/10"
           >
             <Bell size={21} strokeWidth={1.8} />
           </Link>
         </div>
 
-        <div className="mt-5 flex items-center justify-between gap-5 border-y border-[#66703f]/20 py-4 sm:mt-6 sm:py-5">
+        <div className="mt-2 flex items-center justify-between gap-5 border-y border-white/25 py-3 sm:mt-3 sm:py-4">
           <div className="flex items-center gap-2">
             <Star size={17} fill="currentColor" className="text-[#d8a928]" />
-            <span className="text-sm font-semibold text-[#26301c]">4.9</span>
-            <span className="text-sm text-[#606454]">(128 reviews)</span>
+            <span className="text-sm font-semibold text-white">4.9</span>
+            <span className="text-sm text-white/75">(128 reviews)</span>
           </div>
 
           <div className="text-right">
             <div className="flex items-center justify-end gap-1.5">
-              <Clock3 size={16} className="shrink-0 text-[#66703f]" />
-              <p className="text-sm font-medium text-[#66703f]">
+              <Clock3 size={16} className="shrink-0 text-white" />
+              <p className="text-sm font-medium text-white">
                 {isOpen ? "Opened" : "Closed"}
               </p>
             </div>
             <div>
-              <p className="mt-1 text-xs text-[#606454]">
+              <p className="mt-1 text-xs text-white/75">
                 {isOpen
                   ? `Closing in ${formatDuration(minutesUntilBoundary(OPEN_END_MINUTES))}`
                   : `Opens in ${formatDuration(minutesUntilBoundary(OPEN_START_MINUTES))}`}
@@ -170,7 +170,7 @@ export default function ExplorePage() {
         </div>
       </div>
 
-      <nav className="sticky top-0 z-30 mt-4 border-y border-white/50 bg-white/35 px-5 shadow-sm backdrop-blur-xl sm:px-8 lg:px-12">
+      <nav className="sticky top-0 z-30 mt-4 border-y border-white/30 bg-[#182016]/35 px-5 text-white shadow-sm backdrop-blur-xl sm:px-8 lg:px-12">
           <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none] lg:justify-between lg:gap-0">
             {sectionLinks.map((section) => (
               <a
@@ -178,8 +178,8 @@ export default function ExplorePage() {
                 href={`#${section.id}`}
                 className={`shrink-0 border-b-2 py-4 text-sm font-medium transition-colors ${
                   activeSection === section.id
-                    ? "border-[#66703f] text-[#26301c]"
-                    : "border-transparent text-[#606454] hover:text-[#26301c]"
+                    ? "border-white text-white"
+                    : "border-transparent text-white/75 hover:text-white"
                 }`}
               >
                 {section.label}

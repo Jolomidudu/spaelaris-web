@@ -131,7 +131,7 @@ body.spa-hide-content #app-content {
 .explore-grain {
   background-color: #fbfaf6;
   background-image:
-    linear-gradient(rgba(220, 222, 211, 0.68), rgba(220, 222, 211, 0.82)),
+    linear-gradient(rgba(180, 184, 174, 0.74), rgba(180, 184, 174, 0.87)),
     url("/hero-spa.jpg"),
     radial-gradient(rgba(63, 74, 44, 0.1) 0.7px, transparent 0.7px),
     radial-gradient(rgba(63, 74, 44, 0.06) 0.6px, transparent 0.6px);
