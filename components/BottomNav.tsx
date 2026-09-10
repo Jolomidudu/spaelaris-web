@@ -85,8 +85,8 @@ export default function BottomNav() {
   const isProfile = pathname.startsWith("/profile");
 
   return (
-    <nav className="fixed bottom-3 left-3 right-3 z-50 rounded-[2rem] border border-white/20 bg-[#182016]/70 text-white shadow-xl backdrop-blur-xl">
-      <div className="mx-auto flex h-[54px] max-w-xl items-center justify-around px-2">
+    <nav className="fixed bottom-3 left-3 right-3 z-50 rounded-[1.7rem] border border-white/20 bg-[#182016]/70 text-white shadow-xl backdrop-blur-xl">
+      <div className="mx-auto flex h-[59px] max-w-xl items-center justify-around px-2">
         <Link
           href="/"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${
