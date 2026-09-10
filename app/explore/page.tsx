@@ -132,7 +132,7 @@ export default function ExplorePage() {
               priority
               className="h-[62px] w-auto object-contain"
             />
-            <span className="font-[var(--font-manrope)] text-lg font-semibold tracking-[-0.02em] text-[#26301c] sm:text-xl">
+            <span className="font-[var(--font-lora)] text-lg font-semibold tracking-[-0.02em] text-[#26301c] sm:text-xl">
               SPA ELARIS
             </span>
           </Link>
@@ -170,7 +170,7 @@ export default function ExplorePage() {
         </div>
       </div>
 
-      <nav className="sticky top-0 z-30 mt-[30px] border-y border-[#66703f]/15 bg-white/65 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
+      <nav className="sticky top-0 z-30 mt-4 border-y border-white/50 bg-white/35 px-5 shadow-sm backdrop-blur-xl sm:px-8 lg:px-12">
           <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none] lg:justify-between lg:gap-0">
             {sectionLinks.map((section) => (
               <a
@@ -195,7 +195,7 @@ export default function ExplorePage() {
               <Link
                 key={id}
                 href={href}
-                className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-[#66703f]/20 bg-white/55 shadow-lg backdrop-blur-md transition duration-500 hover:-translate-y-2 hover:bg-white/75 hover:shadow-2xl sm:rounded-3xl"
+                className="group relative aspect-[1.88] overflow-hidden rounded-2xl border border-white/60 bg-white/30 shadow-lg backdrop-blur-md transition duration-500 hover:-translate-y-2 hover:bg-white/50 hover:shadow-2xl sm:rounded-3xl"
               >
                 <div className="relative flex h-full flex-col justify-between p-3 font-[var(--font-dm-sans)] text-[#26301c] sm:p-5">
                   <div className="flex items-start justify-between gap-2">
