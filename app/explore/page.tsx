@@ -126,11 +126,11 @@ export default function ExplorePage() {
   };
 
   return (
-    <main className="relative isolate min-h-screen overflow-x-clip bg-[#f7f6ef] pt-6 text-[#26301c] sm:pt-8 lg:pt-10">
-      {/* Very light whitish-cream / faded-white gradient behind the top region (header to services cards) */}
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-[#f7f6ef]/60 to-[#f4f2e9]/70" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#f9f8f1]/70 via-white/50 to-[#efece2]/60" />
+    <main className="relative isolate min-h-screen overflow-x-clip bg-[#f7f6ef] pt-6 text-[#f8f5e9] sm:pt-8 lg:pt-10">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[650px] overflow-hidden sm:h-[720px] lg:h-[760px]">
+        <Image src="/hero-spa.jpg" alt="" fill priority sizes="100vw" className="object-cover object-center" />
+        <div className="absolute inset-0 bg-[#182016]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#182016]/35 via-[#182016]/55 to-[#182016]/85" />
       </div>
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
@@ -147,16 +147,16 @@ export default function ExplorePage() {
             priority
             className="h-[62px] w-auto object-contain"
           />
-          <span className="font-[var(--font-manrope)] text-lg font-semibold tracking-[-0.02em] text-[#66703f] sm:text-xl">
+          <span className="font-[var(--font-manrope)] text-lg font-semibold tracking-[-0.02em] text-[#f8f5e9] sm:text-xl">
             SPA ELARIS
           </span>
         </Link>
 
-        <div className="mt-5 flex items-center justify-between gap-5 border-y border-[#26301c]/10 py-4 sm:mt-6 sm:py-5">
+        <div className="mt-5 flex items-center justify-between gap-5 border-y border-white/20 py-4 sm:mt-6 sm:py-5">
           <div className="flex items-center gap-2">
             <Star size={17} fill="currentColor" className="text-[#d8a928]" />
-            <span className="text-sm font-semibold text-[#26301c]">4.9</span>
-            <span className="text-sm text-[#26301c]/50">(128 reviews)</span>
+            <span className="text-sm font-semibold text-[#f8f5e9]">4.9</span>
+            <span className="text-sm text-[#f8f5e9]/65">(128 reviews)</span>
           </div>
 
           <div className="flex items-start gap-2 text-right">
@@ -166,10 +166,10 @@ export default function ExplorePage() {
               <CircleX size={17} className="mt-0.5 text-[#c94f3d]" />
             )}
             <div>
-              <p className={`text-sm font-medium ${isOpen ? "text-[#2f9d4f]" : "text-[#26301c]"}`}>
+              <p className={`text-sm font-medium ${isOpen ? "text-[#a9d6a0]" : "text-[#f8f5e9]"}`}>
                 {isOpen ? "Opened" : "Closed"}
               </p>
-              <p className="mt-1 text-xs text-[#26301c]/50">
+              <p className="mt-1 text-xs text-[#f8f5e9]/65">
                 {isOpen
                   ? `Closing in ${formatDuration(minutesUntilBoundary(OPEN_END_MINUTES))}`
                   : `Opens in ${formatDuration(minutesUntilBoundary(OPEN_START_MINUTES))}`}
@@ -179,7 +179,7 @@ export default function ExplorePage() {
         </div>
       </div>
 
-      <nav className="sticky top-0 z-30 mt-[30px] border-y border-[#26301c]/10 bg-white/80 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
+      <nav className="sticky top-0 z-30 mt-[30px] border-y border-white/20 bg-[#182016]/75 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
           <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none] lg:justify-between lg:gap-0">
             {sectionLinks.map((section) => (
               <a
@@ -187,8 +187,8 @@ export default function ExplorePage() {
                 href={`#${section.id}`}
                 className={`shrink-0 border-b-2 py-4 text-sm font-medium transition-colors ${
                   activeSection === section.id
-                    ? "border-[#66703f] text-[#26301c]"
-                    : "border-transparent text-[#26301c]/45 hover:text-[#26301c]"
+                    ? "border-[#d8c487] text-[#f8f5e9]"
+                    : "border-transparent text-[#f8f5e9]/65 hover:text-[#f8f5e9]"
                 }`}
               >
                 {section.label}
@@ -197,32 +197,23 @@ export default function ExplorePage() {
           </div>
       </nav>
 
-      <section id="services" className="scroll-mt-16 bg-white/70 backdrop-blur-md">
+      <section id="services" className="scroll-mt-16 bg-transparent">
         <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 lg:px-12 lg:py-10">
           <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4 lg:gap-8">
-            {cards.map(({ id, name, shortName, href, image, Icon }, index) => (
+            {cards.map(({ id, name, shortName, href, Icon }) => (
               <Link
                 key={id}
                 href={href}
-                className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-[#26301c]/15 bg-black/10 shadow-lg transition duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-3xl"
+                className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/70 bg-white shadow-lg transition duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-3xl"
               >
-                <Image
-                  src={image}
-                  alt=""
-                  fill
-                  sizes="(min-width: 1024px) 25vw, 50vw"
-                  className="absolute inset-0 h-full w-full object-cover opacity-45 brightness-110 transition duration-700 group-hover:scale-110 group-hover:opacity-70"
-                />
-                <div className="absolute inset-0 bg-white/25" />
-                <div className={`absolute inset-0 ${colorThemes[index]}/45 mix-blend-multiply`} />
-                <div className="relative flex h-full flex-col justify-between p-3 text-white sm:p-5">
+                <div className="relative flex h-full flex-col justify-between p-3 text-[#66703f] sm:p-5">
                   <div className="flex items-start justify-between gap-2">
-                      <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#26301c] sm:text-xs">
+                      <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#66703f] sm:text-xs">
                       {shortName}
                     </span>
-                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-[#26301c]" />
+                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-[#66703f]" />
                   </div>
-                  <h2 className="max-w-[10rem] text-sm font-bold leading-tight sm:text-lg text-[#26301c] lg:text-xl">
+                  <h2 className="max-w-[10rem] text-sm font-bold leading-tight text-[#66703f] sm:text-lg lg:text-xl">
                     {name}
                   </h2>
                 </div>
