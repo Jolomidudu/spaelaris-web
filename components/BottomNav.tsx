@@ -6,8 +6,8 @@ import { usePathname } from "next/navigation";
 function HomeIcon({ active }: { active: boolean }) {
   return (
     <svg
-      width="19"
-      height="19"
+      width="23"
+      height="23"
       viewBox="0 0 24 24"
       fill={active ? "currentColor" : "none"}
       stroke="currentColor"
@@ -25,8 +25,8 @@ function HomeIcon({ active }: { active: boolean }) {
 function SearchIcon() {
   return (
     <svg
-      width="19"
-      height="19"
+      width="23"
+      height="23"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -42,8 +42,8 @@ function SearchIcon() {
 function CalendarIcon() {
   return (
     <svg
-      width="19"
-      height="19"
+      width="23"
+      height="23"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -62,8 +62,8 @@ function CalendarIcon() {
 function ProfileIcon() {
   return (
     <svg
-      width="19"
-      height="19"
+      width="23"
+      height="23"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -86,7 +86,7 @@ export default function BottomNav() {
 
   return (
     <nav className="fixed bottom-3 left-3 right-3 z-50 rounded-[2rem] border border-white/20 bg-[#182016]/70 text-white shadow-xl backdrop-blur-xl">
-      <div className="mx-auto flex h-[41px] max-w-xl items-center justify-around px-2">
+      <div className="mx-auto flex h-[49px] max-w-xl items-center justify-around px-2">
         <Link
           href="/"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${

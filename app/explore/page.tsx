@@ -197,14 +197,14 @@ export default function ExplorePage() {
                 href={href}
                 className="group relative aspect-[1.88] overflow-hidden rounded-2xl border border-white/60 bg-white/30 shadow-lg backdrop-blur-md transition duration-500 hover:-translate-y-2 hover:bg-white/50 hover:shadow-2xl sm:rounded-3xl"
               >
-                <div className="relative flex h-full flex-col justify-between p-3 font-[var(--font-dm-sans)] text-[#26301c] sm:p-5">
+                <div className="relative flex h-full flex-col justify-between p-3 font-[var(--font-dm-sans)] text-white sm:p-5">
                   <div className="flex items-start justify-between gap-2">
-                      <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#66703f] sm:text-xs">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-[10px] font-bold text-[#26301c] shadow-sm">
                       {shortName}
                     </span>
-                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-[#66703f]" />
+                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-white" />
                   </div>
-                  <h2 className="max-w-[10rem] font-[var(--font-dm-sans)] text-sm font-medium leading-tight text-[#26301c] sm:text-lg lg:text-xl">
+                  <h2 className="max-w-[10rem] font-[var(--font-dm-sans)] text-sm font-medium leading-tight text-white sm:text-lg lg:text-xl">
                     {name}
                   </h2>
                 </div>
