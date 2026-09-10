@@ -114,12 +114,8 @@ export default function ExplorePage() {
   };
 
   return (
-    <main className="relative isolate min-h-screen overflow-x-clip bg-[#f7f6ef] pt-6 text-[#f8f5e9] sm:pt-8 lg:pt-10">
-      <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[650px] overflow-hidden sm:h-[720px] lg:h-[760px]">
-        <Image src="/hero-spa.jpg" alt="" fill priority sizes="100vw" className="object-cover object-center" />
-        <div className="absolute inset-0 bg-[#182016]/70" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#182016]/35 via-[#182016]/55 to-[#182016]/85" />
-      </div>
+    <main className="relative isolate min-h-screen overflow-x-clip bg-[#f7f6ef] pt-6 text-[#26301c] sm:pt-8 lg:pt-10">
+      <div aria-hidden="true" className="explore-grain pointer-events-none absolute inset-x-0 top-0 -z-10 h-[650px] overflow-hidden sm:h-[720px] lg:h-[760px]" />
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between gap-5">
@@ -136,35 +132,35 @@ export default function ExplorePage() {
               priority
               className="h-[62px] w-auto object-contain"
             />
-            <span className="font-[var(--font-manrope)] text-lg font-semibold tracking-[-0.02em] text-[#f8f5e9] sm:text-xl">
+            <span className="font-[var(--font-manrope)] text-lg font-semibold tracking-[-0.02em] text-[#26301c] sm:text-xl">
               SPA ELARIS
             </span>
           </Link>
           <Link
             href="/notifications"
             aria-label="Notifications"
-            className="rounded-full p-2 text-white transition hover:bg-white/10"
+            className="rounded-full p-2 text-[#26301c] transition hover:bg-[#66703f]/10"
           >
             <Bell size={21} strokeWidth={1.8} />
           </Link>
         </div>
 
-        <div className="mt-5 flex items-center justify-between gap-5 border-y border-white/20 py-4 sm:mt-6 sm:py-5">
+        <div className="mt-5 flex items-center justify-between gap-5 border-y border-[#66703f]/20 py-4 sm:mt-6 sm:py-5">
           <div className="flex items-center gap-2">
             <Star size={17} fill="currentColor" className="text-[#d8a928]" />
-            <span className="text-sm font-semibold text-[#f8f5e9]">4.9</span>
-            <span className="text-sm text-[#f8f5e9]/65">(128 reviews)</span>
+            <span className="text-sm font-semibold text-[#26301c]">4.9</span>
+            <span className="text-sm text-[#606454]">(128 reviews)</span>
           </div>
 
           <div className="text-right">
             <div className="flex items-center justify-end gap-1.5">
-              <Clock3 size={16} className="shrink-0 text-white" />
-              <p className="text-sm font-medium text-[#f1e4bd]">
+              <Clock3 size={16} className="shrink-0 text-[#66703f]" />
+              <p className="text-sm font-medium text-[#66703f]">
                 {isOpen ? "Opened" : "Closed"}
               </p>
             </div>
             <div>
-              <p className="mt-1 text-xs text-[#f8f5e9]/65">
+              <p className="mt-1 text-xs text-[#606454]">
                 {isOpen
                   ? `Closing in ${formatDuration(minutesUntilBoundary(OPEN_END_MINUTES))}`
                   : `Opens in ${formatDuration(minutesUntilBoundary(OPEN_START_MINUTES))}`}
@@ -174,7 +170,7 @@ export default function ExplorePage() {
         </div>
       </div>
 
-      <nav className="sticky top-0 z-30 mt-[30px] border-y border-white/20 bg-[#182016]/75 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
+      <nav className="sticky top-0 z-30 mt-[30px] border-y border-[#66703f]/15 bg-white/65 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
           <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none] lg:justify-between lg:gap-0">
             {sectionLinks.map((section) => (
               <a
@@ -182,8 +178,8 @@ export default function ExplorePage() {
                 href={`#${section.id}`}
                 className={`shrink-0 border-b-2 py-4 text-sm font-medium transition-colors ${
                   activeSection === section.id
-                    ? "border-[#d8c487] text-[#f8f5e9]"
-                    : "border-transparent text-[#f8f5e9]/65 hover:text-[#f8f5e9]"
+                    ? "border-[#66703f] text-[#26301c]"
+                    : "border-transparent text-[#606454] hover:text-[#26301c]"
                 }`}
               >
                 {section.label}
@@ -199,16 +195,16 @@ export default function ExplorePage() {
               <Link
                 key={id}
                 href={href}
-                className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/35 bg-white/15 shadow-lg backdrop-blur-md transition duration-500 hover:-translate-y-2 hover:bg-white/25 hover:shadow-2xl sm:rounded-3xl"
+                className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-[#66703f]/20 bg-white/55 shadow-lg backdrop-blur-md transition duration-500 hover:-translate-y-2 hover:bg-white/75 hover:shadow-2xl sm:rounded-3xl"
               >
-                <div className="relative flex h-full flex-col justify-between p-3 text-[#f8f5e9] sm:p-5">
+                <div className="relative flex h-full flex-col justify-between p-3 text-[#26301c] sm:p-5">
                   <div className="flex items-start justify-between gap-2">
-                      <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#f8f5e9] sm:text-xs">
+                      <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#66703f] sm:text-xs">
                       {shortName}
                     </span>
-                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-[#f8f5e9]" />
+                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-[#66703f]" />
                   </div>
-                  <h2 className="max-w-[10rem] text-sm font-bold leading-tight text-[#f8f5e9] sm:text-lg lg:text-xl">
+                  <h2 className="max-w-[10rem] text-sm font-bold leading-tight text-[#26301c] sm:text-lg lg:text-xl">
                     {name}
                   </h2>
                 </div>
@@ -220,10 +216,10 @@ export default function ExplorePage() {
 
       <section id="about" className="scroll-mt-16 bg-[#f7f6ef] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20">
-          <div className="relative h-[360px] overflow-hidden rounded-3xl sm:h-[480px]">
+          <div className="relative order-2 h-[360px] overflow-hidden rounded-3xl sm:h-[480px] lg:order-1">
             <Image src="/hero-spa.jpg" alt="Spa Elaris treatment room" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </div>
-          <div>
+          <div className="order-1 lg:order-2">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">About Spa Elaris</p>
             <h2 className="mt-4 text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">A calmer way to care for yourself.</h2>
             <p className="mt-6 max-w-xl text-base leading-8 text-[#606454]">Thoughtfully curated treatments, personal attention and a peaceful space designed around how you want to feel.</p>
@@ -235,14 +231,24 @@ export default function ExplorePage() {
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Your care team</p>
           <h2 className="mt-4 max-w-3xl text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">Experienced hands. Considered care.</h2>
-          <div className="mt-12 grid gap-5 sm:grid-cols-3">
-            {["Skin specialists", "Wellness therapists", "Beauty professionals"].map((member, index) => (
-              <div key={member} className="overflow-hidden rounded-3xl bg-[#f4f2e9]">
-                <div className="relative h-64">
-                  <Image src={["/facial.jpg", "/massage.jpg", "/hot-stone.jpg"][index]} alt="" fill sizes="(min-width: 640px) 33vw, 100vw" className="object-cover" />
+          <div className="mt-12 flex gap-8 overflow-x-auto pb-5 [scrollbar-width:none]">
+            {[
+              { name: "Amara", rating: "4.9", role: "Skin specialist" },
+              { name: "Tomi", rating: "4.8", role: "Wellness therapist" },
+              { name: "Zainab", rating: "5.0", role: "Beauty professional" },
+              { name: "Nneka", rating: "4.9", role: "Wellness therapist" },
+            ].map((therapist) => (
+              <article key={therapist.name} className="w-40 shrink-0 text-center sm:w-48">
+                <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-[#66703f] text-5xl font-light text-[#f7f6ef] sm:h-40 sm:w-40">
+                  {therapist.name[0]}
                 </div>
-                <h3 className="p-5 text-xl font-medium">{member}</h3>
-              </div>
+                <div className="mt-4 flex items-center justify-center gap-1 text-sm text-[#66703f]">
+                  <Star size={14} fill="currentColor" />
+                  <span>{therapist.rating}</span>
+                </div>
+                <h3 className="mt-2 text-lg font-medium text-[#26301c]">{therapist.name}</h3>
+                <p className="mt-1 text-xs text-[#606454]">{therapist.role}</p>
+              </article>
             ))}
           </div>
         </div>

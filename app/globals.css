@@ -127,3 +127,12 @@ h6 {
 body.spa-hide-content #app-content {
   display: none !important;
 }
+
+.explore-grain {
+  background-color: #fbfaf6;
+  background-image:
+    radial-gradient(rgba(63, 74, 44, 0.1) 0.7px, transparent 0.7px),
+    radial-gradient(rgba(63, 74, 44, 0.06) 0.6px, transparent 0.6px);
+  background-position: 0 0, 8px 10px;
+  background-size: 13px 13px, 17px 17px;
+}
