@@ -13,8 +13,7 @@ import {
   ScanLine,
   Webhook,
   Star,
-  CircleCheck,
-  CircleX,
+  Clock3,
 } from "lucide-react";
 import { serviceCategories } from "@/data/services";
 
@@ -27,18 +26,6 @@ const categoryIcons = [
   Droplets,
   ScanLine,
   Heart,
-];
-
-const colorThemes = [
-  "from-[#3f4a2c] to-[#7b8a4b]",
-  "from-[#6c493d] to-[#c18c6b]",
-  "from-[#314b50] to-[#6d9b98]",
-  "from-[#705b32] to-[#c5a65d]",
-  "from-[#425d3f] to-[#8ca878]",
-  "from-[#5b3e4f] to-[#b47e9b]",
-  "from-[#34516d] to-[#78a0bc]",
-  "from-[#6d4939] to-[#c49372]",
-  "from-[#26301c] to-[#8c9a68]",
 ];
 
 const sectionLinks = [
@@ -159,14 +146,10 @@ export default function ExplorePage() {
             <span className="text-sm text-[#f8f5e9]/65">(128 reviews)</span>
           </div>
 
-          <div className="flex items-start gap-2 text-right">
-            {isOpen ? (
-              <CircleCheck size={17} className="mt-0.5 text-[#2f9d4f]" />
-            ) : (
-              <CircleX size={17} className="mt-0.5 text-[#c94f3d]" />
-            )}
+          <div className="flex items-start gap-1.5 text-right">
+            <Clock3 size={16} className="mt-0.5 shrink-0 text-[#f1e4bd]" />
             <div>
-              <p className={`text-sm font-medium ${isOpen ? "text-[#a9d6a0]" : "text-[#f8f5e9]"}`}>
+              <p className="text-sm font-medium text-[#f1e4bd]">
                 {isOpen ? "Opened" : "Closed"}
               </p>
               <p className="mt-1 text-xs text-[#f8f5e9]/65">
@@ -204,16 +187,16 @@ export default function ExplorePage() {
               <Link
                 key={id}
                 href={href}
-                className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/70 bg-white shadow-lg transition duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-3xl"
+                className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/35 bg-white/15 shadow-lg backdrop-blur-md transition duration-500 hover:-translate-y-2 hover:bg-white/25 hover:shadow-2xl sm:rounded-3xl"
               >
-                <div className="relative flex h-full flex-col justify-between p-3 text-[#66703f] sm:p-5">
+                <div className="relative flex h-full flex-col justify-between p-3 text-[#f8f5e9] sm:p-5">
                   <div className="flex items-start justify-between gap-2">
-                      <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#66703f] sm:text-xs">
+                      <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#f8f5e9] sm:text-xs">
                       {shortName}
                     </span>
-                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-[#66703f]" />
+                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-[#f8f5e9]" />
                   </div>
-                  <h2 className="max-w-[10rem] text-sm font-bold leading-tight text-[#66703f] sm:text-lg lg:text-xl">
+                  <h2 className="max-w-[10rem] text-sm font-bold leading-tight text-[#f8f5e9] sm:text-lg lg:text-xl">
                     {name}
                   </h2>
                 </div>
