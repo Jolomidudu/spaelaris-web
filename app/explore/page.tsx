@@ -13,7 +13,8 @@ import {
   ScanLine,
   Webhook,
   Star,
-  Clock3,
+  CircleCheck,
+  CircleX,
 } from "lucide-react";
 import { serviceCategories } from "@/data/services";
 
@@ -49,8 +50,34 @@ const sectionLinks = [
   { id: "contact", label: "Contact" },
 ];
 
+// Spa Elaris opening hours: 8:00 AM - 6:00 PM (daily, Lagos time)
+const OPEN_START_MINUTES = 8 * 60;
+const OPEN_END_MINUTES = 18 * 60;
+
+// Current wall-clock time at the business location (Africa/Lagos), in minutes since midnight
+function getMinutesInLagos(date: Date) {
+  const parts = new Intl.DateTimeFormat("en-GB", {
+    timeZone: "Africa/Lagos",
+    hour: "numeric",
+    minute: "numeric",
+    hourCycle: "h23",
+  }).formatToParts(date);
+  const hour = Number(parts.find((part) => part.type === "hour")?.value ?? 0);
+  const minute = Number(parts.find((part) => part.type === "minute")?.value ?? 0);
+  return hour * 60 + minute;
+}
+
+function formatDuration(totalMinutes: number) {
+  const hours = Math.floor(totalMinutes / 60);
+  const mins = totalMinutes % 60;
+  if (hours === 0) return `${mins} min`;
+  if (mins === 0) return `${hours} hr`;
+  return `${hours} hr ${mins} min`;
+}
+
 export default function ExplorePage() {
   const [activeSection, setActiveSection] = useState("services");
+  const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
     const sections = sectionLinks
@@ -76,6 +103,12 @@ export default function ExplorePage() {
     };
   }, []);
 
+  // Refresh the open/closed status every 30 seconds
+  useEffect(() => {
+    const timer = setInterval(() => setNow(new Date()), 30_000);
+    return () => clearInterval(timer);
+  }, []);
+
   const cards = serviceCategories.map((category, index) => ({
       id: category.id,
       name: category.shortName,
@@ -85,12 +118,19 @@ export default function ExplorePage() {
       Icon: categoryIcons[index],
     }));
 
+  const nowMinutes = getMinutesInLagos(now);
+  const isOpen = nowMinutes >= OPEN_START_MINUTES && nowMinutes < OPEN_END_MINUTES;
+  const minutesUntilBoundary = (target: number) => {
+    const diff = target - nowMinutes;
+    return diff > 0 ? diff : diff + 24 * 60;
+  };
+
   return (
-    <main className="relative min-h-screen overflow-x-clip bg-[#26301c]/70 pt-6 text-[#26301c] sm:pt-8 lg:pt-10">
-      {/* Soft non-photo gradient mesh behind the frosted-glass top section (header to services cards) */}
+    <main className="relative isolate min-h-screen overflow-x-clip bg-[#f7f6ef] pt-6 text-[#26301c] sm:pt-8 lg:pt-10">
+      {/* Very light whitish-cream / faded-white gradient behind the top region (header to services cards) */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#3f4a2c]/45 via-[#26301c]/25 to-[#1e2417]/50" />
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#26301c]/40 via-[#3f4a2c]/20 to-[#252820]/45" />
+        <div className="absolute inset-0 bg-gradient-to-br from-white/80 via-[#f7f6ef]/60 to-[#f4f2e9]/70" />
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#f9f8f1]/70 via-white/50 to-[#efece2]/60" />
       </div>
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
@@ -107,33 +147,39 @@ export default function ExplorePage() {
             priority
             className="h-[62px] w-auto object-contain"
           />
-          <span className="font-[var(--font-manrope)] text-lg font-semibold tracking-[-0.02em] text-white sm:text-xl">
+          <span className="font-[var(--font-manrope)] text-lg font-semibold tracking-[-0.02em] text-[#66703f] sm:text-xl">
             SPA ELARIS
           </span>
         </Link>
 
-        <div className="mt-5 flex items-center justify-between gap-5 border-y border-white/15 py-4 sm:mt-6 sm:py-5">
+        <div className="mt-5 flex items-center justify-between gap-5 border-y border-[#26301c]/10 py-4 sm:mt-6 sm:py-5">
           <div className="flex items-center gap-2">
             <Star size={17} fill="currentColor" className="text-[#d8a928]" />
-            <span className="text-sm font-semibold text-white">4.9</span>
-            <span className="text-sm text-white/60">(128 reviews)</span>
+            <span className="text-sm font-semibold text-[#26301c]">4.9</span>
+            <span className="text-sm text-[#26301c]/50">(128 reviews)</span>
           </div>
 
           <div className="flex items-start gap-2 text-right">
-            <Clock3 size={17} className="mt-0.5 text-white/70" />
+            {isOpen ? (
+              <CircleCheck size={17} className="mt-0.5 text-[#2f9d4f]" />
+            ) : (
+              <CircleX size={17} className="mt-0.5 text-[#c94f3d]" />
+            )}
             <div>
-              <p className="text-sm font-medium text-white">
-                Closed - 8:00 PM
+              <p className={`text-sm font-medium ${isOpen ? "text-[#2f9d4f]" : "text-[#26301c]"}`}>
+                {isOpen ? "Opened" : "Closed"}
               </p>
-              <p className="mt-1 text-xs text-white/60">
-                Opening in 8 hours
+              <p className="mt-1 text-xs text-[#26301c]/50">
+                {isOpen
+                  ? `Closing in ${formatDuration(minutesUntilBoundary(OPEN_END_MINUTES))}`
+                  : `Opens in ${formatDuration(minutesUntilBoundary(OPEN_START_MINUTES))}`}
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <nav className="sticky top-0 z-30 mt-[30px] border-y border-white/10 bg-[#26301c]/60 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
+      <nav className="sticky top-0 z-30 mt-[30px] border-y border-[#26301c]/10 bg-white/80 px-5 backdrop-blur-xl sm:px-8 lg:px-12">
           <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none] lg:justify-between lg:gap-0">
             {sectionLinks.map((section) => (
               <a
@@ -141,8 +187,8 @@ export default function ExplorePage() {
                 href={`#${section.id}`}
                 className={`shrink-0 border-b-2 py-4 text-sm font-medium transition-colors ${
                   activeSection === section.id
-                    ? "border-[#d8c487] text-white"
-                    : "border-transparent text-white/45 hover:text-white"
+                    ? "border-[#66703f] text-[#26301c]"
+                    : "border-transparent text-[#26301c]/45 hover:text-[#26301c]"
                 }`}
               >
                 {section.label}
@@ -151,14 +197,14 @@ export default function ExplorePage() {
           </div>
       </nav>
 
-      <section id="services" className="scroll-mt-16 bg-[#26301c]/35 backdrop-blur-md">
+      <section id="services" className="scroll-mt-16 bg-white/70 backdrop-blur-md">
         <div className="mx-auto max-w-6xl px-5 py-8 sm:px-8 lg:px-12 lg:py-10">
           <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4 lg:gap-8">
             {cards.map(({ id, name, shortName, href, image, Icon }, index) => (
               <Link
                 key={id}
                 href={href}
-                className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-white/15 bg-black/20 shadow-lg transition duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-3xl"
+                className="group relative aspect-[16/10] overflow-hidden rounded-2xl border border-[#26301c]/15 bg-black/10 shadow-lg transition duration-500 hover:-translate-y-2 hover:shadow-2xl sm:rounded-3xl"
               >
                 <Image
                   src={image}
@@ -171,12 +217,12 @@ export default function ExplorePage() {
                 <div className={`absolute inset-0 ${colorThemes[index]}/45 mix-blend-multiply`} />
                 <div className="relative flex h-full flex-col justify-between p-3 text-white sm:p-5">
                   <div className="flex items-start justify-between gap-2">
-                      <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-white sm:text-xs">
+                      <span className="text-[13px] font-bold uppercase tracking-[0.16em] text-[#26301c] sm:text-xs">
                       {shortName}
                     </span>
-                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-white" />
+                    <Icon size={20} strokeWidth={1.6} className="shrink-0 text-[#26301c]" />
                   </div>
-                  <h2 className="max-w-[10rem] text-sm font-bold leading-tight sm:text-lg text-white lg:text-xl">
+                  <h2 className="max-w-[10rem] text-sm font-bold leading-tight sm:text-lg text-[#26301c] lg:text-xl">
                     {name}
                   </h2>
                 </div>
