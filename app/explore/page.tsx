@@ -140,13 +140,13 @@ export default function ExplorePage() {
               SPA ELARIS
             </span>
           </Link>
-          <button
-            type="button"
+          <Link
+            href="/notifications"
             aria-label="Notifications"
             className="rounded-full p-2 text-white transition hover:bg-white/10"
           >
             <Bell size={21} strokeWidth={1.8} />
-          </button>
+          </Link>
         </div>
 
         <div className="mt-5 flex items-center justify-between gap-5 border-y border-white/20 py-4 sm:mt-6 sm:py-5">
