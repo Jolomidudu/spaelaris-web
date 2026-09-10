@@ -85,12 +85,12 @@ export default function BottomNav() {
   const isProfile = pathname.startsWith("/profile");
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-black/[0.06] bg-white/95 backdrop-blur-xl">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/20 bg-[#182016]/70 text-white backdrop-blur-xl">
       <div className="mx-auto flex h-[76px] max-w-xl items-center justify-around px-3">
         <Link
           href="/"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-1 transition ${
-            isHome ? "text-[#7356E8]" : "text-black"
+            isHome ? "text-[#f1e4bd]" : "text-white"
           }`}
         >
           <HomeIcon active={isHome} />
@@ -100,7 +100,7 @@ export default function BottomNav() {
         <Link
           href="/search"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-1 transition ${
-            isSearch ? "text-[#7356E8]" : "text-black"
+            isSearch ? "text-[#f1e4bd]" : "text-white"
           }`}
         >
           <SearchIcon />
@@ -110,7 +110,7 @@ export default function BottomNav() {
         <Link
           href="/activity"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-1 transition ${
-            isActivity ? "text-[#7356E8]" : "text-black"
+            isActivity ? "text-[#f1e4bd]" : "text-white"
           }`}
         >
           <CalendarIcon />
@@ -120,7 +120,7 @@ export default function BottomNav() {
         <Link
           href="/profile"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-1 transition ${
-            isProfile ? "text-[#7356E8]" : "text-black"
+            isProfile ? "text-[#f1e4bd]" : "text-white"
           }`}
         >
           <ProfileIcon />

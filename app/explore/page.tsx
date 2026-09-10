@@ -14,6 +14,7 @@ import {
   Webhook,
   Star,
   Clock3,
+  Bell,
 } from "lucide-react";
 import { serviceCategories } from "@/data/services";
 
@@ -121,23 +122,32 @@ export default function ExplorePage() {
       </div>
 
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-3"
-          aria-label="Spa Elaris home"
-        >
-          <Image
-            src="/selogo.png"
-            alt="Spa Elaris"
-            width={200}
-            height={140}
-            priority
-            className="h-[62px] w-auto object-contain"
-          />
-          <span className="font-[var(--font-manrope)] text-lg font-semibold tracking-[-0.02em] text-[#f8f5e9] sm:text-xl">
-            SPA ELARIS
-          </span>
-        </Link>
+        <div className="flex items-center justify-between gap-5">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-3"
+            aria-label="Spa Elaris home"
+          >
+            <Image
+              src="/selogo.png"
+              alt="Spa Elaris"
+              width={200}
+              height={140}
+              priority
+              className="h-[62px] w-auto object-contain"
+            />
+            <span className="font-[var(--font-manrope)] text-lg font-semibold tracking-[-0.02em] text-[#f8f5e9] sm:text-xl">
+              SPA ELARIS
+            </span>
+          </Link>
+          <button
+            type="button"
+            aria-label="Notifications"
+            className="rounded-full p-2 text-white transition hover:bg-white/10"
+          >
+            <Bell size={21} strokeWidth={1.8} />
+          </button>
+        </div>
 
         <div className="mt-5 flex items-center justify-between gap-5 border-y border-white/20 py-4 sm:mt-6 sm:py-5">
           <div className="flex items-center gap-2">
@@ -146,12 +156,14 @@ export default function ExplorePage() {
             <span className="text-sm text-[#f8f5e9]/65">(128 reviews)</span>
           </div>
 
-          <div className="flex items-start gap-1.5 text-right">
-            <Clock3 size={16} className="mt-0.5 shrink-0 text-[#f1e4bd]" />
-            <div>
+          <div className="text-right">
+            <div className="flex items-center justify-end gap-1.5">
+              <Clock3 size={16} className="shrink-0 text-white" />
               <p className="text-sm font-medium text-[#f1e4bd]">
                 {isOpen ? "Opened" : "Closed"}
               </p>
+            </div>
+            <div>
               <p className="mt-1 text-xs text-[#f8f5e9]/65">
                 {isOpen
                   ? `Closing in ${formatDuration(minutesUntilBoundary(OPEN_END_MINUTES))}`
