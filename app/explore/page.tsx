@@ -333,7 +333,7 @@ export default function ExplorePage() {
       <section id="contact" className="scroll-mt-16 bg-[#f7f6ef] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Get in touch</p>
-          <h2 className="mt-4 max-w-3xl text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">We would love to welcome you.</h2>
+          <h2 className="mt-4 max-w-3xl text-2xl font-light leading-tight tracking-[-0.03em] sm:text-4xl">We would love to welcome you.</h2>
 
           <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-5">
             {[
@@ -362,7 +362,7 @@ export default function ExplorePage() {
                 hello@spaelariswellness.com
               </a>
             </div>
-            <div className="-translate-y-[50px] flex w-full items-center justify-between sm:w-auto sm:translate-y-0 sm:justify-start sm:gap-3" aria-label="Social links">
+            <div className="mt-5 flex w-full items-center justify-between sm:mt-0 sm:w-auto sm:justify-start sm:gap-3" aria-label="Social links">
               <a href="#instagram" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#26301c] text-[11px] font-bold text-white transition hover:bg-[#66703f]">IG</a>
               <a href="#linkedin" aria-label="LinkedIn" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#26301c] text-[11px] font-bold text-white transition hover:bg-[#66703f]">IN</a>
               <a href="#facebook" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#26301c] text-[11px] font-bold text-white transition hover:bg-[#66703f]">FB</a>
