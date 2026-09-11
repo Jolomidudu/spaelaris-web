@@ -1,105 +1,83 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { ArrowLeft, Mail, Smartphone, X } from "lucide-react";
 
 export default function ProfilePage() {
   const router = useRouter();
   return (
-    <main className="relative min-h-screen bg-white px-6 pb-28 pt-6 lg:px-10 lg:pt-12">
-      {/* Close button */}
+    <main className="relative min-h-screen bg-[#f7f6ef] pb-28 text-[#26301c]">
+      <div className="bg-[#26301c] px-5 pb-10 pt-5 text-white sm:px-8">
+        <div className="mx-auto max-w-md">
+          <button
+            type="button"
+            onClick={() => router.push("/explore")}
+            className="rounded-full p-2 text-white/80 transition hover:bg-white/10 hover:text-white"
+            aria-label="Back to explore"
+          >
+            <ArrowLeft size={21} strokeWidth={1.8} />
+          </button>
+          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">Your Spa Elaris account</p>
+          <h1 className="mt-3 font-[var(--font-lora)] text-4xl font-medium leading-tight">Make every visit yours.</h1>
+          <p className="mt-3 max-w-sm text-sm leading-6 text-white/65">Sign in to manage appointments, save treatments and keep your wellness history together.</p>
+        </div>
+      </div>
+
       <button
         type="button"
         onClick={() => router.push("/explore")}
-        className="absolute top-5 right-5 p-1 text-black/80 hover:text-black"
+        className="absolute right-5 top-5 rounded-full p-2 text-white/80 transition hover:bg-white/10 hover:text-white"
         aria-label="Close"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
+        <X size={21} strokeWidth={1.8} />
       </button>
 
-      {/* Header */}
-      <div className="mx-auto max-w-md">
-      <h1 className="mt-10 text-[28px] font-semibold tracking-tight text-black lg:text-4xl">
-        Login or sign up
-      </h1>
-      <p className="mt-2 text-[15px] text-black/50">
-        We&apos;ll need to verify it&apos;s you
-      </p>
+      <div className="mx-auto max-w-md px-5 pt-8 sm:px-0">
+      <section className="rounded-3xl border border-[#66703f]/15 bg-white p-6 shadow-[0_18px_50px_rgba(38,48,28,0.08)] sm:p-8">
+      <h2 className="font-[var(--font-lora)] text-2xl font-medium text-[#26301c]">Login or sign up</h2>
+      <p className="mt-2 text-sm leading-6 text-[#606454]">We&apos;ll need to verify it&apos;s you.</p>
 
-      {/* Email form */}
-      <form className="mt-8 max-w-md">
-        <label className="block text-[15px] font-medium text-black">
+      <form className="mt-7">
+        <label className="block text-xs font-semibold uppercase tracking-[0.16em] text-[#66703f]">
           Email
         </label>
-        <input
-          type="email"
-          placeholder="Email address"
-          className="mt-2 w-full rounded-xl border border-black/15 px-4 py-3.5 text-[15px] placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-black/10"
-        />
-        <p className="mt-2 text-[13px] text-black/50">
+        <div className="relative mt-2">
+          <Mail size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#66703f]" />
+          <input
+            type="email"
+            placeholder="Email address"
+            className="w-full rounded-2xl border border-[#66703f]/20 bg-[#f7f6ef]/60 px-4 py-3.5 pl-11 text-[15px] placeholder:text-[#606454]/60 focus:border-[#66703f] focus:outline-none focus:ring-4 focus:ring-[#66703f]/10"
+          />
+        </div>
+        <p className="mt-2 text-xs text-[#606454]">
           We&apos;ll send you a verification code
         </p>
 
-        <button
-          type="submit"
-          className="mt-5 w-full rounded-full bg-black py-3.5 text-[16px] font-medium text-white hover:bg-black/90 transition-colors"
-        >
+        <button type="submit" className="mt-5 w-full rounded-full bg-[#26301c] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#66703f]">
           Continue
         </button>
       </form>
 
-      {/* Divider */}
-      <div className="my-8 flex max-w-md items-center gap-4">
-        <div className="h-px flex-1 bg-black/10" />
-        <span className="text-[13px] text-black/40">OR</span>
-        <div className="h-px flex-1 bg-black/10" />
+      <div className="my-7 flex items-center gap-4">
+        <div className="h-px flex-1 bg-[#66703f]/15" />
+        <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#909487]">or continue with</span>
+        <div className="h-px flex-1 bg-[#66703f]/15" />
       </div>
 
-      {/* Social / alternative buttons */}
-      <div className="flex max-w-md flex-col gap-3">
-        {/* Continue with mobile */}
+      <div className="flex flex-col gap-3">
         <button
           type="button"
-          className="flex w-full items-center justify-center gap-3 rounded-full border border-black/15 py-3.5 text-[15px] font-medium text-black hover:bg-black/[0.03] transition-colors"
+          className="flex w-full items-center justify-center gap-3 rounded-full border border-[#66703f]/20 py-3.5 text-sm font-medium text-[#26301c] transition-colors hover:bg-[#f7f6ef]"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
-            <path d="M12 18h.01" />
-          </svg>
+          <Smartphone size={19} strokeWidth={1.8} />
           Continue with mobile
         </button>
 
-       
-
-        {/* Continue with Google */}
         <button
           type="button"
-          className="flex w-full items-center justify-center gap-3 rounded-full border border-black/15 py-3.5 text-[15px] font-medium text-black hover:bg-black/[0.03] transition-colors"
+          className="flex w-full items-center justify-center gap-3 rounded-full border border-[#66703f]/20 py-3.5 text-sm font-medium text-[#26301c] transition-colors hover:bg-[#f7f6ef]"
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
             width="20"
             height="20"
             viewBox="0 0 24 24"
@@ -124,6 +102,8 @@ export default function ProfilePage() {
           Continue with Google
         </button>
       </div>
+      </section>
+      <p className="mt-6 text-center text-xs leading-5 text-[#606454]">By continuing, you agree to our terms and privacy policy.</p>
       </div>
     </main>
   );
