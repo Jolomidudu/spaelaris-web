@@ -9,7 +9,7 @@ export default function ProfilePage() {
       {/* Close button */}
       <button
         type="button"
-        onClick={() => router.push("/")}
+        onClick={() => router.push("/explore")}
         className="absolute top-5 right-5 p-1 text-black/80 hover:text-black"
         aria-label="Close"
       >

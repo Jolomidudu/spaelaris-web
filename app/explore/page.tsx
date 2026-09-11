@@ -15,6 +15,7 @@ import {
   Star,
   Clock3,
   Bell,
+  ChevronRight,
 } from "lucide-react";
 import { serviceCategories } from "@/data/services";
 
@@ -215,7 +216,18 @@ export default function ExplorePage() {
       </section>
 
       <section id="about" className="scroll-mt-16 bg-[#f7f6ef] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
-        <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20">
+        <div className="mx-auto max-w-6xl">
+          <div className="mb-8 flex items-center justify-between gap-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">About Spa Elaris</p>
+            <Link
+              href="/about"
+              className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-[#66703f] transition hover:text-[#26301c]"
+            >
+              More
+              <ChevronRight size={17} strokeWidth={1.8} />
+            </Link>
+          </div>
+          <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20">
           <div className="relative order-2 h-[360px] overflow-hidden rounded-3xl sm:h-[480px] lg:order-1">
             <Image src="/hero-spa.jpg" alt="Spa Elaris treatment room" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </div>
@@ -224,21 +236,31 @@ export default function ExplorePage() {
             <h2 className="mt-4 text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">A calmer way to care for yourself.</h2>
             <p className="mt-6 max-w-xl text-base leading-8 text-[#606454]">Thoughtfully curated treatments, personal attention and a peaceful space designed around how you want to feel.</p>
           </div>
+          </div>
         </div>
       </section>
 
       <section id="specialists" className="scroll-mt-16 bg-white px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-6xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Your care team</p>
+          <div className="flex items-center justify-between gap-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Your care team</p>
+            <Link
+              href="/professionals"
+              className="inline-flex shrink-0 items-center gap-1 text-sm font-medium text-[#66703f] transition hover:text-[#26301c]"
+            >
+              See All
+              <ChevronRight size={17} strokeWidth={1.8} />
+            </Link>
+          </div>
           <h2 className="mt-4 max-w-3xl text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">Experienced hands. Considered care.</h2>
           <div className="mt-12 flex gap-8 overflow-x-auto pb-5 [scrollbar-width:none]">
             {[
-              { name: "Amara", rating: "4.9", role: "Skin specialist" },
-              { name: "Tomi", rating: "4.8", role: "Wellness therapist" },
-              { name: "Zainab", rating: "5.0", role: "Beauty professional" },
-              { name: "Nneka", rating: "4.9", role: "Wellness therapist" },
+              { name: "Amara", slug: "amara", rating: "4.9", role: "Skin specialist" },
+              { name: "Tomi", slug: "tomi", rating: "4.8", role: "Wellness therapist" },
+              { name: "Zainab", slug: "zainab", rating: "5.0", role: "Beauty professional" },
+              { name: "Nneka", slug: "nneka", rating: "4.9", role: "Wellness therapist" },
             ].map((therapist) => (
-              <article key={therapist.name} className="w-40 shrink-0 text-center sm:w-48">
+              <Link key={therapist.name} href={`/professionals/${therapist.slug}`} className="w-40 shrink-0 text-center sm:w-48">
                 <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-[#66703f] text-5xl font-light text-[#f7f6ef] sm:h-40 sm:w-40">
                   {therapist.name[0]}
                 </div>
@@ -248,7 +270,7 @@ export default function ExplorePage() {
                 </div>
                 <h3 className="mt-2 text-lg font-medium text-[#26301c]">{therapist.name}</h3>
                 <p className="mt-1 text-xs text-[#606454]">{therapist.role}</p>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
