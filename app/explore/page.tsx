@@ -345,7 +345,7 @@ export default function ExplorePage() {
                   <iframe
                     title={`${location.name} map`}
                     src={`https://www.google.com/maps?q=${encodeURIComponent(location.query)}&output=embed`}
-                    className="h-48 w-full border-0 sm:h-56"
+                    className="h-32 w-full border-0 sm:h-56"
                     loading="lazy"
                   />
                 </div>
@@ -357,12 +357,12 @@ export default function ExplorePage() {
           <div className="mt-10 flex flex-col gap-7 border-t border-[#66703f]/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-[#66703f]">Email</p>
-              <a href="mailto:hello@spaelaris.com" className="mt-2 inline-flex items-center gap-2 text-base text-[#606454] underline underline-offset-4">
+              <a href="mailto:hello@spaelariswellness.com" className="mt-2 inline-flex items-center gap-2 text-base text-[#606454] underline underline-offset-4">
                 <Mail size={17} strokeWidth={1.8} />
-                hello@spaelaris.com
+                hello@spaelariswellness.com
               </a>
             </div>
-            <div className="flex items-center gap-3" aria-label="Social links">
+            <div className="-translate-y-[50px] flex w-full items-center justify-between sm:w-auto sm:translate-y-0 sm:justify-start sm:gap-3" aria-label="Social links">
               <a href="#instagram" aria-label="Instagram" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#26301c] text-[11px] font-bold text-white transition hover:bg-[#66703f]">IG</a>
               <a href="#linkedin" aria-label="LinkedIn" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#26301c] text-[11px] font-bold text-white transition hover:bg-[#66703f]">IN</a>
               <a href="#facebook" aria-label="Facebook" className="flex h-10 w-10 items-center justify-center rounded-full bg-[#26301c] text-[11px] font-bold text-white transition hover:bg-[#66703f]">FB</a>
