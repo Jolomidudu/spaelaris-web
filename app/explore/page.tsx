@@ -233,7 +233,6 @@ export default function ExplorePage() {
             <Image src="/hero-spa.jpg" alt="Spa Elaris treatment room" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
           </div>
           <div className="order-1 lg:order-2">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">About Spa Elaris</p>
             <h2 className="mt-4 text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">A calmer way to care for yourself.</h2>
             <p className="mt-6 max-w-xl text-base leading-8 text-[#606454]">Thoughtfully curated treatments, personal attention and a peaceful space designed around how you want to feel.</p>
           </div>
@@ -262,7 +261,7 @@ export default function ExplorePage() {
               { name: "Nneka", slug: "nneka", rating: "4.9", role: "Wellness therapist" },
             ].map((therapist) => (
               <Link key={therapist.name} href={`/professionals/${therapist.slug}`} className="w-40 shrink-0 text-center sm:w-48">
-                <div className="mx-auto flex h-36 w-36 items-center justify-center rounded-full bg-[#66703f] text-5xl font-light text-[#f7f6ef] sm:h-40 sm:w-40">
+                <div className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full bg-[#66703f] text-2xl font-light text-[#f7f6ef] sm:h-20 sm:w-20">
                   {therapist.name[0]}
                 </div>
                 <div className="mt-4 flex items-center justify-center gap-1 text-sm text-[#66703f]">
@@ -279,12 +278,29 @@ export default function ExplorePage() {
 
       <section id="reviews" className="scroll-mt-16 bg-[#e9e8d9] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto max-w-6xl">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Guest reviews</p>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {["A beautiful experience from start to finish.", "The calmest space and the most thoughtful service.", "I left feeling completely renewed."].map((review, index) => (
-              <blockquote key={review} className="rounded-3xl bg-white p-7">
-                <p className="text-xl leading-8 text-[#26301c]">“{review}”</p>
-                <footer className="mt-7 text-xs uppercase tracking-[0.2em] text-[#66703f]">Spa Elaris guest {index + 1}</footer>
+          <h2 className="text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">Reviews</h2>
+          <div className="mt-4 flex items-center gap-2 text-[#66703f]">
+            <div className="flex items-center gap-0.5" aria-label="5.0 out of 5 stars">
+              {[1, 2, 3, 4, 5].map((star) => <Star key={star} size={16} fill="currentColor" />)}
+            </div>
+            <span className="text-sm font-semibold">5.0</span>
+          </div>
+          <div className="mt-10 flex gap-5 overflow-x-auto pb-5 [scrollbar-width:none]">
+            {[
+              { name: "Aisha", service: "Hydra Facials", date: "12 Aug 2026", image: "/facial.jpg", note: "A beautiful experience from start to finish." },
+              { name: "Chinedu", service: "Deep Tissue Massage", date: "28 Jul 2026", image: "/massage.jpg", note: "The calmest space and the most thoughtful service." },
+              { name: "Mariam", service: "Hot Stone Massage", date: "05 Jul 2026", image: "/hot-stone.jpg", note: "I left feeling completely renewed." },
+            ].map((review) => (
+              <blockquote key={review.name} className="w-[290px] shrink-0 rounded-3xl bg-white p-6 shadow-sm sm:w-[340px]">
+                <div className="flex items-center gap-3">
+                  <Image src={review.image} alt="" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
+                  <div>
+                    <p className="font-semibold text-[#26301c]">{review.name}</p>
+                    <p className="mt-0.5 text-xs text-[#66703f]">{review.service}</p>
+                  </div>
+                </div>
+                <p className="mt-5 text-base leading-7 text-[#26301c]">“{review.note}”</p>
+                <footer className="mt-5 text-xs uppercase tracking-[0.15em] text-[#606454]">{review.date}</footer>
               </blockquote>
             ))}
           </div>
@@ -319,7 +335,7 @@ export default function ExplorePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Get in touch</p>
           <h2 className="mt-4 max-w-3xl text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">We would love to welcome you.</h2>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+          <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-5">
             {[
               { name: "Lagos", query: "Spa Elaris Lagos Nigeria" },
               { name: "Abuja", query: "Spa Elaris Abuja Nigeria" },

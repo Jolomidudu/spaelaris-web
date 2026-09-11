@@ -79,7 +79,7 @@ function ProfileIcon() {
 export default function BottomNav() {
   const pathname = usePathname();
 
-  const isHome = pathname === "/";
+  const isHome = pathname === "/" || pathname.startsWith("/explore");
   const isSearch = pathname.startsWith("/search");
   const isActivity = pathname.startsWith("/activity");
   const isProfile = pathname.startsWith("/profile");
@@ -88,7 +88,7 @@ export default function BottomNav() {
     <nav className="fixed bottom-3 left-3 right-3 z-50 rounded-[1.7rem] border border-white/20 bg-[#182016]/70 text-white shadow-xl backdrop-blur-xl">
       <div className="mx-auto flex h-[59px] max-w-xl items-center justify-around px-2">
         <Link
-          href="/"
+          href="/explore"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${
             isHome ? "text-[#f1e4bd]" : "text-white"
           }`}
