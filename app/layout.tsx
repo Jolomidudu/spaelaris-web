@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Sans, Lora, Manrope } from "next/font/google";
 import "./globals.css";
-import SplashScreen from "../components/SplashScreen";
 import GlobalNav from "../components/GlobalNav";
 
 const dmSans = DM_Sans({
@@ -38,8 +37,7 @@ export default function RootLayout({
       lang="en"
       className={`${dmSans.variable} ${lora.variable} ${manrope.variable} h-full antialiased`}
     >
-      <body className="spa-hide-content min-h-full bg-white">
-        <SplashScreen />
+      <body className="min-h-full bg-white">
         <div id="app-content">{children}</div>
         <GlobalNav />
       </body>

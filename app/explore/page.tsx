@@ -122,7 +122,7 @@ export default function ExplorePage() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between gap-5">
           <Link
-            href="/"
+            href="/explore"
             className="inline-flex items-center gap-3"
             aria-label="Spa Elaris home"
           >

@@ -39,23 +39,6 @@ h5,
 h6 {
   font-family: var(--font-lora), Georgia, "Times New Roman", serif;
 }
-@keyframes loading {
-  0% {
-    transform: scaleX(0);
-    opacity: 0.3;
-  }
-
-  50% {
-    transform: scaleX(1);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scaleX(0);
-    opacity: 0.3;
-  }
-}
-
 @keyframes gradientShift {
   0%,
   100% {
@@ -76,26 +59,6 @@ h6 {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes welcomeSequence {
-  0%,
-  12% {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-
-  28%,
-  62% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  82%,
-  100% {
-    opacity: 0;
-    transform: translateY(-24px);
   }
 }
 
@@ -121,11 +84,6 @@ h6 {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Hide main app content while splash/onboarding are active */
-body.spa-hide-content #app-content {
-  display: none !important;
 }
 
 .explore-grain {
