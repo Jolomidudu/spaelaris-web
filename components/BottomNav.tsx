@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { MessageCircle } from "lucide-react";
 
 function HomeIcon({ active }: { active: boolean }) {
   return (
@@ -125,6 +126,15 @@ export default function BottomNav() {
         >
           <ProfileIcon />
           <span className="text-[10px] font-medium">Profile</span>
+        </Link>
+
+        <Link
+          href="/contact"
+          aria-label="Chat with Spa Elaris"
+          className="flex min-w-[70px] flex-col items-center justify-center gap-0 text-[#66703f]/75 transition"
+        >
+          <MessageCircle size={25} strokeWidth={1.8} />
+          <span className="text-[10px] font-medium">Chat</span>
         </Link>
       </div>
     </nav>

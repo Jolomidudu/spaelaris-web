@@ -89,3 +89,36 @@ h6 {
 .explore-grain {
   background: linear-gradient(180deg, #ffffff 0%, #f7f6ef 62%, #ecebdc 100%);
 }
+
+.curved-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.curved-section::before {
+  position: absolute;
+  top: -42px;
+  left: -8%;
+  width: 116%;
+  height: 84px;
+  border-radius: 50%;
+  background: inherit;
+  content: "";
+}
+
+.scroll-cue {
+  animation: scrollCue 1800ms ease-in-out infinite;
+}
+
+@keyframes scrollCue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.65;
+  }
+
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
