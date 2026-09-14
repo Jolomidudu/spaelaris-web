@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Check, Clock3, MapPin, Star } from "lucide-react";
+import { ArrowLeft, Clock3, MapPin, Star } from "lucide-react";
 import { serviceCategories, formatPrice } from "@/data/services";
 import ProfessionalSectionNav from "@/components/ProfessionalSectionNav";
 
@@ -148,7 +148,7 @@ export default async function ProfessionalDetailPage({
         </section>
       </div>
 
-      <div className="fixed bottom-3 left-3 right-3 z-40 mx-auto max-w-5xl"><button type="button" className="flex w-full items-center justify-center gap-2 rounded-full bg-[#26301c] py-4 text-sm font-semibold text-white shadow-xl"><Check size={18} />Book with {professional.name.split(" ")[0]}</button></div>
+      <div className="fixed bottom-[100px] right-5 z-40"><button type="button" aria-label={`Book with ${professional.name.split(" ")[0]}`} title={`Book with ${professional.name.split(" ")[0]}`} className="flex h-14 w-14 flex-col items-center justify-center rounded-full bg-[#26301c] text-[10px] font-semibold uppercase leading-tight text-white shadow-xl transition hover:bg-[#66703f]"><span>Book</span><span>Now</span></button></div>
     </main>
   );
 }

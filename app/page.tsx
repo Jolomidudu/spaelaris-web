@@ -211,9 +211,9 @@ export default function Home() {
         </div>
       </nav>
       <section id="services" className="scroll-mt-16 bg-transparent">
-        <div className="mx-auto max-w-6xl px-5 pb-8 pt-2 sm:px-8 sm:pt-3 lg:px-12 lg:py-10 lg:pt-[30vh]">
+        <div className="mx-auto max-w-6xl px-5 pb-8 pt-[7px] sm:px-8 sm:pt-3 lg:px-12 lg:py-10 lg:pt-[30vh]">
           <div className="mb-3 flex items-center justify-between gap-4 sm:mb-6">
-            <h2 className="text-[12px] font-medium text-[#26301c] sm:text-2xl">
+            <h2 className="ml-[15px] text-[12px] font-medium text-[#26301c] sm:ml-0 sm:text-2xl">
               SELECT A SERVICE TO START
             </h2>
             <Link
@@ -223,7 +223,7 @@ export default function Home() {
               See all <ChevronRight size={16} />
             </Link>
           </div>
-          <div className="mx-auto grid w-[95%] grid-cols-2 gap-x-[0.97rem] gap-y-[0.84rem] sm:gap-x-[1.61rem] sm:gap-y-[1.4rem] lg:w-auto lg:max-w-[69.1rem] lg:grid-cols-4 lg:gap-[2.24rem]">
+          <div className="mx-auto grid w-[95%] grid-cols-2 gap-x-[0.97rem] gap-y-[1.15rem] sm:gap-x-[1.61rem] sm:gap-y-[1.4rem] lg:w-auto lg:max-w-[69.1rem] lg:grid-cols-4 lg:gap-[2.24rem]">
             {cards.map(({ id, name, href, Icon }) => (
               <Link
                 key={id}
