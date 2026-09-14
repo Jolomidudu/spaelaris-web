@@ -296,12 +296,12 @@ export default function Home() {
               See all <ChevronRight size={16} />
             </Link>
           </div>
-          <div className="mx-auto grid w-[95%] grid-cols-2 gap-x-[0.97rem] gap-y-[1.15rem] sm:gap-x-[1.61rem] sm:gap-y-[1.4rem] lg:w-auto lg:max-w-[69.1rem] lg:grid-cols-4 lg:gap-[2.24rem]">
+          <div className="mx-auto flex w-[95%] gap-[0.97rem] overflow-x-auto pb-2 [scrollbar-width:none] sm:gap-[1.61rem] lg:grid lg:w-auto lg:max-w-[69.1rem] lg:grid-cols-4 lg:gap-[2.24rem] lg:overflow-visible lg:pb-0">
             {cards.map(({ id, name, href, Icon }) => (
               <Link
                 key={id}
                 href={href}
-                className="group relative aspect-[1.71] overflow-hidden rounded-2xl border border-[#c7ad91] bg-[#DEC8B0] shadow-lg transition duration-500 hover:-translate-y-2 hover:bg-[#d6b894] hover:shadow-2xl sm:rounded-3xl"
+                className="group relative aspect-[1.71] w-[40%] shrink-0 overflow-hidden rounded-2xl border border-[#c7ad91] bg-[#DEC8B0] shadow-lg transition duration-500 hover:-translate-y-2 hover:bg-[#d6b894] hover:shadow-2xl sm:rounded-3xl lg:w-auto"
               >
                 <div className="relative flex h-full flex-col justify-between p-3 text-[#3f4038] sm:p-5">
                   <div className="flex items-start justify-between gap-2">
@@ -315,7 +315,7 @@ export default function Home() {
                       className="shrink-0 text-[#3f4038]"
                     />
                   </div>
-                  <h2 className="max-w-[10rem] text-sm font-medium leading-tight text-[#3f4038] sm:text-lg lg:text-xl">
+                  <h2 className="max-w-[10rem] text-[9px] font-medium leading-tight text-[#3f4038] sm:text-lg lg:text-xl">
                     {name}
                   </h2>
                 </div>
