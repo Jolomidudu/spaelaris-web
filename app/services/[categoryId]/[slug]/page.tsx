@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import ServiceDetailHeader from "../../../../components/ServiceDetailHeader";
 
 import {
   serviceCategories,
@@ -25,18 +26,12 @@ export default async function ServiceDetailPage({ params }: Props) {
   if (!service) notFound();
 
   return (
-    <main className="min-h-screen bg-white text-[#111111]">
+    <main className="min-h-screen bg-white pt-0 text-[#111111] lg:pt-[150px]">
 
-      <section className="border-b border-black/[0.08] px-5 py-5 sm:px-8">
-        <div className="mx-auto max-w-5xl">
-          <Link
-            href={`/services/${category.id}`}
-            className="inline-flex items-center gap-2 text-sm font-medium text-black/60 transition hover:text-black"
-          >
-            ← Back to {category.shortName}
-          </Link>
-        </div>
-      </section>
+      <ServiceDetailHeader
+        backHref={`/services/${category.id}`}
+        categoryName={category.shortName}
+      />
 
       <section className="px-5 py-8 sm:px-8">
         <div className="mx-auto max-w-5xl">
@@ -79,14 +74,15 @@ export default async function ServiceDetailPage({ params }: Props) {
               </div>
             )}
 
-            <div className="mt-6">
-              <Link
-                href={`/book?category=${category.id}&service=${serviceSlug(service.name)}`}
-                className="inline-block rounded bg-black text-white px-4 py-2"
-              >
-                Book now
-              </Link>
-            </div>
+            <Link
+              href={`/book?category=${category.id}&service=${serviceSlug(service.name)}`}
+              aria-label={`Book ${service.name} now`}
+              title={`Book ${service.name} now`}
+              className="fixed bottom-[100px] right-5 z-40 flex h-14 w-14 flex-col items-center justify-center rounded-full bg-[#DEC8B0] text-[10px] font-semibold uppercase leading-tight text-[#354329] shadow-xl transition hover:bg-[#d6b894]"
+            >
+              <span>Book</span>
+              <span>Now</span>
+            </Link>
           </div>
         </div>
       </section>

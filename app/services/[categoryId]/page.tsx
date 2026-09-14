@@ -1,9 +1,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft } from "lucide-react";
 import "./category.css";
 import { notFound } from "next/navigation";
+import CategoryBackButton from "../../../components/CategoryBackButton";
 import {
   serviceCategories,
   formatPrice,
@@ -48,9 +48,7 @@ export default async function CategoryPage({
 
         <div className="category-hero-content">
 
-          <Link href="/" className="back-button" aria-label="Back to home">
-            <ArrowLeft size={24} strokeWidth={2} aria-hidden="true" />
-          </Link>
+          <CategoryBackButton />
 
           <div className="category-number">
             {category.number}
