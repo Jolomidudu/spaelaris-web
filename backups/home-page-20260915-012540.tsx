@@ -46,37 +46,6 @@ const sectionLinks = [
 const OPEN_START_MINUTES = 8 * 60;
 const OPEN_END_MINUTES = 18 * 60;
 
-const mobileSlides = [
-  {
-    image: "/facial.jpg",
-    eyebrow: "SKIN & FACIALS",
-    title: "Bring your glow back.",
-    description: "Personalized facial care for skin that feels refreshed, hydrated and renewed.",
-    href: "/services/med-facials",
-  },
-  {
-    image: "/massage.jpg",
-    eyebrow: "MASSAGE & WELLNESS",
-    title: "Make room to exhale.",
-    description: "Restorative bodywork designed to release tension and return you to yourself.",
-    href: "/services/service-menu",
-  },
-  {
-    image: "/hot-stone.jpg",
-    eyebrow: "BODY RITUALS",
-    title: "A softer kind of reset.",
-    description: "Slow down with considered rituals that leave your body calm and restored.",
-    href: "/services/service-menu",
-  },
-  {
-    image: "/hero-spa.jpg",
-    eyebrow: "YOUR ELARIS VISIT",
-    title: "Come away feeling well.",
-    description: "Find thoughtful care, quiet attention and time made just for you.",
-    href: "/contact",
-  },
-];
-
 function getMinutesInLagos(date: Date) {
   const parts = new Intl.DateTimeFormat("en-GB", {
     timeZone: "Africa/Lagos",
@@ -104,7 +73,6 @@ export default function Home() {
   const [now, setNow] = useState(() => new Date());
   const [menuOpen, setMenuOpen] = useState(false);
   const [showScrollCue, setShowScrollCue] = useState(true);
-  const [activeSlide, setActiveSlide] = useState(0);
 
   useEffect(() => {
     const sections = sectionLinks
@@ -134,13 +102,6 @@ export default function Home() {
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 30_000);
-    return () => clearInterval(timer);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveSlide((current) => (current + 1) % mobileSlides.length);
-    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
@@ -235,40 +196,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <section className="mobile-campaign-carousel relative mx-5 mt-2 h-[250px] overflow-hidden rounded-[24px] text-white shadow-lg lg:hidden" aria-label="Featured Spa Elaris experiences">
-        {mobileSlides.map((slide, index) => (
-          <div
-            key={slide.title}
-            className={`absolute inset-0 transition-opacity duration-700 ${activeSlide === index ? "z-10 opacity-100" : "pointer-events-none opacity-0"}`}
-            aria-hidden={activeSlide !== index}
-          >
-            <Image src={slide.image} alt="" fill sizes="calc(100vw - 40px)" className="object-cover" />
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,32,22,0.92),rgba(24,32,22,0.28))]" />
-            <div className="relative z-10 flex h-full max-w-[82%] flex-col justify-between p-5">
-              <div>
-                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#DEC8B0]">{slide.eyebrow}</p>
-                <h2 className="mt-2 max-w-[14rem] text-2xl font-semibold leading-[1.02]">{slide.title}</h2>
-                <p className="mt-2 max-w-[15rem] text-xs leading-5 text-white/80">{slide.description}</p>
-              </div>
-              <Link href={slide.href} className="inline-flex w-fit items-center gap-2 rounded-full bg-[#DEC8B0] px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#354329] transition hover:bg-white">
-                Explore now <ChevronRight size={14} />
-              </Link>
-            </div>
-          </div>
-        ))}
-        <div className="absolute bottom-4 right-5 z-20 flex items-center gap-1.5" aria-label="Featured slide controls">
-          {mobileSlides.map((slide, index) => (
-            <button
-              key={slide.title}
-              type="button"
-              aria-label={`Show slide ${index + 1}`}
-              aria-current={activeSlide === index}
-              onClick={() => setActiveSlide(index)}
-              className={`h-1.5 rounded-full transition-all ${activeSlide === index ? "w-5 bg-[#DEC8B0]" : "w-1.5 bg-white/60"}`}
-            />
-          ))}
-        </div>
-      </section>
       <nav className="sticky top-0 z-30 mt-4 bg-white/90 px-5 text-[#26301c] shadow-sm backdrop-blur-xl sm:px-8 lg:hidden">
         <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none]">
           {sectionLinks.map((section) => (
@@ -644,7 +571,7 @@ export default function Home() {
         </a>
       )}
       {menuOpen && (
-        <div className="fixed inset-0 z-[70] flex flex-col bg-[#26301c] px-6 pb-10 pt-8 text-white lg:hidden">
+        <div className="fixed inset-0 z-[70] flex flex-col bg-[#26301c] px-6 pb-10 pt-8 text-white">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">
               Spa Elaris
