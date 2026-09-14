@@ -85,12 +85,12 @@ export default function BottomNav() {
   const isProfile = pathname.startsWith("/profile");
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/20 bg-[#182016]/90 text-white shadow-xl backdrop-blur-xl">
+    <nav className="fixed bottom-0 left-0 right-0 z-50 rounded-t-2xl border-t border-white/40 bg-white/70 text-[#66703f] shadow-xl backdrop-blur-xl">
       <div className="mx-auto flex h-[59px] max-w-xl items-center justify-around px-2">
         <Link
           href="/"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${
-            isHome ? "text-[#f1e4bd]" : "text-white"
+            isHome ? "text-[#66703f]" : "text-[#66703f]/75"
           }`}
         >
           <HomeIcon active={isHome} />
@@ -100,7 +100,7 @@ export default function BottomNav() {
         <Link
           href="/search"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${
-            isSearch ? "text-[#f1e4bd]" : "text-white"
+            isSearch ? "text-[#66703f]" : "text-[#66703f]/75"
           }`}
         >
           <SearchIcon />
@@ -110,7 +110,7 @@ export default function BottomNav() {
         <Link
           href="/activity"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${
-            isActivity ? "text-[#f1e4bd]" : "text-white"
+            isActivity ? "text-[#66703f]" : "text-[#66703f]/75"
           }`}
         >
           <CalendarIcon />
@@ -120,7 +120,7 @@ export default function BottomNav() {
         <Link
           href="/profile"
           className={`flex min-w-[70px] flex-col items-center justify-center gap-0 transition ${
-            isProfile ? "text-[#f1e4bd]" : "text-white"
+            isProfile ? "text-[#66703f]" : "text-[#66703f]/75"
           }`}
         >
           <ProfileIcon />
