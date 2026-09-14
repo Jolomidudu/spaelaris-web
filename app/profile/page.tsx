@@ -1,109 +1,34 @@
-"use client";
+import Link from "next/link";
+import { ArrowLeft, ArrowUpRight, ShieldCheck } from "lucide-react";
 
-import { useRouter } from "next/navigation";
-import { ArrowLeft, Mail, Smartphone, X } from "lucide-react";
+const portalUrl = process.env.NEXT_PUBLIC_PORTAL_URL;
 
 export default function ProfilePage() {
-  const router = useRouter();
   return (
-    <main className="relative min-h-screen bg-[#f7f6ef] pb-28 text-[#26301c]">
+    <main className="min-h-screen bg-[#f7f6ef] pb-20 text-[#26301c]">
       <div className="bg-[#26301c] px-5 pb-10 pt-5 text-white sm:px-8">
         <div className="mx-auto max-w-md">
-          <button
-            type="button"
-            onClick={() => router.push("/explore")}
-            className="rounded-full p-2 text-white/80 transition hover:bg-white/10 hover:text-white"
-            aria-label="Back to explore"
-          >
+          <Link href="/" className="inline-flex rounded-full p-2 text-white/80 transition hover:bg-white/10 hover:text-white" aria-label="Back to Spa Elaris home">
             <ArrowLeft size={21} strokeWidth={1.8} />
-          </button>
-          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">Your Spa Elaris account</p>
-          <h1 className="mt-3 font-[var(--font-lora)] text-4xl font-medium leading-tight">Make every visit yours.</h1>
-          <p className="mt-3 max-w-sm text-sm leading-6 text-white/65">Sign in to manage appointments, save treatments and keep your wellness history together.</p>
+          </Link>
+          <p className="mt-8 text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">Spa Elaris client portal</p>
+          <h1 className="mt-3 font-[var(--font-lora)] text-4xl font-medium leading-tight">Your visits, all in one place.</h1>
+          <p className="mt-3 max-w-sm text-sm leading-6 text-white/65">Sign in to manage appointments, view your wellness history and keep your preferences together.</p>
         </div>
       </div>
-
-      <button
-        type="button"
-        onClick={() => router.push("/explore")}
-        className="absolute right-5 top-5 rounded-full p-2 text-white/80 transition hover:bg-white/10 hover:text-white"
-        aria-label="Close"
-      >
-        <X size={21} strokeWidth={1.8} />
-      </button>
 
       <div className="mx-auto max-w-md px-5 pt-8 sm:px-0">
-      <section className="rounded-3xl border border-[#66703f]/15 bg-white p-6 shadow-[0_18px_50px_rgba(38,48,28,0.08)] sm:p-8">
-      <h2 className="font-[var(--font-lora)] text-2xl font-medium text-[#26301c]">Login or sign up</h2>
-      <p className="mt-2 text-sm leading-6 text-[#606454]">We&apos;ll need to verify it&apos;s you.</p>
-
-      <form className="mt-7">
-        <label className="block text-xs font-semibold uppercase tracking-[0.16em] text-[#66703f]">
-          Email
-        </label>
-        <div className="relative mt-2">
-          <Mail size={17} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#66703f]" />
-          <input
-            type="email"
-            placeholder="Email address"
-            className="w-full rounded-2xl border border-[#66703f]/20 bg-[#f7f6ef]/60 px-4 py-3.5 pl-11 text-[15px] placeholder:text-[#606454]/60 focus:border-[#66703f] focus:outline-none focus:ring-4 focus:ring-[#66703f]/10"
-          />
-        </div>
-        <p className="mt-2 text-xs text-[#606454]">
-          We&apos;ll send you a verification code
-        </p>
-
-        <button type="submit" className="mt-5 w-full rounded-full bg-[#26301c] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#66703f]">
-          Continue
-        </button>
-      </form>
-
-      <div className="my-7 flex items-center gap-4">
-        <div className="h-px flex-1 bg-[#66703f]/15" />
-        <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#909487]">or continue with</span>
-        <div className="h-px flex-1 bg-[#66703f]/15" />
-      </div>
-
-      <div className="flex flex-col gap-3">
-        <button
-          type="button"
-          className="flex w-full items-center justify-center gap-3 rounded-full border border-[#66703f]/20 py-3.5 text-sm font-medium text-[#26301c] transition-colors hover:bg-[#f7f6ef]"
-        >
-          <Smartphone size={19} strokeWidth={1.8} />
-          Continue with mobile
-        </button>
-
-        <button
-          type="button"
-          className="flex w-full items-center justify-center gap-3 rounded-full border border-[#66703f]/20 py-3.5 text-sm font-medium text-[#26301c] transition-colors hover:bg-[#f7f6ef]"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="#4285F4"
-              d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-            />
-            <path
-              fill="#34A853"
-              d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-            />
-            <path
-              fill="#FBBC05"
-              d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-            />
-            <path
-              fill="#EA4335"
-              d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-            />
-          </svg>
-          Continue with Google
-        </button>
-      </div>
-      </section>
-      <p className="mt-6 text-center text-xs leading-5 text-[#606454]">By continuing, you agree to our terms and privacy policy.</p>
+        <section className="rounded-3xl border border-[#66703f]/15 bg-white p-6 shadow-[0_18px_50px_rgba(38,48,28,0.08)] sm:p-8">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#66703f]/10 text-[#66703f]"><ShieldCheck size={24} /></div>
+          <h2 className="mt-6 font-[var(--font-lora)] text-2xl font-medium">Continue to your secure portal</h2>
+          <p className="mt-3 text-sm leading-6 text-[#606454]">Authentication and account management are handled by the Spa Elaris client portal.</p>
+          {portalUrl ? (
+            <a href={portalUrl} className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#26301c] py-3.5 text-sm font-semibold text-white transition-colors hover:bg-[#66703f]">Open client portal <ArrowUpRight size={17} /></a>
+          ) : (
+            <div className="mt-7 rounded-2xl bg-[#f7f6ef] p-4 text-sm leading-6 text-[#606454]">The client portal address has not been configured yet. Please contact the studio to manage an existing appointment.</div>
+          )}
+        </section>
+        <p className="mt-6 text-center text-xs leading-5 text-[#606454]">For staff access, use the secure admin or operations portal provided by Spa Elaris.</p>
       </div>
     </main>
   );

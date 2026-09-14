@@ -1,32 +1,24 @@
-"use client";
-
-import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, Clock3, MapPin, Star } from "lucide-react";
 
 export default function Home() {
-  const router = useRouter();
-
-  useEffect(() => {
-    const transition = window.setTimeout(() => {
-      router.replace("/explore");
-    }, 2200);
-
-    return () => window.clearTimeout(transition);
-  }, [router]);
-
   return (
-    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[length:200%_200%] bg-gradient-to-br from-white via-[#f3f5e9] to-[#e7d9bf] px-5 py-10 text-center animate-[gradientShift_14s_ease_infinite] sm:px-8">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(216,196,135,0.3),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(102,112,63,0.16),transparent_38%)]" />
-
-      <div className="relative z-10 animate-[welcomeRise_1100ms_ease-out_both]">
-        <p className="mb-5 text-xs font-medium uppercase tracking-[0.35em] text-[#66703f]">Spa Elaris</p>
-        <h1 className="text-5xl font-light leading-[0.95] tracking-[-0.04em] text-[#26301c] sm:text-7xl lg:text-8xl">
-          Welcome to
-          <br />
-          <span className="font-semibold italic text-[#66703f]">Spa Elaris</span>
-        </h1>
-        
-      </div>
+    <main className="min-h-screen bg-[#f7f6ef] text-[#26301c]">
+      <section className="relative isolate min-h-[720px] overflow-hidden bg-[#26301c] px-5 pb-16 pt-36 text-white sm:px-8 lg:min-h-[820px] lg:px-12">
+        <Image src="/hero-spa.jpg" alt="A calm Spa Elaris treatment room" fill priority sizes="100vw" className="-z-20 object-cover opacity-55" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(25,34,20,0.94),rgba(25,34,20,0.35)),linear-gradient(0deg,rgba(25,34,20,0.75),transparent_60%)]" />
+        <div className="mx-auto flex min-h-[560px] max-w-7xl flex-col justify-end">
+          <p className="text-xs font-semibold uppercase tracking-[0.34em] text-[#d8c487]">Wellness, made personal</p>
+          <h1 className="mt-5 max-w-4xl text-5xl font-light leading-[0.98] tracking-[-0.04em] sm:text-7xl lg:text-8xl">Make space for<span className="block italic text-[#d8c487]">feeling well.</span></h1>
+          <p className="mt-7 max-w-xl text-base leading-8 text-white/75 sm:text-lg">Thoughtful massage, beauty and restorative treatments in a calm space designed around you.</p>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href="/services" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#d8c487] px-7 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-[#26301c] transition hover:bg-white">Explore treatments <ArrowRight size={16} /></Link><Link href="/contact" className="inline-flex items-center justify-center rounded-full border border-white/35 px-7 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-white transition hover:border-white hover:bg-white/10">Plan your visit</Link></div>
+        </div>
+      </section>
+      <section className="border-b border-[#66703f]/15 bg-[#f7f6ef] px-5 py-8 sm:px-8 lg:px-12"><div className="mx-auto grid max-w-7xl gap-6 sm:grid-cols-3"><div className="flex items-start gap-3"><Star className="mt-0.5 text-[#b58d2d]" size={19} fill="currentColor" /><div><p className="font-semibold">4.9 guest rating</p><p className="mt-1 text-sm text-[#606454]">128 thoughtful reviews</p></div></div><div className="flex items-start gap-3"><Clock3 className="mt-0.5 text-[#66703f]" size={19} /><div><p className="font-semibold">Open every day</p><p className="mt-1 text-sm text-[#606454]">Appointments from 9:00 AM</p></div></div><div className="flex items-start gap-3"><MapPin className="mt-0.5 text-[#66703f]" size={19} /><div><p className="font-semibold">Lagos and Abuja</p><p className="mt-1 text-sm text-[#606454]">Find your nearest studio</p></div></div></div></section>
+      <section className="px-5 py-20 sm:px-8 lg:px-12 lg:py-28"><div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-24"><div><p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Your Elaris experience</p><h2 className="mt-5 text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">Care that meets you where you are.</h2></div><div><p className="max-w-2xl text-base leading-8 text-[#606454]">From a restorative massage after a long week to skin care that brings your glow back, every visit begins with listening and ends with you feeling more like yourself.</p><Link href="/about" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#66703f]">Our approach <ArrowRight size={16} /></Link></div></div></section>
+      <section className="bg-[#e9e8d9] px-5 py-20 sm:px-8 lg:px-12 lg:py-28"><div className="mx-auto max-w-7xl"><div className="flex items-end justify-between gap-5"><div><p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">The treatment menu</p><h2 className="mt-4 text-4xl font-light sm:text-5xl">Begin with what you need.</h2></div><Link href="/services" className="hidden items-center gap-2 text-sm font-semibold text-[#66703f] sm:inline-flex">View all <ArrowRight size={16} /></Link></div><div className="mt-10 grid gap-4 sm:grid-cols-3"><Link href="/services/service-menu" className="group relative min-h-[300px] overflow-hidden rounded-2xl"><Image src="/massage.jpg" alt="Massage treatment" fill className="object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-[#26301c] to-transparent" /><div className="absolute bottom-0 p-6 text-white"><p className="text-xs uppercase tracking-[0.2em] text-[#d8c487]">01</p><h3 className="mt-2 text-2xl">Massage & wellness</h3></div></Link><Link href="/services/med-facials" className="group relative min-h-[300px] overflow-hidden rounded-2xl"><Image src="/facial.jpg" alt="Facial treatment" fill className="object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-[#26301c] to-transparent" /><div className="absolute bottom-0 p-6 text-white"><p className="text-xs uppercase tracking-[0.2em] text-[#d8c487]">02</p><h3 className="mt-2 text-2xl">Skin & facials</h3></div></Link><Link href="/services/foot-hand-care" className="group relative min-h-[300px] overflow-hidden rounded-2xl"><Image src="/hot-stone.jpg" alt="Spa care treatment" fill className="object-cover transition duration-700 group-hover:scale-105" /><div className="absolute inset-0 bg-gradient-to-t from-[#26301c] to-transparent" /><div className="absolute bottom-0 p-6 text-white"><p className="text-xs uppercase tracking-[0.2em] text-[#d8c487]">03</p><h3 className="mt-2 text-2xl">Hand & foot care</h3></div></Link></div><Link href="/services" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-[#66703f] sm:hidden">View all treatments <ArrowRight size={16} /></Link></div></section>
+      <section className="bg-[#26301c] px-5 py-20 text-white sm:px-8 lg:px-12 lg:py-28"><div className="mx-auto flex max-w-7xl flex-col gap-8 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">Ready when you are</p><h2 className="mt-4 max-w-2xl text-4xl font-light leading-tight sm:text-6xl">Your next reset starts here.</h2></div><Link href="/contact" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-[#d8c487] px-7 py-4 text-xs font-semibold uppercase tracking-[0.16em] text-[#26301c]">Book an experience <ArrowRight size={16} /></Link></div></section>
     </main>
   );
 }

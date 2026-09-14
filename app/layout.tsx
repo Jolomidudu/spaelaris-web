@@ -22,9 +22,12 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Spa Elaris",
+  title: {
+    default: "Spa Elaris | Wellness, beauty and restorative care",
+    template: "%s | Spa Elaris",
+  },
   description:
-    "Spa Elaris — wellness, beauty and restorative treatments.",
+    "Spa Elaris is a modern wellness destination for thoughtful massage, beauty and restorative treatments in Lagos and Abuja.",
 };
 
 export default function RootLayout({

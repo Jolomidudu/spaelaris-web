@@ -108,6 +108,12 @@ export default function Navbar() {
               >
                 Book Now
               </Link>
+              <Link
+                href="/profile"
+                className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/80 transition duration-300 hover:text-[#d8c487]"
+              >
+                Client login
+              </Link>
             </div>
 
             {/* MOBILE CONTROLS */}
@@ -180,6 +186,13 @@ export default function Navbar() {
               className="flex w-full items-center justify-center rounded-full bg-[#d8c487] px-7 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-[#344329] transition hover:bg-white"
             >
               Book an Experience
+            </Link>
+            <Link
+              href="/profile"
+              onClick={closeMenu}
+              className="mt-4 block text-center text-xs uppercase tracking-[0.18em] text-white/70 transition hover:text-[#d8c487]"
+            >
+              Client login
             </Link>
 
           </div>

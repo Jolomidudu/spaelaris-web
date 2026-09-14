@@ -1,19 +1,15 @@
 "use client";
 
+import Navbar from "./Navbar";
 import { usePathname } from "next/navigation";
-import BottomNav from "./BottomNav";
 
 export default function GlobalNav() {
   const pathname = usePathname();
-  const isCategoryPage = pathname.split("/").filter(Boolean).length === 2 && pathname.startsWith("/services/");
+  const privateRoutes = ["/profile", "/activity", "/notifications", "/location"];
 
-  return (
-    <>
-      {!isCategoryPage && (
-        <div className="lg:hidden">
-          <BottomNav />
-        </div>
-      )}
-    </>
-  );
+  if (privateRoutes.some((route) => pathname.startsWith(route))) {
+    return null;
+  }
+
+  return <Navbar />;
 }
