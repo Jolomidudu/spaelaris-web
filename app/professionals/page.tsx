@@ -19,7 +19,7 @@ export default function ProfessionalsPage() {
     <main className="min-h-screen bg-[#f7f6ef] px-5 pb-24 text-[#26301c] sm:px-8 lg:px-12">
       <header className="mx-auto flex max-w-6xl items-center gap-4 py-5">
         <Link
-          href="/explore"
+          href="/"
           aria-label="Back to explore"
           className="rounded-full p-2 text-[#26301c] transition hover:bg-[#66703f]/10"
         >

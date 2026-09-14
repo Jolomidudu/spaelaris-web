@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowUp, Search, X } from "lucide-react";
+import { ArrowUp, Search, UserRound, X } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -16,15 +16,12 @@ const navItems = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
    const handleScroll = () => {
   const currentScroll = window.scrollY;
 
-  setScrolled(currentScroll > 40);
   setShowBackToTop(currentScroll > 500);
 };
 
@@ -45,16 +42,10 @@ export default function Navbar() {
     <>
       {/* MAIN NAVBAR */}
       <header
-        className={`fixed left-0 right-0 top-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "border-b border-white/10 bg-[#26301c]/90 shadow-[0_8px_30px_rgba(0,0,0,0.12)] backdrop-blur-xl"
-            : "bg-[#344329]"
-        }`}
+        className="fixed left-0 right-0 top-0 z-50 border-b border-[#26301c]/10 bg-white/65 shadow-sm backdrop-blur-md"
       >
         <div
-          className={`mx-auto max-w-7xl px-5 transition-all duration-500 sm:px-8 lg:px-10 ${
-            scrolled ? "py-3" : "py-5"
-          }`}
+          className="mx-auto max-w-7xl px-5 py-5 sm:px-8 lg:px-10"
         >
           <nav className="flex items-center justify-between">
 
@@ -69,11 +60,7 @@ export default function Navbar() {
                 alt="Spa Elaris"
                 width={180}
                 height={120}
-                className={`w-auto object-contain transition-all duration-500 ${
-  scrolled
-    ? "h-[44px]"
-    : "h-[50px] sm:h-[58px] lg:h-[64px]"
-                }`}
+                className="h-[50px] w-auto object-contain sm:h-[58px] lg:h-[64px]"
                 priority
               />
             </Link>
@@ -85,7 +72,7 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/80 transition duration-300 hover:text-[#d8c487]"
+                  className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#3f4038] transition duration-300 hover:text-[#66703f]"
                 >
                   {item.label}
                 </Link>
@@ -96,23 +83,18 @@ export default function Navbar() {
                 type="button"
                 aria-label="Search"
                 onClick={() => setSearchOpen(true)}
-                className="ml-1 flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white/80 backdrop-blur-md transition duration-300 hover:border-[#d8c487]/60 hover:text-[#d8c487]"
+                className="ml-1 flex h-9 w-9 items-center justify-center rounded-full border border-[#3f4038]/20 bg-white/40 text-[#3f4038] backdrop-blur-md transition duration-300 hover:border-[#66703f]/60 hover:text-[#66703f]"
               >
                 <Search size={16} strokeWidth={1.6} />
               </button>
 
-              {/* BOOK NOW */}
-              <Link
-                href="/contact"
-                className="ml-1 rounded-full bg-[#d8c487] px-6 py-3 text-[10px] font-semibold uppercase tracking-[0.17em] text-[#344329] transition duration-300 hover:bg-white"
-              >
-                Book Now
-              </Link>
               <Link
                 href="/profile"
-                className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/80 transition duration-300 hover:text-[#d8c487]"
+                aria-label="Client login"
+                title="Client login"
+                className="ml-1 flex h-9 w-9 items-center justify-center rounded-full border border-[#3f4038]/20 bg-white/40 text-[#3f4038] backdrop-blur-md transition duration-300 hover:border-[#66703f]/60 hover:text-[#66703f]"
               >
-                Client login
+                <UserRound size={17} strokeWidth={1.7} />
               </Link>
             </div>
 

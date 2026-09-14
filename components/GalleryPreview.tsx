@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
 const galleryImages = [
@@ -69,9 +70,11 @@ export default function GalleryPreview() {
                   : ""
               }`}
             >
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
+                fill
+                sizes="(min-width: 640px) 50vw, 100vw"
                 className={`w-full object-cover transition duration-700 group-hover:scale-105 ${image.className}`}
               />
 

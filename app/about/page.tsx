@@ -8,7 +8,7 @@ export default function AboutPage() {
       <header className="border-b border-[#66703f]/15 bg-white/70 px-5 py-5 backdrop-blur-xl sm:px-8">
         <div className="mx-auto flex max-w-4xl items-center gap-4">
           <Link
-            href="/explore"
+            href="/"
             aria-label="Back to explore"
             className="rounded-full p-2 text-[#26301c] transition hover:bg-[#66703f]/10"
           >

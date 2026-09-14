@@ -7,7 +7,7 @@ export default function NotificationsPage() {
       <header className="border-b border-[#66703f]/15 bg-white/70 px-5 py-5 backdrop-blur-xl sm:px-8">
         <div className="mx-auto flex max-w-2xl items-center gap-4">
           <Link
-            href="/explore"
+            href="/"
             aria-label="Back to explore"
             className="rounded-full p-2 text-[#252820] transition hover:bg-[#66703f]/10"
           >
@@ -26,7 +26,7 @@ export default function NotificationsPage() {
           We&apos;ll let you know about new offers, appointments and updates here.
         </p>
         <Link
-          href="/explore"
+          href="/"
           className="mt-8 rounded-full bg-[#26301c] px-5 py-3 text-sm font-medium text-white transition hover:bg-[#66703f]"
         >
           Explore services

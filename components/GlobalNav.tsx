@@ -1,6 +1,7 @@
 "use client";
 
 import Navbar from "./Navbar";
+import BottomNav from "./BottomNav";
 import { usePathname } from "next/navigation";
 
 export default function GlobalNav() {
@@ -11,5 +12,14 @@ export default function GlobalNav() {
     return null;
   }
 
-  return <Navbar />;
+  return (
+    <>
+      <div className="hidden lg:block">
+        <Navbar />
+      </div>
+      <div className="lg:hidden">
+        <BottomNav />
+      </div>
+    </>
+  );
 }

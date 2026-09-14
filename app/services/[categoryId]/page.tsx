@@ -1,5 +1,6 @@
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import "./category.css";
 import { notFound } from "next/navigation";
@@ -37,15 +38,17 @@ export default async function CategoryPage({
       <section className="category-hero">
 
         <div className="category-hero-image">
-          <img
+          <Image
             src={category.image}
             alt={category.name}
+            fill
+            sizes="100vw"
           />
         </div>
 
         <div className="category-hero-content">
 
-          <Link href="/explore" className="back-button" aria-label="Back to explore">
+          <Link href="/" className="back-button" aria-label="Back to home">
             <ArrowLeft size={24} strokeWidth={2} aria-hidden="true" />
           </Link>
 

@@ -17,10 +17,10 @@ export default function SearchPage() {
       <header className="bg-[#26301c] px-5 pb-8 pt-5 text-white sm:px-8">
         <div className="mx-auto max-w-5xl">
           <div className="flex items-center justify-between">
-            <Link href="/explore" aria-label="Back to explore" className="rounded-full p-2 transition hover:bg-white/10">
+            <Link href="/" aria-label="Back to home" className="rounded-full p-2 transition hover:bg-white/10">
               <ArrowLeft size={21} strokeWidth={1.8} />
             </Link>
-            <Link href="/explore" aria-label="Close search" className="rounded-full p-2 transition hover:bg-white/10">
+            <Link href="/" aria-label="Close search" className="rounded-full p-2 transition hover:bg-white/10">
               <X size={22} strokeWidth={1.8} />
             </Link>
           </div>

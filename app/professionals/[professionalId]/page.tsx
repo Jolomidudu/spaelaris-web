@@ -88,7 +88,7 @@ export default async function ProfessionalDetailPage({
   return (
     <main className="min-h-screen bg-[#f7f6ef] pb-28 text-[#26301c]">
       <header className="mx-auto flex max-w-5xl items-center gap-4 px-5 py-5 sm:px-8">
-        <Link href="/explore" aria-label="Back to explore" className="rounded-full p-2 transition hover:bg-[#66703f]/10">
+        <Link href="/" aria-label="Back to home" className="rounded-full p-2 transition hover:bg-[#66703f]/10">
           <ArrowLeft size={22} strokeWidth={1.8} />
         </Link>
         <p className="text-sm font-medium text-[#606454]">Professional profile</p>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUpRight, Check } from "lucide-react";
 
 const highlights = [
@@ -18,9 +19,11 @@ export default function AboutExperience() {
           {/* IMAGE */}
           <div className="relative">
             <div className="relative h-[500px] overflow-hidden rounded-[2rem] sm:h-[600px]">
-              <img
+              <Image
                 src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=85"
                 alt="Spaelaris wellness experience"
+                fill
+                sizes="(min-width: 1024px) 45vw, 100vw"
                 className="h-full w-full object-cover"
               />
 
