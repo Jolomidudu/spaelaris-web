@@ -14,7 +14,7 @@ export default function AboutPage() {
           >
             <ArrowLeft size={22} strokeWidth={1.8} />
           </Link>
-          <h1 className="font-[var(--font-lora)] text-2xl font-semibold">About Spa Elaris</h1>
+          <h1 className="text-2xl font-semibold">About Spa Elaris</h1>
         </div>
       </header>
 
@@ -33,7 +33,7 @@ export default function AboutPage() {
 
         <article className="mt-10 max-w-3xl">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">The Spa Elaris standard</p>
-          <h2 className="mt-4 max-w-2xl font-[var(--font-lora)] text-4xl font-medium leading-tight sm:text-6xl">
+          <h2 className="mt-4 max-w-2xl text-4xl font-medium leading-tight sm:text-6xl">
             Wellness, made personal.
           </h2>
           <div className="mt-7 space-y-5 text-base leading-8 text-[#606454]">
@@ -57,7 +57,7 @@ export default function AboutPage() {
           ].map(([number, title, description]) => (
             <div key={number} className="rounded-2xl bg-white p-5 shadow-sm">
               <span className="text-xs font-semibold tracking-[0.2em] text-[#66703f]">{number}</span>
-              <h3 className="mt-5 font-[var(--font-lora)] text-xl font-medium">{title}</h3>
+              <h3 className="mt-5 text-xl font-medium">{title}</h3>
               <p className="mt-2 text-sm leading-6 text-[#606454]">{description}</p>
             </div>
           ))}

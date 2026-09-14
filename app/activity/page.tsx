@@ -24,7 +24,7 @@ export default function ActivityPage() {
       <header className="bg-[#26301c] px-5 pb-9 pt-8 text-white sm:px-8">
         <div className="mx-auto max-w-4xl">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">Your Spa Elaris journey</p>
-          <h1 className="mt-3 font-[var(--font-lora)] text-4xl font-medium">Activity</h1>
+          <h1 className="mt-3 text-4xl font-medium">Activity</h1>
           <p className="mt-3 max-w-md text-sm leading-6 text-white/65">Keep track of the moments you have made time for yourself.</p>
         </div>
       </header>
@@ -58,7 +58,7 @@ export default function ActivityPage() {
               </div>
               <div className="flex items-start justify-between gap-5 p-5">
                 <div>
-                  <h2 className="font-[var(--font-lora)] text-xl font-medium">{booking.name}</h2>
+                  <h2 className="text-xl font-medium">{booking.name}</h2>
                   <p className="mt-3 flex items-center gap-2 text-sm text-[#606454]"><Clock3 size={15} />{booking.detail}</p>
                   <p className="mt-2 flex items-center gap-2 text-sm text-[#606454]"><MapPin size={15} />{booking.location}</p>
                 </div>

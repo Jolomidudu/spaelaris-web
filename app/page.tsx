@@ -152,7 +152,7 @@ export default function Home() {
               priority
               className="h-[62px] w-auto object-contain"
             />
-            <span className="font-[var(--font-lora)] text-lg font-semibold tracking-[-0.02em] text-[#26301c] sm:text-xl">
+            <span className="text-lg font-semibold tracking-[-0.02em] text-[#26301c] sm:text-xl">
               SPA ELARIS
             </span>
           </Link>
@@ -213,7 +213,7 @@ export default function Home() {
       <section id="services" className="scroll-mt-16 bg-transparent">
         <div className="mx-auto max-w-6xl px-5 pb-8 pt-2 sm:px-8 sm:pt-3 lg:px-12 lg:py-10 lg:pt-[30vh]">
           <div className="mb-3 flex items-center justify-between gap-4 sm:mb-6">
-            <h2 className="font-[var(--font-lora)] text-lg font-medium text-[#26301c] sm:text-2xl">
+            <h2 className="text-[12px] font-medium text-[#26301c] sm:text-2xl">
               SELECT A SERVICE TO START
             </h2>
             <Link
@@ -230,7 +230,7 @@ export default function Home() {
                 href={href}
                 className="group relative aspect-[1.71] overflow-hidden rounded-2xl border border-[#c7ad91] bg-[#DEC8B0] shadow-lg transition duration-500 hover:-translate-y-2 hover:bg-[#d6b894] hover:shadow-2xl sm:rounded-3xl"
               >
-                <div className="relative flex h-full flex-col justify-between p-3 font-[var(--font-dm-sans)] text-[#3f4038] sm:p-5">
+                <div className="relative flex h-full flex-col justify-between p-3 text-[#3f4038] sm:p-5">
                   <div className="flex items-start justify-between gap-2">
                     <span
                       aria-hidden="true"
@@ -242,7 +242,7 @@ export default function Home() {
                       className="shrink-0 text-[#3f4038]"
                     />
                   </div>
-                  <h2 className="max-w-[10rem] font-[var(--font-dm-sans)] text-sm font-medium leading-tight text-[#3f4038] sm:text-lg lg:text-xl">
+                  <h2 className="max-w-[10rem] text-sm font-medium leading-tight text-[#3f4038] sm:text-lg lg:text-xl">
                     {name}
                   </h2>
                 </div>

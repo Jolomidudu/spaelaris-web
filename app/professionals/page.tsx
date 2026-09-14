@@ -27,7 +27,7 @@ export default function ProfessionalsPage() {
         </Link>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Spa Elaris</p>
-          <h1 className="mt-1 font-[var(--font-lora)] text-2xl font-semibold sm:text-3xl">Select Professional</h1>
+          <h1 className="mt-1 text-2xl font-semibold sm:text-3xl">Select Professional</h1>
         </div>
       </header>
 

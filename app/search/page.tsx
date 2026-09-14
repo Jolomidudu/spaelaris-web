@@ -25,7 +25,7 @@ export default function SearchPage() {
             </Link>
           </div>
           <p className="mt-6 text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">Explore Spa Elaris</p>
-          <h1 className="mt-3 font-[var(--font-lora)] text-3xl font-medium sm:text-4xl">Find your treatment.</h1>
+          <h1 className="mt-3 text-3xl font-medium sm:text-4xl">Find your treatment.</h1>
         </div>
       </header>
 

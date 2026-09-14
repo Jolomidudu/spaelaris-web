@@ -96,7 +96,7 @@ export default async function ProfessionalDetailPage({
 
       <section className="mx-auto max-w-5xl px-5 pb-10 text-center sm:px-8">
         <Image src={professional.image} alt={professional.name} width={144} height={144} className="mx-auto h-36 w-36 rounded-full object-cover shadow-md" priority />
-        <h1 className="mt-5 font-[var(--font-lora)] text-3xl font-semibold text-black sm:text-4xl">{professional.name}</h1>
+        <h1 className="mt-5 text-3xl font-semibold text-black sm:text-4xl">{professional.name}</h1>
         <p className="mt-2 text-sm text-[#606454]">{professional.role}</p>
         <div className="mt-3 flex items-center justify-center gap-1.5 text-sm text-[#66703f]"><Star size={15} fill="currentColor" />{professional.rating}</div>
         <p className="mt-2 flex items-center justify-center gap-1.5 text-sm text-[#606454]"><MapPin size={15} />{professional.city}</p>
@@ -107,7 +107,7 @@ export default async function ProfessionalDetailPage({
       <div className="mx-auto max-w-5xl space-y-16 px-5 py-10 sm:px-8">
         <section id="featured" className="scroll-mt-20">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[#66703f]">Featured</p>
-          <h2 className="mt-3 font-[var(--font-lora)] text-3xl font-medium">Signature care by {professional.name.split(" ")[0]}.</h2>
+          <h2 className="mt-3 text-3xl font-medium">Signature care by {professional.name.split(" ")[0]}.</h2>
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
             {professional.featured.map((service) => <div key={service} className="rounded-2xl bg-white p-5 text-sm font-medium shadow-sm">{service}</div>)}
           </div>

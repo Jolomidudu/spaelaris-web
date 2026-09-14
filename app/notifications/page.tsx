@@ -13,7 +13,7 @@ export default function NotificationsPage() {
           >
             <ArrowLeft size={22} strokeWidth={1.8} />
           </Link>
-          <h1 className="font-[var(--font-lora)] text-2xl font-semibold">Notifications</h1>
+          <h1 className="text-2xl font-semibold">Notifications</h1>
         </div>
       </header>
 
@@ -21,7 +21,7 @@ export default function NotificationsPage() {
         <div className="flex h-20 w-20 items-center justify-center rounded-full bg-[#66703f]/10 text-[#66703f]">
           <Bell size={34} strokeWidth={1.5} />
         </div>
-        <h2 className="mt-6 font-[var(--font-lora)] text-2xl font-semibold">No notifications yet</h2>
+        <h2 className="mt-6 text-2xl font-semibold">No notifications yet</h2>
         <p className="mt-3 max-w-xs text-sm leading-6 text-[#606454]">
           We&apos;ll let you know about new offers, appointments and updates here.
         </p>
