@@ -285,9 +285,13 @@ export default function Home() {
       </nav>
       <section id="services" className="scroll-mt-16 bg-transparent">
         <div className="mx-auto max-w-6xl px-5 pb-8 pt-[7px] sm:px-8 sm:pt-3 lg:px-12 lg:py-10 lg:pt-[30vh]">
-          <div className="mb-3 flex items-center justify-between gap-4 sm:mb-6">
+          <div className="mb-[42px] flex items-center justify-between gap-4 sm:mb-6">
             <h2 className="ml-[15px] text-[12px] font-medium text-[#26301c] sm:ml-0 sm:text-2xl">
-              SELECT A SERVICE TO START
+              <span className="inline-flex flex-col rounded-xl bg-[#3f4038] px-3 py-2 text-[10px] font-semibold leading-[1.1] tracking-[0.12em] text-white lg:hidden">
+                <span>SWIPE - CHOOSE A SERVICE</span>
+                
+              </span>
+              
             </h2>
             <Link
               href="/services"
