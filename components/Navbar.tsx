@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowUp, Search, UserRound, X } from "lucide-react";
+import { ArrowUp, Leaf, Search, UserRound, X } from "lucide-react";
 
 const navItems = [
   { label: "Home", href: "/" },
@@ -56,13 +56,23 @@ export default function Navbar() {
               className="relative z-50 flex shrink-0 items-center"
             >
               <Image
-                src="/se-logo.png"
+                src="/selogo.png"
                 alt="Spa Elaris"
-                width={180}
-                height={120}
-                className="h-[50px] w-auto object-contain sm:h-[58px] lg:h-[64px]"
+                width={200}
+                height={140}
+                className="h-[52px] w-auto object-contain sm:h-[58px] lg:h-[64px]"
                 priority
               />
+              <span className="hidden lg:flex lg:flex-col lg:justify-center lg:gap-1">
+                <span className="font-semibold leading-none tracking-[0.08em] text-[#26301c]">
+                  SPA ELARIS
+                </span>
+                <span className="flex items-center gap-1 text-[9px] font-medium uppercase tracking-[0.14em] text-[#66703f]">
+                  
+                  Premium Wellness Oasis
+                  <Leaf size={11} strokeWidth={1.8} />
+                </span>
+              </span>
             </Link>
 
             {/* DESKTOP NAVIGATION */}

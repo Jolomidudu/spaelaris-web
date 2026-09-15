@@ -20,6 +20,7 @@ import {
   ChevronRight,
   Mail,
   X,
+  Leaf,
 } from "lucide-react";
 import { serviceCategories } from "@/data/services";
 
@@ -191,8 +192,14 @@ export default function Home() {
               priority
               className="h-[62px] w-auto object-contain"
             />
-            <span className="text-lg font-semibold tracking-[-0.02em] text-[#26301c] sm:text-xl">
-              SPA ELARIS
+            <span className="flex flex-col justify-center gap-1">
+              <span className="text-lg font-semibold leading-none tracking-[-0.02em] text-[#26301c] sm:text-xl">
+                SPA ELARIS
+              </span>
+              <span className="flex items-center gap-1 text-[8px] font-medium uppercase tracking-[0.12em] text-[#66703f]">
+                Premium Wellness Oasis
+                <Leaf size={10} strokeWidth={1.8} />
+              </span>
             </span>
           </Link>
           <div className="flex items-center gap-1">
@@ -269,7 +276,7 @@ export default function Home() {
           ))}
         </div>
       </section>
-      <nav className="sticky top-0 z-30 mt-4 bg-white/90 px-5 text-[#26301c] shadow-sm backdrop-blur-xl sm:px-8 lg:hidden">
+      <nav className="sticky top-0 z-30 mt-[19px] bg-white/90 px-5 text-[#26301c] shadow-sm backdrop-blur-xl sm:px-8 lg:hidden">
         <div className="mx-auto flex max-w-6xl gap-7 overflow-x-auto [scrollbar-width:none]">
           {sectionLinks.map((section) => (
             <a
@@ -284,12 +291,44 @@ export default function Home() {
         </div>
       </nav>
       <section id="services" className="scroll-mt-16 bg-transparent">
-        <div className="mx-auto max-w-6xl px-5 pb-8 pt-[7px] sm:px-8 sm:pt-3 lg:px-12 lg:py-10 lg:pt-[30vh]">
-          <div className="mb-[42px] flex items-center justify-between gap-4 sm:mb-6">
+        <div className="mx-auto max-w-6xl px-5 pb-8 pt-[7px] sm:px-8 sm:pt-3 lg:px-12 lg:py-10 lg:pt-[calc(12vh+90px)]">
+          <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
+          <div className="mb-10 hidden overflow-hidden rounded-[28px] text-white shadow-xl lg:relative lg:mb-0 lg:block lg:h-[420px]">
+            {mobileSlides.map((slide, index) => (
+              <div
+                key={`desktop-${slide.title}`}
+                className={`absolute inset-0 transition-opacity duration-700 ${activeSlide === index ? "z-10 opacity-100" : "pointer-events-none opacity-0"}`}
+                aria-hidden={activeSlide !== index}
+              >
+                <Image src={slide.image} alt="" fill sizes="42vw" className="object-cover" />
+                <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(24,32,22,0.9),rgba(24,32,22,0.22))]" />
+                <div className="relative z-10 flex h-full max-w-[78%] flex-col justify-between p-8">
+                  <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#DEC8B0]">{slide.eyebrow}</p>
+                    <h2 className="mt-3 max-w-[20rem] text-4xl font-semibold leading-[1.02]">{slide.title}</h2>
+                    <p className="mt-4 max-w-[22rem] text-sm leading-6 text-white/80">{slide.description}</p>
+                  </div>
+                  <Link href={slide.href} className="inline-flex w-fit items-center gap-2 rounded-full bg-[#DEC8B0] px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#354329] transition hover:bg-white">
+                    Explore now <ChevronRight size={16} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+            <div className="absolute bottom-6 right-7 z-20 flex items-center gap-2" aria-label="Featured slide controls">
+              {mobileSlides.map((slide, index) => (
+                <button key={`desktop-dot-${slide.title}`} type="button" aria-label={`Show slide ${index + 1}`} aria-current={activeSlide === index} onClick={() => setActiveSlide(index)} className={`h-2 rounded-full transition-all ${activeSlide === index ? "w-7 bg-[#DEC8B0]" : "w-2 bg-white/60"}`} />
+              ))}
+            </div>
+          </div>
+          <div className="lg:w-full">
+          <div className="mb-[32px] flex items-center justify-between gap-4 sm:mb-6">
             <h2 className="ml-[15px] text-[12px] font-medium text-[#26301c] sm:ml-0 sm:text-2xl">
               <span className="inline-flex flex-col rounded-xl bg-[#3f4038] px-3 py-2 text-[10px] font-semibold leading-[1.1] tracking-[0.12em] text-white lg:hidden">
                 <span>SWIPE - CHOOSE A SERVICE</span>
                 
+              </span>
+              <span className="hidden text-sm font-semibold uppercase tracking-[0.16em] text-[#3f4038] lg:inline">
+                SELECT A SERVICE
               </span>
               
             </h2>
@@ -300,12 +339,12 @@ export default function Home() {
               See all <ChevronRight size={16} />
             </Link>
           </div>
-          <div className="mx-auto flex w-[95%] gap-[0.97rem] overflow-x-auto pb-2 [scrollbar-width:none] sm:gap-[1.61rem] lg:grid lg:w-auto lg:max-w-[69.1rem] lg:grid-cols-4 lg:gap-[2.24rem] lg:overflow-visible lg:pb-0">
+          <div className="mx-auto flex w-[95%] gap-[0.97rem] overflow-x-auto pb-2 [scrollbar-width:none] sm:gap-[1.61rem] lg:grid lg:w-full lg:max-w-none lg:grid-cols-3 lg:gap-5 lg:overflow-visible lg:pb-0">
             {cards.map(({ id, name, href, Icon }) => (
               <Link
                 key={id}
                 href={href}
-                className="group relative aspect-[1.71] w-[40%] shrink-0 overflow-hidden rounded-2xl border border-[#c7ad91] bg-[#DEC8B0] shadow-lg transition duration-500 hover:-translate-y-2 hover:bg-[#d6b894] hover:shadow-2xl sm:rounded-3xl lg:w-auto"
+                className="group relative aspect-[1.52] w-[36%] shrink-0 overflow-hidden rounded-2xl border border-[#c7ad91] bg-[#DEC8B0] shadow-lg transition duration-500 hover:-translate-y-2 hover:bg-[#d6b894] hover:shadow-2xl sm:rounded-3xl lg:aspect-[1.49] lg:w-auto"
               >
                 <div className="relative flex h-full flex-col justify-between p-3 text-[#3f4038] sm:p-5">
                   <div className="flex items-start justify-between gap-2">
@@ -319,12 +358,14 @@ export default function Home() {
                       className="shrink-0 text-[#3f4038]"
                     />
                   </div>
-                  <h2 className="max-w-[10rem] text-[9px] font-medium leading-tight text-[#3f4038] sm:text-lg lg:text-xl">
+                  <h2 className="max-w-[10rem] text-[15px] font-medium leading-tight text-[#3f4038] sm:text-lg lg:text-[16px]">
                     {name}
                   </h2>
                 </div>
               </Link>
             ))}
+          </div>
+          </div>
           </div>
         </div>
       </section>
