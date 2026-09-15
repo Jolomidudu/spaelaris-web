@@ -1,11 +1,28 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, MoreVertical, X } from "lucide-react";
+import { useState } from "react";
 
 export default function AboutPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-[#f7f6ef] text-[#26301c]">
-      <header className="border-b border-[#66703f]/15 bg-white/70 px-5 py-5 backdrop-blur-xl sm:px-8">
+      <header className="sticky top-0 z-40 flex min-h-[72px] items-center border-b border-black/[0.08] bg-white/50 px-5 py-3 shadow-sm backdrop-blur-xl lg:hidden">
+        <div className="flex items-center gap-3">
+          <Link href="/" aria-label="Back to home" className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-[#DEC8B0] text-[#354329] shadow-sm transition hover:bg-[#d6b894]">
+            <ArrowLeft size={21} strokeWidth={2.2} />
+          </Link>
+          <h1 className="text-[17px] font-semibold text-[#111]">About Spa Elaris</h1>
+        </div>
+        <button type="button" aria-label="Open menu" aria-expanded={menuOpen} onClick={() => setMenuOpen(true)} className="absolute right-[50px] flex h-[42px] w-[42px] items-center justify-center rounded-full text-[#354329] transition hover:bg-[#DEC8B0]/50">
+          <MoreVertical size={22} strokeWidth={2.6} />
+        </button>
+      </header>
+
+      <header className="hidden border-b border-[#66703f]/15 bg-white/70 px-5 py-5 backdrop-blur-xl lg:block sm:px-8">
         <div className="mx-auto flex max-w-4xl items-center gap-4">
           <Link
             href="/"
@@ -18,16 +35,29 @@ export default function AboutPage() {
         </div>
       </header>
 
+      {menuOpen && (
+        <div className="fixed inset-0 z-[70] flex flex-col bg-[#26301c] px-6 pb-10 pt-8 text-white lg:hidden">
+          <div className="flex items-center justify-between">
+            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">Spa Elaris</span>
+            <button type="button" aria-label="Close menu" onClick={() => setMenuOpen(false)} className="rounded-full p-2 text-white/80 hover:bg-white/10"><X size={22} /></button>
+          </div>
+          <nav className="mt-12 flex flex-col">
+            {[{ label: "Home", href: "/" }, { label: "About us", href: "/about" }, { label: "Services", href: "/services" }, { label: "Gallery", href: "/gallery" }, { label: "Contact", href: "/contact" }, { label: "Client login", href: "/profile" }].map((item) => (
+              <Link key={item.label} href={item.href} onClick={() => setMenuOpen(false)} className="border-b border-white/10 py-5 text-3xl font-light">{item.label}</Link>
+            ))}
+          </nav>
+        </div>
+      )}
+
       <div className="mx-auto max-w-4xl px-5 py-10 sm:px-8 sm:py-16">
-        <div className="relative flex h-[280px] items-center justify-center overflow-hidden rounded-3xl bg-[#26301c] sm:h-[440px]">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(216,196,135,0.24),transparent_42%),linear-gradient(135deg,#26301c,#66703f)]" />
+        <div className="relative h-[280px] overflow-hidden rounded-3xl sm:h-[440px]">
           <Image
-            src="/selogo.png"
-            alt="Spa Elaris logo"
-            width={320}
-            height={220}
+            src="/seoffice.png"
+            alt="Spa Elaris office"
+            fill
             priority
-            className="relative z-10 h-auto w-48 object-contain brightness-0 invert sm:w-64"
+            sizes="(min-width: 640px) 768px, 100vw"
+            className="object-cover"
           />
         </div>
 

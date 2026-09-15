@@ -3,7 +3,11 @@
 import { ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-export default function CategoryBackButton() {
+type CategoryBackButtonProps = {
+  className?: string;
+};
+
+export default function CategoryBackButton({ className = "back-button" }: CategoryBackButtonProps) {
   const router = useRouter();
 
   const goBack = () => {
@@ -16,7 +20,7 @@ export default function CategoryBackButton() {
   };
 
   return (
-    <button type="button" onClick={goBack} className="back-button" aria-label="Go back">
+    <button type="button" onClick={goBack} className={className} aria-label="Go back">
       <ArrowLeft size={24} strokeWidth={2} aria-hidden="true" />
     </button>
   );

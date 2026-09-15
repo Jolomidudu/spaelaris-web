@@ -57,7 +57,7 @@
 
 .back-button {
   position: absolute;
-  top: 30px;
+  top: 130px;
   left: 30px;
 
   width: 52px;
@@ -74,6 +74,10 @@
 
   font-size: 28px;
   text-decoration: none;
+}
+
+.category-mobile-header {
+  display: none;
 }
 
 .category-number {
@@ -334,6 +338,50 @@
 ========================= */
 
 @media (max-width: 700px) {
+
+  .category-mobile-header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-height: 72px;
+    padding: 12px 20px;
+
+    background: rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.08);
+    backdrop-filter: blur(16px);
+  }
+
+  .category-mobile-header h1 {
+    margin: 0;
+    color: #111;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  .category-mobile-back-button {
+    position: static;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #dec8b0;
+    color: #354329;
+    font-size: 22px;
+  }
+
+  .category-hero-content > .back-button {
+    display: none;
+  }
 
   .category-hero {
     min-height: 390px;

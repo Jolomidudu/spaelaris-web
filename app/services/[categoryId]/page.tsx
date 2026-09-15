@@ -33,6 +33,10 @@ export default async function CategoryPage({
 
   return (
     <main className="category-page">
+      <header className="category-mobile-header">
+        <CategoryBackButton className="category-mobile-back-button" />
+        <h1>{category.shortName}</h1>
+      </header>
 
       {/* HERO */}
       <section className="category-hero">

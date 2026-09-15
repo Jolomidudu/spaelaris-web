@@ -22,7 +22,7 @@ export default function ServicesPage() {
 
   return (
     <main className="min-h-screen bg-[#f4f2e9] text-[#354329]">
-      <header className={`sticky top-0 z-40 flex items-center justify-between rounded-b-2xl px-5 py-3 transition-colors duration-300 lg:hidden ${headerScrolled ? "border-b border-white/40 bg-white/70 shadow-sm backdrop-blur-xl" : "border-b border-transparent bg-transparent"}`}>
+      <header className={`sticky top-0 z-40 flex min-h-[72px] w-full items-center justify-between px-5 py-3 transition-colors duration-300 lg:hidden ${headerScrolled ? "border-b border-white/40 bg-white/70 shadow-sm backdrop-blur-xl" : "border-b border-transparent bg-transparent"}`}>
         <div className="flex items-center gap-3">
           <Link
             href="/"
@@ -38,7 +38,7 @@ export default function ServicesPage() {
           aria-label="Open menu"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen(true)}
-          className="mr-[-30px] flex h-9 w-9 items-center justify-center rounded-full text-[#26301c] transition hover:bg-[#66703f]/10"
+          className="mr-[20px] flex h-9 w-9 items-center justify-center rounded-full text-[#26301c] transition hover:bg-[#66703f]/10"
         >
           <MoreVertical size={21} strokeWidth={2.5} />
         </button>
@@ -47,7 +47,7 @@ export default function ServicesPage() {
       {/* HERO */}
       <section className="relative overflow-hidden bg-[#DEC8B0] px-6 py-[2.8rem] text-[#354329] md:px-12 md:py-16 lg:px-20">
         <Image src="/hero-spa.jpg" alt="Spa Elaris treatment space" fill priority sizes="100vw" className="object-cover" />
-        <div className="absolute inset-0 bg-white/45" />
+        <div className="absolute inset-0 bg-[#182016]/70 lg:bg-white/45" />
         <div className="mx-auto max-w-7xl">
           <Link
             href="/"
@@ -57,12 +57,12 @@ export default function ServicesPage() {
             <ArrowLeft size={16} />
             Back
           </Link>
-          <p className="relative mb-6 text-[10px] font-medium uppercase tracking-[0.35em] text-[#354329]">
+          <p className="relative mb-6 text-[10px] font-medium uppercase tracking-[0.35em] text-white lg:text-[#354329]">
             The Elaris Menu
           </p>
 
-          <h1 className="relative max-w-4xl text-[21px] font-light leading-[0.95] tracking-[-0.04em] md:text-5xl lg:text-6xl">
-            Explore Our Services
+          <h1 className="relative max-w-4xl text-[21px] font-light leading-[0.95] tracking-[-0.04em] text-white md:text-5xl lg:text-6xl lg:text-[#354329]">
+            Start Your Journey to Wellness
            
           </h1>
 
@@ -90,7 +90,7 @@ export default function ServicesPage() {
             <Link
               key={category.id}
               href={`/services/${category.id}`}
-              className="group relative min-h-[172px] overflow-hidden rounded-[28px] bg-[#414f30]"
+              className="group relative min-h-[120px] overflow-hidden rounded-[28px] bg-[#414f30] md:min-h-[172px]"
             >
               {/* IMAGE */}
               <Image
@@ -106,21 +106,13 @@ export default function ServicesPage() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#182016]/95 via-[#182016]/55 to-[#182016]/20" />
 
               {/* CONTENT */}
-              <div className="absolute bottom-0 left-0 right-0 p-7 md:p-9">
-                
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-9">
+                <div className="flex items-end justify-between gap-2">
+                  <h3 className="max-w-[75%] text-lg font-light leading-tight text-white md:text-2xl">
+                    {category.name}
+                  </h3>
 
-                <h3 className="text-lg font-light text-white md:text-2xl">
-                  {category.name}
-                </h3>
-
-                {/* <p className="mt-3 max-w-md text-sm leading-6 text-white/70">
-                  {category.description}
-                </p> */}
-
-                <div className="mt-6 flex items-center gap-3 text-xs text-white">
-                 
-
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 transition group-hover:bg-white group-hover:text-[#354329]">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/30 text-xs transition group-hover:bg-white group-hover:text-[#354329]">
                     ↗
                   </span>
                 </div>
@@ -189,29 +181,7 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#354329] px-6 py-28 text-center text-[#f4f2e9] md:px-12">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-[#d8c98c]">
-          Your wellness journey
-        </p>
-
-        <h2 className="mx-auto mt-5 max-w-3xl text-4xl font-light leading-tight md:text-6xl">
-          Find the treatment
-          <br />
-          <span className="italic text-[#d8c98c]">made for you.</span>
-        </h2>
-
-        <p className="mx-auto mt-6 max-w-lg text-sm leading-7 text-white/60">
-          Take your time exploring the Elaris collection.
-          Your perfect wellness experience is waiting.
-        </p>
-
-        <Link
-          href="/contact"
-          className="mt-9 inline-flex rounded-full bg-[#d8c98c] px-7 py-3 text-xs font-medium text-[#354329] transition hover:bg-white"
-        >
-          Contact Spaelaris ↗
-        </Link>
-      </section>
+      
       {menuOpen && (
         <div className="fixed inset-0 z-[70] flex flex-col bg-[#26301c] px-6 pb-10 pt-8 text-white lg:hidden">
           <div className="flex items-center justify-between">

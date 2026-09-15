@@ -291,7 +291,7 @@ export default function Home() {
         </div>
       </nav>
       <section id="services" className="scroll-mt-16 bg-transparent">
-        <div className="mx-auto max-w-6xl px-5 pb-8 pt-[7px] sm:px-8 sm:pt-3 lg:px-12 lg:py-10 lg:pt-[calc(12vh+90px)]">
+        <div className="mx-auto max-w-6xl px-5 pb-8 pt-[17px] sm:px-8 sm:pt-3 lg:px-12 lg:py-10 lg:pt-[calc(12vh+90px)]">
           <div className="lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
           <div className="mb-10 hidden overflow-hidden rounded-[28px] text-white shadow-xl lg:relative lg:mb-0 lg:block lg:h-[420px]">
             {mobileSlides.map((slide, index) => (
@@ -344,21 +344,17 @@ export default function Home() {
               <Link
                 key={id}
                 href={href}
-                className="group relative aspect-[1.52] w-[36%] shrink-0 overflow-hidden rounded-2xl border border-[#c7ad91] bg-[#DEC8B0] shadow-lg transition duration-500 hover:-translate-y-2 hover:bg-[#d6b894] hover:shadow-2xl sm:rounded-3xl lg:aspect-[1.49] lg:w-auto"
+                className="group relative aspect-[1.52] w-[32.4%] shrink-0 overflow-hidden rounded-2xl border border-[#c7ad91] bg-[#DEC8B0] shadow-lg transition duration-500 hover:-translate-y-2 hover:bg-[#d6b894] hover:shadow-2xl sm:rounded-3xl lg:aspect-[1.49] lg:w-auto"
               >
                 <div className="relative flex h-full flex-col justify-between p-3 text-[#3f4038] sm:p-5">
                   <div className="flex items-start justify-between gap-2">
-                    <span
-                      aria-hidden="true"
-                      className="flex h-[17px] w-[17px] items-center justify-center rounded-full bg-white shadow-sm"
-                    />
                     <Icon
                       size={20}
                       strokeWidth={1.6}
                       className="shrink-0 text-[#3f4038]"
                     />
                   </div>
-                  <h2 className="max-w-[10rem] text-[15px] font-medium leading-tight text-[#3f4038] sm:text-lg lg:text-[16px]">
+                  <h2 className="max-w-[10rem] text-[12px] font-medium leading-tight text-[#3f4038] sm:text-lg lg:text-[16px]">
                     {name}
                   </h2>
                 </div>
@@ -388,8 +384,8 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20">
             <div className="relative order-2 h-[360px] overflow-hidden rounded-3xl sm:h-[480px] lg:order-1">
               <Image
-                src="/hero-spa.jpg"
-                alt="Spa Elaris treatment room"
+                src="/seoffice.png"
+                alt="Spa Elaris office"
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="object-cover"
@@ -397,12 +393,12 @@ export default function Home() {
             </div>
             <div className="order-1 lg:order-2">
               <h2 className="mt-4 text-4xl font-light leading-tight tracking-[-0.03em] sm:text-6xl">
-                A calmer way to care for yourself.
+                Relax Rejuvenate Restore
               </h2>
-              <p className="mt-6 max-w-xl text-base leading-8 text-[#606454]">
+              {/* <p className="mt-6 max-w-xl text-base leading-8 text-[#606454]">
                 Thoughtfully curated treatments, personal attention and a
                 peaceful space designed around how you want to feel.
-              </p>
+              </p> */}
             </div>
           </div>
         </div>

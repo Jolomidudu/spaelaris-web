@@ -270,8 +270,8 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-20">
             <div className="relative order-2 h-[360px] overflow-hidden rounded-3xl sm:h-[480px] lg:order-1">
               <Image
-                src="/hero-spa.jpg"
-                alt="Spa Elaris treatment room"
+                src="/seoffice.png"
+                alt="Spa Elaris office"
                 fill
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 className="object-cover"
