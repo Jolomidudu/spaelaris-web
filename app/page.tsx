@@ -685,7 +685,7 @@ export default function Home() {
         </a>
       )}
       {menuOpen && (
-        <div className="fixed inset-0 z-[70] flex flex-col bg-[#26301c] px-6 pb-10 pt-8 text-white lg:hidden">
+        <div className="fixed inset-0 z-[70] flex flex-col bg-[#ffffff] px-6 pb-10 pt-8 text-white lg:hidden">
           <div className="flex items-center justify-between">
             <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">
               Spa Elaris
