@@ -3,6 +3,9 @@ import "./globals.css";
 import GlobalNav from "../components/GlobalNav";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/selogo.png",
+  },
   title: {
     default: "Spa Elaris | Wellness, beauty and restorative care",
     template: "%s | Spa Elaris",
