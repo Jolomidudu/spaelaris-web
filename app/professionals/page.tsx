@@ -3,17 +3,22 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Check, Star } from "lucide-react";
-import { useState } from "react";
-
-const professionals = [
-  { name: "Amara", rating: "4.9", role: "Skin specialist", image: "/facial.jpg" },
-  { name: "Tomi", rating: "4.8", role: "Wellness therapist", image: "/massage.jpg" },
-  { name: "Zainab", rating: "5.0", role: "Beauty professional", image: "/hot-stone.jpg" },
-  { name: "Nneka", rating: "4.9", role: "Wellness therapist", image: "/hero-spa.jpg" },
-];
+import { useEffect, useState } from "react";
+import { getTherapists, PublicTherapist } from "@/lib/catalog";
 
 export default function ProfessionalsPage() {
+  const [professionals, setProfessionals] = useState<PublicTherapist[]>([]);
   const [selectedProfessional, setSelectedProfessional] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    getTherapists().then((team) => {
+      if (!cancelled) setProfessionals(team);
+    }).catch(() => {
+      if (!cancelled) setProfessionals([]);
+    });
+    return () => { cancelled = true; };
+  }, []);
 
   return (
     <main className="min-h-screen bg-[#f7f6ef] px-5 pb-24 text-[#26301c] sm:px-8 lg:px-12">
@@ -38,15 +43,15 @@ export default function ProfessionalsPage() {
         <div className="mt-8 grid gap-3 lg:grid-cols-4 lg:gap-5">
           {professionals.map((professional) => (
             <article
-              key={professional.name}
+              key={professional.id}
               className={`flex items-center gap-4 rounded-2xl border p-3 shadow-sm transition-colors lg:flex-col lg:items-center lg:gap-3 lg:p-5 lg:text-center ${
-                selectedProfessional === professional.name
+                selectedProfessional === professional.id
                   ? "border-[#66703f] bg-[#66703f]/10"
                   : "border-[#66703f]/15 bg-white"
               }`}
             >
               <Image
-                src={professional.image}
+                src={professional.photoUrl ?? "/hero-spa.jpg"}
                 alt={professional.name}
                 width={72}
                 height={72}
@@ -54,22 +59,22 @@ export default function ProfessionalsPage() {
               />
               <div className="min-w-0 flex-1 lg:w-full lg:flex-none">
                 <h2 className="truncate text-base font-semibold text-[#26301c]">{professional.name}</h2>
-                <p className="mt-0.5 truncate text-xs text-[#606454]">{professional.role}</p>
-                <div className="mt-2 flex items-center gap-1 text-xs text-[#66703f] lg:justify-center">
+                <p className="mt-0.5 truncate text-xs text-[#606454]">{professional.displayTitle ?? professional.role}</p>
+                {professional.rating !== null && <div className="mt-2 flex items-center gap-1 text-xs text-[#66703f] lg:justify-center">
                   <Star size={13} fill="currentColor" />
-                  <span>{professional.rating}</span>
-                </div>
+                  <span>{professional.rating.toFixed(1)}</span>
+                </div>}
               </div>
               <button
                 type="button"
-                onClick={() =>
+                  onClick={() =>
                   setSelectedProfessional((current) =>
-                    current === professional.name ? null : professional.name,
+                    current === professional.id ? null : professional.id,
                   )
                 }
-                aria-label={`${selectedProfessional === professional.name ? "Deselect" : "Select"} ${professional.name}`}
+                aria-label={`${selectedProfessional === professional.id ? "Deselect" : "Select"} ${professional.name}`}
                 className={`flex h-9 shrink-0 items-center justify-center rounded-full transition lg:mt-1 ${
-                  selectedProfessional === professional.name
+                  selectedProfessional === professional.id
                     ? "w-9 bg-[#66703f] text-white"
                     : "bg-[#26301c] px-4 text-xs font-medium text-white hover:bg-[#66703f]"
                 }`}

@@ -22,7 +22,7 @@ import {
   X,
   Leaf,
 } from "lucide-react";
-import { serviceCategories } from "@/data/services";
+import { CatalogCategory, PublicTherapist, getCatalog, getTherapists } from "@/lib/catalog";
 
 const categoryIcons = [
   Webhook,
@@ -102,10 +102,28 @@ function formatDuration(totalMinutes: number) {
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("services");
+  const [serviceCategories, setServiceCategories] = useState<CatalogCategory[]>([]);
+  const [therapists, setTherapists] = useState<PublicTherapist[]>([]);
   const [now, setNow] = useState(() => new Date());
   const [menuOpen, setMenuOpen] = useState(false);
   const [showScrollCue, setShowScrollCue] = useState(true);
   const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    let cancelled = false;
+    Promise.all([getCatalog(), getTherapists()])
+      .then(([categories, team]) => {
+        if (cancelled) return;
+        setServiceCategories(categories);
+        setTherapists(team);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setServiceCategories([]);
+        setTherapists([]);
+      });
+    return () => { cancelled = true; };
+  }, []);
 
   useEffect(() => {
     const sections = sectionLinks
@@ -157,11 +175,10 @@ export default function Home() {
   }, [activeSection]);
 
   const cards = serviceCategories.map((category, index) => ({
-    id: category.id,
-    name: category.shortName,
-    shortName: category.number,
-    href: `/services/${category.id}`,
-    Icon: categoryIcons[index],
+    id: category.slug,
+    name: category.shortName ?? category.name,
+    href: `/services/${category.slug}`,
+    Icon: categoryIcons[index % categoryIcons.length],
   }));
   const nowMinutes = getMinutesInLagos(now);
   const isOpen =
@@ -423,44 +440,19 @@ export default function Home() {
             Experienced hands. Considered care.
           </h2>
           <div className="mt-12 flex gap-8 overflow-x-auto pb-5 [scrollbar-width:none]">
-            {[
-              {
-                name: "Amara",
-                slug: "amara",
-                rating: "4.9",
-                role: "Skin specialist",
-              },
-              {
-                name: "Tomi",
-                slug: "tomi",
-                rating: "4.8",
-                role: "Wellness therapist",
-              },
-              {
-                name: "Zainab",
-                slug: "zainab",
-                rating: "5.0",
-                role: "Beauty professional",
-              },
-              {
-                name: "Nneka",
-                slug: "nneka",
-                rating: "4.9",
-                role: "Wellness therapist",
-              },
-            ].map((therapist) => (
+            {therapists.map((therapist) => (
               <Link
-                key={therapist.name}
-                href={`/professionals/${therapist.slug}`}
+                key={therapist.id}
+                href={`/professionals/${therapist.publicSlug}`}
                 className="w-40 shrink-0 text-center sm:w-48"
               >
                 <div className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full bg-[#66703f] text-2xl font-light text-[#f7f6ef] sm:h-20 sm:w-20">
                   {therapist.name[0]}
                 </div>
-                <div className="mt-4 flex items-center justify-center gap-1 text-sm text-[#66703f]">
+                {therapist.rating !== null && <div className="mt-4 flex items-center justify-center gap-1 text-sm text-[#66703f]">
                   <Star size={14} fill="currentColor" />
-                  <span>{therapist.rating}</span>
-                </div>
+                  <span>{therapist.rating.toFixed(1)}</span>
+                </div>}
                 <h3 className="mt-2 text-lg font-medium text-[#26301c]">
                   {therapist.name}
                 </h3>

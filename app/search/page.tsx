@@ -1,14 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Search, X } from "lucide-react";
-import { serviceCategories } from "@/data/services";
+import { CatalogCategory, getCatalog } from "@/lib/catalog";
 
 export default function SearchPage() {
   const [query, setQuery] = useState("");
+  const [serviceCategories, setServiceCategories] = useState<CatalogCategory[]>([]);
 
-  const categories = serviceCategories.map((c) => ({ name: c.shortName || c.name, slug: c.id }));
+  useEffect(() => {
+    let cancelled = false;
+    getCatalog().then((categories) => {
+      if (!cancelled) setServiceCategories(categories);
+    }).catch(() => {
+      if (!cancelled) setServiceCategories([]);
+    });
+    return () => { cancelled = true; };
+  }, []);
+
+  const categories = serviceCategories.map((category) => ({
+    name: category.shortName ?? category.name,
+    slug: category.slug,
+  }));
 
   const results = categories.filter((c) => c.name.toLowerCase().includes(query.toLowerCase()));
 

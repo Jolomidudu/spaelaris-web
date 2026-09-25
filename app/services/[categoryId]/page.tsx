@@ -4,11 +4,7 @@ import Image from "next/image";
 import "./category.css";
 import { notFound } from "next/navigation";
 import CategoryBackButton from "../../../components/CategoryBackButton";
-import {
-  serviceCategories,
-  formatPrice,
-  serviceSlug,
-} from "@/data/services";
+import { formatDuration, formatPrice, getCatalog } from "@/lib/catalog";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -23,9 +19,8 @@ export default async function CategoryPage({
 
   // The URL contains the category id (used as slug in data),
   // e.g. /services/med-facials
-  const category = serviceCategories.find(
-    (item) => item.id === categoryId
-  );
+  const categories = await getCatalog();
+  const category = categories.find((item) => item.slug === categoryId);
 
   if (!category) {
     notFound();
@@ -42,8 +37,8 @@ export default async function CategoryPage({
       <section className="category-hero">
 
         <div className="category-hero-image">
-          <Image
-            src={category.image}
+            <Image
+            src={category.imageUrl ?? "/hero-spa.jpg"}
             alt={category.name}
             fill
             sizes="100vw"
@@ -98,21 +93,21 @@ export default async function CategoryPage({
                   {service.name}
                 </h2>
 
-                {service.duration && (
+                {service.durationMinutes !== null && (
                   <p className="service-duration">
-                    {service.duration}
+                    {formatDuration(service.durationMinutes)}
                   </p>
                 )}
 
                 <p className="service-price">
-                  {formatPrice(service.price)}
+                  {formatPrice(service.priceKobo)}
                 </p>
 
               </div>
 
 
               <Link
-                href={`/services/${category.id}/${serviceSlug(service.name)}`}
+                href={`/services/${category.slug}/${service.slug}`}
                 className="view-service-button"
               >
                 View Now
@@ -146,7 +141,7 @@ export default async function CategoryPage({
 
 
         <Link
-          href={`/book?category=${category.id}`}
+          href={`/book?category=${category.slug}`}
           className="book-now-button"
         >
           Book now

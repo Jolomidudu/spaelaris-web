@@ -4,14 +4,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowLeft, MoreVertical, X } from "lucide-react";
-import {
-  serviceCategories,
-  formatPrice,
-} from "@/data/services";
+import { CatalogCategory, CatalogService, formatPrice, getCatalog } from "@/lib/catalog";
 
 export default function ServicesPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [headerScrolled, setHeaderScrolled] = useState(false);
+  const [serviceCategories, setServiceCategories] = useState<CatalogCategory[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    getCatalog().then((categories) => {
+      if (!cancelled) setServiceCategories(categories);
+    }).catch(() => {
+      if (!cancelled) setServiceCategories([]);
+    });
+    return () => { cancelled = true; };
+  }, []);
 
   useEffect(() => {
     const updateHeader = () => setHeaderScrolled(window.scrollY > 16);
@@ -89,12 +97,12 @@ export default function ServicesPage() {
           {serviceCategories.map((category) => (
             <Link
               key={category.id}
-              href={`/services/${category.id}`}
+              href={`/services/${category.slug}`}
               className="group relative min-h-[120px] overflow-hidden rounded-[28px] bg-[#414f30] md:min-h-[172px]"
             >
               {/* IMAGE */}
               <Image
-                src={category.image}
+                src={category.imageUrl ?? "/hero-spa.jpg"}
                 alt={category.name}
                 fill
                 sizes="(min-width: 768px) 33vw, 50vw"
@@ -147,10 +155,10 @@ export default function ServicesPage() {
 
           <div className="grid gap-4 md:grid-cols-3">
             {[
-              serviceCategories[0].services[2],
-              serviceCategories[2].services[0],
-              serviceCategories[4].services[0],
-            ].map((service) => (
+              serviceCategories[0]?.services[2],
+              serviceCategories[2]?.services[0],
+              serviceCategories[4]?.services[0],
+            ].filter((service): service is CatalogService => Boolean(service)).map((service) => (
               <div
                 key={service.name}
                 className="rounded-3xl bg-[#f8f7f1] p-7"
@@ -169,7 +177,7 @@ export default function ServicesPage() {
 
                 <div className="mt-8 flex items-center justify-between border-t border-[#354329]/10 pt-5">
                   <span className="text-sm">
-                    {formatPrice(service.price)}
+                    {formatPrice(service.priceKobo)}
                   </span>
 
                   <span className="text-lg">↗</span>

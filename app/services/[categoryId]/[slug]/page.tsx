@@ -1,12 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ServiceDetailHeader from "../../../../components/ServiceDetailHeader";
-
-import {
-  serviceCategories,
-  formatPrice,
-  serviceSlug,
-} from "@/data/services";
+import { formatDuration, formatPrice, getCatalog } from "@/lib/catalog";
 
 type Props = {
   params: Promise<{
@@ -18,11 +13,12 @@ type Props = {
 export default async function ServiceDetailPage({ params }: Props) {
   const { categoryId, slug } = await params;
 
-  const category = serviceCategories.find((item) => item.id === categoryId);
+  const categories = await getCatalog();
+  const category = categories.find((item) => item.slug === categoryId);
 
   if (!category) notFound();
 
-  const service = category.services.find((item) => serviceSlug(item.name) === slug);
+  const service = category.services.find((item) => item.slug === slug);
   if (!service) notFound();
 
   return (
@@ -30,7 +26,7 @@ export default async function ServiceDetailPage({ params }: Props) {
 
       <ServiceDetailHeader
         backHref={`/services/${category.id}`}
-        categoryName={category.shortName}
+        categoryName={category.shortName ?? category.name}
       />
 
       <section className="px-5 py-8 sm:px-8">
@@ -39,8 +35,8 @@ export default async function ServiceDetailPage({ params }: Props) {
             <h1>{service.name}</h1>
 
             <div className="flex items-baseline gap-4">
-              <div className="text-2xl font-semibold">{formatPrice(service.price)}</div>
-              {service.duration && <div className="text-sm text-black/60">{service.duration}</div>}
+              <div className="text-2xl font-semibold">{formatPrice(service.priceKobo)}</div>
+              {service.durationMinutes !== null && <div className="text-sm text-black/60">{formatDuration(service.durationMinutes)}</div>}
             </div>
 
             <p>{service.description}</p>
@@ -75,7 +71,7 @@ export default async function ServiceDetailPage({ params }: Props) {
             )}
 
             <Link
-              href={`/book?category=${category.id}&service=${serviceSlug(service.name)}`}
+              href={`/book?category=${category.slug}&service=${service.slug}`}
               aria-label={`Book ${service.name} now`}
               title={`Book ${service.name} now`}
               className="fixed bottom-[100px] right-5 z-40 flex h-14 w-14 flex-col items-center justify-center rounded-full bg-[#DEC8B0] text-[10px] font-semibold uppercase leading-tight text-[#354329] shadow-xl transition hover:bg-[#d6b894]"
