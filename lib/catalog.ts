@@ -40,6 +40,31 @@ export type PublicTherapist = {
   services: CatalogService[];
 };
 
+export type BookingLocation = {
+  id: string;
+  name: string;
+  slug: string;
+  address: string;
+  city: string;
+  timezone: string;
+};
+
+export type AvailableBookingSlot = {
+  startsAt: string;
+  endsAt: string;
+  therapistId: string;
+  therapistName: string;
+  availableRoomCount: number;
+};
+
+export type BookingAvailability = {
+  date: string;
+  locationSlug: string;
+  totalDurationMinutes: number;
+  slotIntervalMinutes: number;
+  slots: AvailableBookingSlot[];
+};
+
 function getApiBaseUrl() {
   const configuredUrl =
     process.env.NEXT_PUBLIC_SPAELARIS_API_URL ??
@@ -65,6 +90,23 @@ export function getCatalog() {
 
 export function getTherapists() {
   return getPublicData<PublicTherapist[]>("therapists");
+}
+
+export function getBookingLocations() {
+  return getPublicData<BookingLocation[]>("locations");
+}
+
+export function getBookingAvailability(input: {
+  locationSlug: string;
+  date: string;
+  serviceSlugs: string[];
+}) {
+  const query = new URLSearchParams({
+    locationSlug: input.locationSlug,
+    date: input.date,
+    serviceSlugs: input.serviceSlugs.join(","),
+  });
+  return getPublicData<BookingAvailability>(`booking/availability?${query.toString()}`);
 }
 
 export function formatPrice(priceKobo: number) {
