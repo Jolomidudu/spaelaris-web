@@ -65,6 +65,30 @@ export type BookingAvailability = {
   slots: AvailableBookingSlot[];
 };
 
+export type PublicBookingRequest = {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email?: string;
+  locationSlug: string;
+  serviceSlugs: string[];
+  therapistProfileId: string;
+  startsAt: string;
+  endsAt: string;
+  notes?: string;
+};
+
+export type PublicBookingResult = {
+  id: string;
+  startsAt: string;
+  endsAt: string;
+  status: string;
+  services: { name: string; unitPriceKobo: number; durationMinutes: number }[];
+  location: { name: string; city: string };
+  therapist: { firstName: string; lastName: string } | null;
+  room: { name: string } | null;
+};
+
 function getApiBaseUrl() {
   const configuredUrl =
     process.env.NEXT_PUBLIC_SPAELARIS_API_URL ??
@@ -107,6 +131,20 @@ export function getBookingAvailability(input: {
     serviceSlugs: input.serviceSlugs.join(","),
   });
   return getPublicData<BookingAvailability>(`booking/availability?${query.toString()}`);
+}
+
+export async function createPublicBooking(data: PublicBookingRequest) {
+  const response = await fetch(`${getApiBaseUrl()}/public/booking`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  const payload = await response.json();
+  if (!response.ok) {
+    const message = Array.isArray(payload?.message) ? payload.message.join(", ") : payload?.message;
+    throw new Error(message || "Unable to submit booking request.");
+  }
+  return payload as PublicBookingResult;
 }
 
 export function formatPrice(priceKobo: number) {
