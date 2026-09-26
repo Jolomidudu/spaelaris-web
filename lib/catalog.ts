@@ -69,7 +69,7 @@ export type PublicBookingRequest = {
   firstName: string;
   lastName: string;
   phone: string;
-  email?: string;
+  email: string;
   locationSlug: string;
   serviceSlugs: string[];
   therapistProfileId: string;
@@ -87,6 +87,19 @@ export type PublicBookingResult = {
   location: { name: string; city: string };
   therapist: { firstName: string; lastName: string } | null;
   room: { name: string } | null;
+};
+
+export type BookingPaymentResult = {
+  reference: string;
+  amountKobo: number;
+  authorizationUrl: string;
+};
+
+export type VerifiedBookingPayment = {
+  reference: string;
+  status: "PENDING" | "PAID" | "FAILED" | "REFUNDED" | "PARTIALLY_REFUNDED";
+  amountKobo: number;
+  appointment: PublicBookingResult;
 };
 
 function getApiBaseUrl() {
@@ -145,6 +158,30 @@ export async function createPublicBooking(data: PublicBookingRequest) {
     throw new Error(message || "Unable to submit booking request.");
   }
   return payload as PublicBookingResult;
+}
+
+export async function initializeBookingPayment(appointmentId: string) {
+  const response = await fetch(`${getApiBaseUrl()}/public/booking/${encodeURIComponent(appointmentId)}/payment`, {
+    method: "POST",
+  });
+  const payload = await response.json();
+  if (!response.ok) {
+    const message = Array.isArray(payload?.message) ? payload.message.join(", ") : payload?.message;
+    throw new Error(message || "Unable to start Paystack checkout.");
+  }
+  return payload as BookingPaymentResult;
+}
+
+export async function verifyBookingPayment(reference: string) {
+  const response = await fetch(`${getApiBaseUrl()}/public/booking/payment/${encodeURIComponent(reference)}`, {
+    cache: "no-store",
+  });
+  const payload = await response.json();
+  if (!response.ok) {
+    const message = Array.isArray(payload?.message) ? payload.message.join(", ") : payload?.message;
+    throw new Error(message || "Unable to verify payment.");
+  }
+  return payload as VerifiedBookingPayment;
 }
 
 export function formatPrice(priceKobo: number) {

@@ -15,6 +15,8 @@ import {
   getBookingAvailability,
   getBookingLocations,
   getCatalog,
+  initializeBookingPayment,
+  verifyBookingPayment,
 } from "@/lib/catalog";
 
 function dateInTimezone(date: Date, timeZone: string) {
@@ -38,9 +40,11 @@ function displaySlotTime(dateTime: string, timeZone: string) {
 export default function BookingForm({
   initialCategorySlug,
   initialServiceSlug,
+  paymentReference,
 }: {
   initialCategorySlug?: string;
   initialServiceSlug?: string;
+  paymentReference?: string;
 }) {
   const [categories, setCategories] = useState<CatalogCategory[]>([]);
   const [locations, setLocations] = useState<BookingLocation[]>([]);
@@ -62,6 +66,31 @@ export default function BookingForm({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [bookingResult, setBookingResult] = useState<PublicBookingResult | null>(null);
+  const [paymentStatus, setPaymentStatus] = useState("");
+  const [paymentError, setPaymentError] = useState("");
+  const [isStartingPayment, setIsStartingPayment] = useState(false);
+  const [isVerifyingPayment, setIsVerifyingPayment] = useState(Boolean(paymentReference));
+
+  useEffect(() => {
+    if (!paymentReference) return;
+    let cancelled = false;
+    verifyBookingPayment(paymentReference)
+      .then((payment) => {
+        if (cancelled) return;
+        setBookingResult(payment.appointment);
+        setPaymentStatus(payment.status);
+        if (payment.status !== "PAID") {
+          setPaymentError("Paystack has not confirmed this payment yet. You can retry checkout below.");
+        }
+      })
+      .catch((error) => {
+        if (!cancelled) setPaymentError(error instanceof Error ? error.message : "Unable to verify payment.");
+      })
+      .finally(() => {
+        if (!cancelled) setIsVerifyingPayment(false);
+      });
+    return () => { cancelled = true; };
+  }, [paymentReference]);
 
   useEffect(() => {
     let cancelled = false;
@@ -143,7 +172,7 @@ export default function BookingForm({
         firstName,
         lastName,
         phone,
-        email: email || undefined,
+        email,
         locationSlug: selectedLocation.slug,
         serviceSlugs,
         therapistProfileId: selectedSlot.therapistId,
@@ -152,6 +181,8 @@ export default function BookingForm({
         notes: notes || undefined,
       });
       setBookingResult(result);
+      setPaymentStatus("");
+      setPaymentError("");
       setSelectedSlot(null);
       setServiceSlugs([]);
       setFirstName("");
@@ -168,6 +199,19 @@ export default function BookingForm({
     }
   }
 
+  async function beginPaystackCheckout() {
+    if (!bookingResult) return;
+    setPaymentError("");
+    setIsStartingPayment(true);
+    try {
+      const checkout = await initializeBookingPayment(bookingResult.id);
+      window.location.assign(checkout.authorizationUrl);
+    } catch (error) {
+      setPaymentError(error instanceof Error ? error.message : "Unable to start Paystack checkout.");
+      setIsStartingPayment(false);
+    }
+  }
+
   if (bookingResult) {
     const bookingTotal = bookingResult.services.reduce((total, service) => total + service.unitPriceKobo, 0);
     return (
@@ -176,19 +220,23 @@ export default function BookingForm({
           <Link href="/" className="inline-flex items-center gap-2 text-sm text-[#606454] hover:text-[#26301c]"><ArrowLeft size={17} /> Home</Link>
           <section className="mt-10 border-y border-[#66703f]/20 py-10">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#66703f] text-white"><Check size={23} /></div>
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-[#66703f]">Request received</p>
-            <h1 className="mt-2 text-3xl font-medium sm:text-4xl">Your visit is pending confirmation.</h1>
-            <p className="mt-3 max-w-xl text-sm leading-6 text-[#606454]">We’ve recorded your booking request. No payment has been taken; the spa will confirm your appointment.</p>
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-[#66703f]">{paymentStatus === "PAID" ? "Payment confirmed" : isVerifyingPayment ? "Checking payment" : "Request received"}</p>
+            <h1 className="mt-2 text-3xl font-medium sm:text-4xl">{paymentStatus === "PAID" ? "Your appointment is confirmed." : isVerifyingPayment ? "Verifying your payment." : "Your visit is pending payment."}</h1>
+            <p className="mt-3 max-w-xl text-sm leading-6 text-[#606454]">{paymentStatus === "PAID" ? "Paystack has confirmed your payment and your appointment is confirmed." : isVerifyingPayment ? "We’re checking the transaction status with Paystack." : "Your appointment request is saved. Complete Paystack checkout to confirm your appointment."}</p>
             <dl className="mt-8 grid gap-4 border-t border-[#66703f]/15 pt-6 sm:grid-cols-2">
               <div><dt className="text-xs uppercase tracking-wide text-[#606454]">Reference</dt><dd className="mt-1 font-semibold">{bookingResult.id}</dd></div>
-              <div><dt className="text-xs uppercase tracking-wide text-[#606454]">Status</dt><dd className="mt-1 font-semibold">{bookingResult.status}</dd></div>
+              <div><dt className="text-xs uppercase tracking-wide text-[#606454]">Status</dt><dd className="mt-1 font-semibold">{paymentStatus === "PAID" ? "CONFIRMED" : bookingResult.status}</dd></div>
               <div><dt className="text-xs uppercase tracking-wide text-[#606454]">When</dt><dd className="mt-1 font-semibold">{new Intl.DateTimeFormat("en-NG", { dateStyle: "medium", timeStyle: "short", timeZone: selectedLocation?.timezone ?? "Africa/Lagos" }).format(new Date(bookingResult.startsAt))}</dd></div>
               <div><dt className="text-xs uppercase tracking-wide text-[#606454]">Location</dt><dd className="mt-1 font-semibold">{bookingResult.location.name}</dd></div>
               <div><dt className="text-xs uppercase tracking-wide text-[#606454]">Therapist</dt><dd className="mt-1 font-semibold">{bookingResult.therapist ? `${bookingResult.therapist.firstName} ${bookingResult.therapist.lastName}` : "To be assigned"}</dd></div>
               <div><dt className="text-xs uppercase tracking-wide text-[#606454]">Room</dt><dd className="mt-1 font-semibold">{bookingResult.room?.name ?? "To be assigned"}</dd></div>
               <div className="sm:col-span-2"><dt className="text-xs uppercase tracking-wide text-[#606454]">Treatments</dt><dd className="mt-1 font-semibold">{bookingResult.services.map((service) => service.name).join(", ")}</dd><dd className="mt-1 text-sm text-[#606454]">{formatPrice(bookingTotal)}</dd></div>
             </dl>
-            <Link href="/services" className="mt-8 inline-flex rounded-full bg-[#26301c] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#66703f]">Back to services</Link>
+            {paymentError && <p role="alert" className="mt-6 text-sm text-red-700">{paymentError}</p>}
+            <div className="mt-8 flex flex-wrap gap-3">
+              {paymentStatus !== "PAID" && !isVerifyingPayment && <button type="button" onClick={beginPaystackCheckout} disabled={isStartingPayment} className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#26301c] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#66703f] disabled:opacity-50">{isStartingPayment ? "Opening Paystack..." : "Pay with Paystack"}</button>}
+              <Link href="/services" className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#26301c]/20 px-6 py-3 text-sm font-semibold text-[#26301c] transition hover:bg-[#26301c]/5">Back to services</Link>
+            </div>
           </section>
         </div>
       </main>
@@ -253,11 +301,11 @@ export default function BookingForm({
             <div className="mb-5 flex items-start gap-3"><span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#26301c] text-sm font-semibold text-white">4</span><div><h2 id="contact-heading" className="text-xl font-semibold">Your contact details</h2><p className="mt-1 text-sm text-[#606454]">We’ll use these details to follow up about your request.</p></div></div>
             <form onSubmit={submitBooking} className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2"><label className="text-xs font-semibold uppercase tracking-wide text-[#606454]">First name<input value={firstName} onChange={(event) => setFirstName(event.target.value)} required maxLength={80} autoComplete="given-name" className="mt-2 h-12 w-full rounded-lg border border-[#66703f]/25 bg-white px-3 text-sm font-medium normal-case tracking-normal text-[#26301c] outline-none focus:border-[#66703f]" /></label><label className="text-xs font-semibold uppercase tracking-wide text-[#606454]">Last name<input value={lastName} onChange={(event) => setLastName(event.target.value)} required maxLength={80} autoComplete="family-name" className="mt-2 h-12 w-full rounded-lg border border-[#66703f]/25 bg-white px-3 text-sm font-medium normal-case tracking-normal text-[#26301c] outline-none focus:border-[#66703f]" /></label></div>
-              <div className="grid gap-4 sm:grid-cols-2"><label className="text-xs font-semibold uppercase tracking-wide text-[#606454]">Phone<input value={phone} onChange={(event) => setPhone(event.target.value)} required minLength={7} maxLength={30} type="tel" autoComplete="tel" className="mt-2 h-12 w-full rounded-lg border border-[#66703f]/25 bg-white px-3 text-sm font-medium normal-case tracking-normal text-[#26301c] outline-none focus:border-[#66703f]" /></label><label className="text-xs font-semibold uppercase tracking-wide text-[#606454]">Email <span className="font-normal normal-case tracking-normal">(optional)</span><input value={email} onChange={(event) => setEmail(event.target.value)} type="email" autoComplete="email" className="mt-2 h-12 w-full rounded-lg border border-[#66703f]/25 bg-white px-3 text-sm font-medium normal-case tracking-normal text-[#26301c] outline-none focus:border-[#66703f]" /></label></div>
+              <div className="grid gap-4 sm:grid-cols-2"><label className="text-xs font-semibold uppercase tracking-wide text-[#606454]">Phone<input value={phone} onChange={(event) => setPhone(event.target.value)} required minLength={7} maxLength={30} type="tel" autoComplete="tel" className="mt-2 h-12 w-full rounded-lg border border-[#66703f]/25 bg-white px-3 text-sm font-medium normal-case tracking-normal text-[#26301c] outline-none focus:border-[#66703f]" /></label><label className="text-xs font-semibold uppercase tracking-wide text-[#606454]">Email<input value={email} onChange={(event) => setEmail(event.target.value)} required type="email" autoComplete="email" className="mt-2 h-12 w-full rounded-lg border border-[#66703f]/25 bg-white px-3 text-sm font-medium normal-case tracking-normal text-[#26301c] outline-none focus:border-[#66703f]" /></label></div>
               <label className="block text-xs font-semibold uppercase tracking-wide text-[#606454]">Notes <span className="font-normal normal-case tracking-normal">(optional)</span><textarea value={notes} onChange={(event) => setNotes(event.target.value)} maxLength={1000} rows={3} className="mt-2 w-full resize-y rounded-lg border border-[#66703f]/25 bg-white px-3 py-3 text-sm font-medium normal-case tracking-normal text-[#26301c] outline-none focus:border-[#66703f]" /></label>
               {submitError && <p role="alert" className="text-sm text-red-700">{submitError}</p>}
               <button type="submit" disabled={!selectedSlot || !selectedLocation || serviceSlugs.length === 0 || isSubmitting} className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-[#26301c] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#66703f] disabled:cursor-not-allowed disabled:opacity-45 sm:w-auto">{isSubmitting ? "Submitting request..." : "Request this appointment"}<Sparkles size={16} /></button>
-              <p className="text-xs leading-5 text-[#606454]">Your request will be pending spa confirmation. Payment is not collected on this page.</p>
+              <p className="text-xs leading-5 text-[#606454]">A pending appointment request is created first. You’ll continue to Paystack to complete payment and confirm your booking.</p>
             </form>
           </section>
         </div>
