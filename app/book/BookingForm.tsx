@@ -50,6 +50,7 @@ export default function BookingForm({
   const [locations, setLocations] = useState<BookingLocation[]>([]);
   const [isLoadingCatalog, setIsLoadingCatalog] = useState(true);
   const [catalogError, setCatalogError] = useState("");
+  const [selectionNotice, setSelectionNotice] = useState("");
   const [locationSlug, setLocationSlug] = useState("");
   const [date, setDate] = useState(() => new Date().toISOString().slice(0, 10));
   const [categorySlug, setCategorySlug] = useState(initialCategorySlug ?? "");
@@ -100,14 +101,20 @@ export default function BookingForm({
         setCategories(nextCategories);
         setLocations(nextLocations);
         setCategorySlug((current) => current || initialCategorySlug || nextCategories[0]?.slug || "");
+        const initialService = initialServiceSlug
+          ? nextCategories.flatMap((category) => category.services).find((service) => service.slug === initialServiceSlug)
+          : undefined;
+        if (initialService && initialService.durationMinutes === null) {
+          setServiceSlugs([]);
+          setSelectionNotice(`${initialService.name} cannot be booked online yet because its duration has not been set. Please choose another treatment or contact the spa.`);
+        } else if (initialServiceSlug && !initialService) {
+          setServiceSlugs([]);
+          setSelectionNotice("That treatment is no longer available. Please choose from the current service list.");
+        }
         setDate((current) => {
           const location = nextLocations.find((item) => item.slug === locationSlug) ?? nextLocations[0];
           return location ? dateInTimezone(new Date(), location.timezone) : current;
         });
-        if (initialServiceSlug && !nextCategories.some((category) => category.services.some((service) => service.slug === initialServiceSlug))) {
-          setCatalogError("That treatment is no longer available. Please choose from the current service list.");
-          setServiceSlugs([]);
-        }
       })
       .catch(() => {
         if (!cancelled) setCatalogError("We couldn’t load the booking menu. Please refresh and try again.");
@@ -156,6 +163,7 @@ export default function BookingForm({
 
   function toggleService(service: CatalogService) {
     if (service.durationMinutes === null) return;
+    setSelectionNotice("");
     setServiceSlugs((current) => current.includes(service.slug)
       ? current.filter((slug) => slug !== service.slug)
       : [...current, service.slug]);
@@ -287,7 +295,8 @@ export default function BookingForm({
 
           <section aria-labelledby="time-heading" className="border-t border-[#66703f]/15 pt-8">
             <div className="mb-5 flex items-start gap-3"><span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#26301c] text-sm font-semibold text-white">3</span><div><h2 id="time-heading" className="text-xl font-semibold">Choose a therapist and time</h2><p className="mt-1 text-sm text-[#606454]">Times are based on therapist hours and room availability.</p></div></div>
-            {serviceSlugs.length === 0 ? <p className="text-sm text-[#606454]">Choose at least one treatment to see available times.</p> : !locationSlug ? <p className="text-sm text-[#606454]">Choose a location to see available times.</p> : isLoadingAvailability ? <p className="text-sm text-[#606454]">Checking available times...</p> : availabilityError ? <p role="alert" className="text-sm text-red-700">{availabilityError}</p> : availability?.slots.length ? <div className="grid gap-3 sm:grid-cols-2">
+            {selectionNotice && <p role="status" className="mb-3 border-l-2 border-[#d8c487] py-2 pl-4 text-sm leading-6 text-[#606454]">{selectionNotice}</p>}
+            {serviceSlugs.length === 0 ? <p className="text-sm text-[#606454]">Choose at least one treatment with a configured duration to see available times.</p> : !locationSlug ? <p className="text-sm text-[#606454]">Choose a location to see available times.</p> : isLoadingAvailability ? <p className="text-sm text-[#606454]">Checking available times...</p> : availabilityError ? <p role="alert" className="text-sm text-red-700">{availabilityError}</p> : availability?.slots.length ? <div className="grid gap-3 sm:grid-cols-2">
               {availability.slots.map((slot) => {
                 const isSelected = selectedSlot?.startsAt === slot.startsAt && selectedSlot.therapistId === slot.therapistId;
                 return <button key={`${slot.startsAt}-${slot.therapistId}`} type="button" onClick={() => setSelectedSlot(slot)} className={`flex items-center justify-between gap-3 border px-4 py-4 text-left transition ${isSelected ? "border-[#26301c] bg-[#26301c] text-white" : "border-[#66703f]/20 bg-white hover:border-[#66703f]"}`}>

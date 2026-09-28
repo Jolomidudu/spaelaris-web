@@ -116,7 +116,11 @@ async function getPublicData<T>(path: string): Promise<T> {
     cache: "no-store",
   });
   if (!response.ok) {
-    throw new Error(`Catalog request failed (${response.status})`);
+    const payload = await response.json().catch(() => null);
+    const message = Array.isArray(payload?.message)
+      ? payload.message.join(", ")
+      : payload?.message;
+    throw new Error(message || `Catalog request failed (${response.status})`);
   }
   return response.json() as Promise<T>;
 }
