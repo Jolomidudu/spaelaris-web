@@ -220,13 +220,13 @@ export default function Home() {
             </span>
           </Link>
           <div className="flex items-center gap-1">
-            <Link
+            {/* <Link
               href="/notifications"
               aria-label="Notifications"
               className="rounded-full p-2 text-[#26301c] transition hover:bg-[#66703f]/10"
             >
               <Bell size={21} strokeWidth={1.8} />
-            </Link>
+            </Link> */}
             <button
               type="button"
               aria-label="Open menu"
@@ -239,12 +239,12 @@ export default function Home() {
           </div>
         </div>
         <div className="mt-2 flex items-center justify-between gap-5 py-3 sm:mt-3 sm:py-4">
-          <div className="flex items-center gap-2">
+          {/* <div className="flex items-center gap-2">
             <Star size={17} fill="currentColor" className="text-[#d8a928]" />
             <span className="text-sm font-semibold text-[#26301c]">4.9</span>
             <span className="text-sm text-[#606454]">(128 reviews)</span>
-          </div>
-          <div className="text-right">
+          </div> */}
+          {/* <div className="text-right">
             <div className="flex items-center justify-end gap-1.5">
               <Clock3 size={16} className="shrink-0 text-[#66703f]" />
               <p className="text-sm font-medium text-[#26301c]">
@@ -256,7 +256,7 @@ export default function Home() {
                 ? `Closing in ${formatDuration(minutesUntilBoundary(OPEN_END_MINUTES))}`
                 : `Opens in ${formatDuration(minutesUntilBoundary(OPEN_START_MINUTES))}`}
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
       <section className="mobile-campaign-carousel relative mx-5 mt-2 h-[250px] overflow-hidden rounded-[24px] text-white shadow-lg lg:hidden" aria-label="Featured Spa Elaris experiences">
