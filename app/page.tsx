@@ -275,7 +275,7 @@ export default function Home() {
                 <p className="mt-2 max-w-[15rem] text-xs leading-5 text-white/80">{slide.description}</p>
               </div>
               <Link href={slide.href} className="inline-flex w-fit items-center gap-2 rounded-full bg-[#DEC8B0] px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#354329] transition hover:bg-white">
-                Explore now <ChevronRight size={14} />
+                Book now <ChevronRight size={14} />
               </Link>
             </div>
           </div>
@@ -326,7 +326,7 @@ export default function Home() {
                     <p className="mt-4 max-w-[22rem] text-sm leading-6 text-white/80">{slide.description}</p>
                   </div>
                   <Link href={slide.href} className="inline-flex w-fit items-center gap-2 rounded-full bg-[#DEC8B0] px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#354329] transition hover:bg-white">
-                    Explore now <ChevronRight size={16} />
+                    Book now <ChevronRight size={16} />
                   </Link>
                 </div>
               </div>
@@ -677,16 +677,26 @@ export default function Home() {
         </a>
       )}
       {menuOpen && (
-        <div className="fixed inset-0 z-[70] flex flex-col bg-[#ffffff] px-6 pb-10 pt-8 text-white lg:hidden">
+        <div className="fixed inset-0 z-[70] flex flex-col bg-[#6f7f3f] px-6 pb-10 pt-8 text-white lg:hidden">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-semibold uppercase tracking-[0.3em] text-[#d8c487]">
-              Spa Elaris
-            </span>
+            <div className="flex items-center gap-3">
+              <Image
+                src="/selogo.png"
+                alt=""
+                aria-hidden="true"
+                width={200}
+                height={140}
+                className="h-12 w-auto object-contain"
+              />
+              <span className="text-xs font-semibold uppercase tracking-[0.3em] text-white">
+                SPA ELARIS
+              </span>
+            </div>
             <button
               type="button"
               aria-label="Close menu"
               onClick={() => setMenuOpen(false)}
-              className="rounded-full p-2 text-white/80 hover:bg-white/10"
+                className="rounded-full p-2 text-white hover:bg-white/10"
             >
               <X size={22} />
             </button>
@@ -704,7 +714,7 @@ export default function Home() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="border-b border-white/10 py-5 text-3xl font-light"
+                className="border-b border-white/10 py-5 text-3xl font-light text-white"
               >
                 {item.label}
               </Link>
