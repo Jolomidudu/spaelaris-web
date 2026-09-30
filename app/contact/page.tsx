@@ -2,11 +2,12 @@ import Link from "next/link";
 import { ArrowRight, Clock3, Mail, MapPin, Phone } from "lucide-react";
 
 const locations = [
-  { city: "Lagos", address: "Victoria Island, Lagos", phone: "+234 800 000 0000" },
-  { city: "Abuja", address: "Maitama, Abuja", phone: "+234 800 000 0000" },
+  { city: "Lagos", address: "5 Gbangbala Street, Ikate (Lekki area), Lagos", phone: "+234 906 663 3942" },
+  { city: "Abuja", address: "Plot 1049 Aguwan Anaekwe Street, Wuye, Abuja", phone: "+234 913 735 8191" },
 ];
 
 export const metadata = { title: "Contact" };
+
 
 export default function ContactPage() {
   return (
