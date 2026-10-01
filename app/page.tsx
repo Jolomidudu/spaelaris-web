@@ -53,28 +53,28 @@ const mobileSlides = [
     eyebrow: "SKIN & FACIALS",
     title: "Bring your glow back.",
     description: "Personalized facial care for skin that feels refreshed, hydrated and renewed.",
-    href: "/services/med-facials",
+    href: "/services",
   },
   {
     image: "/massage.jpg",
     eyebrow: "MASSAGE & WELLNESS",
     title: "Make room to exhale.",
     description: "Restorative bodywork designed to release tension and return you to yourself.",
-    href: "/services/service-menu",
+    href: "/services",
   },
   {
     image: "/hot-stone.jpg",
     eyebrow: "BODY RITUALS",
     title: "A softer kind of reset.",
     description: "Slow down with considered rituals that leave your body calm and restored.",
-    href: "/services/service-menu",
+    href: "/services",
   },
   {
     image: "/hero-spa.jpg",
     eyebrow: "YOUR ELARIS VISIT",
     title: "Come away feeling well.",
     description: "Find thoughtful care, quiet attention and time made just for you.",
-    href: "/contact",
+    href: "/services",
   },
 ];
 
@@ -275,7 +275,7 @@ export default function Home() {
                 <p className="mt-2 max-w-[15rem] text-xs leading-5 text-white/80">{slide.description}</p>
               </div>
               <Link href={slide.href} className="inline-flex w-fit items-center gap-2 rounded-full bg-[#DEC8B0] px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.12em] text-[#354329] transition hover:bg-white">
-                Book now <ChevronRight size={14} />
+                Book A Treat <ChevronRight size={14} />
               </Link>
             </div>
           </div>
@@ -326,7 +326,7 @@ export default function Home() {
                     <p className="mt-4 max-w-[22rem] text-sm leading-6 text-white/80">{slide.description}</p>
                   </div>
                   <Link href={slide.href} className="inline-flex w-fit items-center gap-2 rounded-full bg-[#DEC8B0] px-5 py-3 text-xs font-bold uppercase tracking-[0.12em] text-[#354329] transition hover:bg-white">
-                    Book now <ChevronRight size={16} />
+                    Book A Treat <ChevronRight size={16} />
                   </Link>
                 </div>
               </div>
