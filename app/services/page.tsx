@@ -39,7 +39,7 @@ export default function ServicesPage() {
           >
             <ArrowLeft size={18} />
           </Link>
-          <h1 className="text-base font-semibold text-[#26301c]">OUR SERVICES</h1>
+          <h1 className="text-base font-semibold text-[#26301c]">Book A Treat</h1>
         </div>
         <button
           type="button"
@@ -131,7 +131,7 @@ export default function ServicesPage() {
       </section>
 
       {/* FEATURED TREATMENTS */}
-      <section className="bg-[#e9e8d9] px-6 py-24 md:px-12 lg:px-20">
+      {/* <section className="bg-[#e9e8d9] px-6 py-24 md:px-12 lg:px-20">
         <div className="mx-auto max-w-7xl">
           <div className="mb-14 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div>
@@ -186,7 +186,7 @@ export default function ServicesPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA */}
       
